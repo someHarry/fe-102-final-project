@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Input from './Components/Input/Input'
 import logo from './logo.svg'
 import './App.css'
 
@@ -34,6 +35,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+        <Input/>
     </div>
   )
 }
