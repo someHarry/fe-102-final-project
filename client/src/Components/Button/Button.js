@@ -1,29 +1,24 @@
-import { ReactPropTypes } from "react";
-import "./Button.scss";
+import PropTypes from 'prop-types'
+import './Button.scss'
 
 function Button(props) {
+  const { btnStyles, btnClick, text } = props
   return (
-    <button
-      className={"button " + this.props.btnStyles}
-      type="button"
-      onClick={this.props.btnClick}
-    >
-      {this.props.text}
+    <button className={`button + ${btnStyles}`} type="button" onClick={btnClick}>
+      {text}
     </button>
-  );
+  )
 }
 
 Button.defaultProps = {
-  type: "button",
   btnClick: () => {},
-  btnStyles: "btn__bad",
-};
+  btnStyles: '',
+}
 
 Button.propTypes = {
   btnStyles: PropTypes.string,
-  type: PropTypes.string,
   btnClick: PropTypes.func,
-  text: PropTypes.string,
-};
+  text: PropTypes.string.isRequired,
+}
 
-export default Button;
+export default Button
