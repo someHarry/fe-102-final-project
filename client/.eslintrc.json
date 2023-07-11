@@ -26,8 +26,14 @@
           "version": "detect"
         }
       },
-    "rules": {
+      "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
+        "react/button-has-type": [0],
+        "react/function-component-definition": ["error", {
+            "namedComponents": "function-declaration",
+            "unnamedComponents": "arrow-function"
+          }]
     }
 }

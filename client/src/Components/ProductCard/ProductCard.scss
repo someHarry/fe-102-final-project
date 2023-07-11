@@ -1,0 +1,104 @@
+.product-card {
+  list-style: none;
+  width: 264px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 9px;
+  position: relative;
+
+  &__image {
+    img {
+      height: 264px;
+    }
+  }
+
+  &__price-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 9px;
+
+    .discounted {
+      text-decoration: line-through;
+    }
+
+    .product-card__price-after-discount {
+      color: #d61d2c;
+    }
+  }
+
+  &__hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 1s;
+    background-color: rgba(40, 40, 40, 0.4);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    &:hover{
+      opacity: 1;
+      transition: 1s;
+    }
+  }
+}
+
+// typography
+// probably should be moved to a higher level:
+$fontColorDefault: #282828;
+$fontSizeDefault: 16px;
+$fontSizeDefaultSmall: 14px;
+$fontFamilyDefault: "Montserrat", sans-serif;
+
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.product-card {
+
+  &__title {
+    color: $fontColorDefault;
+    text-align: center;
+    font-family: $fontFamilyDefault;
+    font-size: $fontSizeDefault;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  &__origin-text {
+    color: $fontColorDefault;
+    text-align: center;
+    font-family: $fontFamilyDefault;
+    font-size: $fontSizeDefaultSmall;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  &__price-group {
+    color: $fontColorDefault;
+    text-align: center;
+    font-family: $fontFamilyDefault;
+    font-size: $fontSizeDefault;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+}
