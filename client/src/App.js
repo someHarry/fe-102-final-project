@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
+import ProductList from "./Components/ProductList";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<h2>Home page</h2>} />
-            <Route path="shop" element={<h2>Shop page</h2>} />
+            <Route path="shop" element={<ProductList items={[{id:1, name:"Silver Oak Napa Valley Cabernet Sauvignon 2018", variety:"Cabernet Sauvigon", region:"Alexander Valley, Sonoma County", country:"California", image:"https://www.wine.com/product/images/w_768,h_1059,c_fit,q_auto:good,fl_progressive/qcng8hwtfumjbahz9po6.jpg", price:89.99, discount:0},{id:2, name:"The Prisoner Wine Company Cabernet Sauvignon 2019", variety:"Cabernet Sauvigon", region:"Napa Valley", country:"California", image:"https://www.wine.com/product/images/w_480,h_600,c_fit,q_auto:good,fl_progressive/zluhfgt9fapsjfqlct4t.jpg", price:61.99, discount:0.2}]} />} />
             <Route
               path={'shop/*'}
               element={<h2>Item id {window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} page</h2>}
