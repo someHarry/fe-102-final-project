@@ -1,0 +1,33 @@
+.product-list {
+  &__wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 70px;
+  max-width: 1280px;
+  box-sizing: border-box;
+  padding-left: 76px;
+  padding-right: 76px;
+
+  &__filter-block{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 216px;
+    background-color: #61dafb;
+  }
+
+  &__products {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 48px 24px;
+    justify-content: space-evenly;
+  }
+}
