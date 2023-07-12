@@ -118,34 +118,8 @@ function App() {
             <Route path={'*' || '404'} element={<h2>404 page</h2>} />
           </Route>
         </Routes>
+        <Footer catalogTitle="Collections" clientTitle="Clients" />
       </BrowserRouter>
-      <Footer
-        catalogTitle="Collections"
-        clientTitle="Клиентам"
-        catalogItem={[
-          'Вино',
-          'Ігристі',
-          'Віскі',
-          'Коньяк',
-          'Ром',
-          'Лікери та настоянки',
-          'Міцний алкоголь',
-          'Кейси',
-          'Акції',
-        ]}
-        clientItem={[
-          'Вхід до кабінету',
-          'Каталог',
-          'Про нас',
-          'Оплата',
-          'Доставка',
-          'Контакти / Магазини',
-          'Повернення та гарантія',
-          'Блог',
-          'Угода користувача',
-          'Політика конфіденційності',
-        ]}
-      />
     </div>
   )
 }

@@ -2,17 +2,19 @@
   background-color: #f4f4f4;
   padding-top: 30px;
   padding-bottom: 30px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 }
 
 .footer__wrapper {
   display: flex;
+  justify-content: space-between;
   font-size: 14px;
   line-height: 143%;
   letter-spacing: 0.25px;
+  align-items: flex-start;
+}
+
+.footer__logo {
+  align-items: center;
 }
 
 .footer-title {
@@ -25,4 +27,43 @@
 
 .footer-list {
   list-style: none;
+  padding-left: 0;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.footer__item {
+  margin-bottom: 9px;
+}
+
+.footer__item:last-child {
+  margin-bottom: 0;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #282828;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: 0.25px;
+}
+
+.contacts__item {
+  margin-bottom: 9px;
+
+  &--adress {
+    max-width: 244px;
+    // background-color: url('/pics/location.svg');
+  }
+  &--tel {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.contacts__text {
+  color: #282828;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: 0.25px;
 }
