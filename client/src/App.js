@@ -1,9 +1,27 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import {useEffect, useState} from "react";
 import './App.css'
 import Header from './Components/Header/Header'
 import ProductList from './Components/ProductList'
 
 function App() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/products")
+        .then(res => res.json())
+        .then(
+            (result) => {
+              // setIsLoaded(true);
+              setProducts(result);
+            },
+            // (error) => {
+              // setIsLoaded(true);
+              // setError(error);
+            // }
+        )
+  }, [])
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -16,96 +34,7 @@ function App() {
               path="shop"
               element={
                 <ProductList
-                  items={[
-                    {
-                      id: 1,
-                      name: 'Silver Oak Napa Valley Cabernet Sauvignon 2018',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Alexander Valley, Sonoma County',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_768,h_1059,c_fit,q_auto:good,fl_progressive/qcng8hwtfumjbahz9po6.jpg',
-                      price: 89.99,
-                      discount: 0,
-                    },
-                    {
-                      id: 2,
-                      name: 'The Prisoner Wine Company Cabernet Sauvignon 2019',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Napa Valley',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_480,h_600,c_fit,q_auto:good,fl_progressive/zluhfgt9fapsjfqlct4t.jpg',
-                      price: 61.99,
-                      discount: 0.2,
-                    },
-                    {
-                      id: 3,
-                      name: 'Silver Oak Napa Valley Cabernet Sauvignon 2018',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Alexander Valley, Sonoma County',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_768,h_1059,c_fit,q_auto:good,fl_progressive/qcng8hwtfumjbahz9po6.jpg',
-                      price: 89.99,
-                      discount: 0,
-                    },
-                    {
-                      id: 4,
-                      name: 'The Prisoner Wine Company Cabernet Sauvignon 2019',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Napa Valley',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_480,h_600,c_fit,q_auto:good,fl_progressive/zluhfgt9fapsjfqlct4t.jpg',
-                      price: 61.99,
-                      discount: 0.2,
-                    },
-                    {
-                      id: 5,
-                      name: 'Silver Oak Napa Valley Cabernet Sauvignon 2018',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Alexander Valley, Sonoma County',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_768,h_1059,c_fit,q_auto:good,fl_progressive/qcng8hwtfumjbahz9po6.jpg',
-                      price: 89.99,
-                      discount: 0,
-                    },
-                    {
-                      id: 6,
-                      name: 'The Prisoner Wine Company Cabernet Sauvignon 2019',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Napa Valley',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_480,h_600,c_fit,q_auto:good,fl_progressive/zluhfgt9fapsjfqlct4t.jpg',
-                      price: 61.99,
-                      discount: 0.2,
-                    },
-                    {
-                      id: 7,
-                      name: 'Silver Oak Napa Valley Cabernet Sauvignon 2018',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Alexander Valley, Sonoma County',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_768,h_1059,c_fit,q_auto:good,fl_progressive/qcng8hwtfumjbahz9po6.jpg',
-                      price: 89.99,
-                      discount: 0,
-                    },
-                    {
-                      id: 8,
-                      name: 'The Prisoner Wine Company Cabernet Sauvignon 2019',
-                      variety: 'Cabernet Sauvigon',
-                      region: 'Napa Valley',
-                      country: 'California',
-                      image:
-                        'https://www.wine.com/product/images/w_480,h_600,c_fit,q_auto:good,fl_progressive/zluhfgt9fapsjfqlct4t.jpg',
-                      price: 61.99,
-                      discount: 0.2,
-                    },
-                  ]}
+                  items={products}
                 />
               }
             />

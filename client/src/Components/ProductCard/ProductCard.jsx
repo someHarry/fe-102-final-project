@@ -12,7 +12,7 @@ function ProductCard({id, name, variety, region, country, image, price, discount
 
     return (
         <li className="product-card">
-            <div className="product-card__image"><img src={image} alt={name}/></div>
+            <div className="product-card__image"><img src={`http://localhost:4000${image}`} alt={name}/></div>
             <div className="product-card__content">
                 <div className="product-card__title-group">
                     <h3 className="product-card__title">{name}</h3>
