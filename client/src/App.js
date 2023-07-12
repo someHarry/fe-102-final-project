@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
+import Header from './Components/Header/Header'
 import ProductList from './Components/ProductList'
 import Footer from './Components/Footer/Footer'
 
@@ -119,7 +120,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer
-        catalogTitle="Каталог"
+        catalogTitle="Collections"
         clientTitle="Клиентам"
         catalogItem={[
           'Вино',
