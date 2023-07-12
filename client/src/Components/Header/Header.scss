@@ -1,6 +1,5 @@
 // LOGO
 .header__wrapper {
-    width: 100vw;
     height: 108px;
     padding: 30px 72px;
     display: flex;
@@ -9,6 +8,7 @@
     align-items: center;
     border-bottom: 1px solid black;
     box-sizing: border-box;
+    gap: 120px;
     
 }
 
@@ -38,7 +38,7 @@
 .nav__menu {
     display: flex;
     flex-direction: row;
-    width: 700px;
+    flex-grow: 1;
 }
 
 .menu__list {
