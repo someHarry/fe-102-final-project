@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Form from "./Components/Form/SignInForm/SignInForma"
 import logo from './logo.svg'
 import './App.css'
 
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <header className="App-header">
+<Form/>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
