@@ -25,7 +25,7 @@ function Form() {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...formikForm.getFieldProps("email")}
             type="email"
-            classNames="input"
+            classNames="input-signIn"
             name="email"
             placeholder=""
             label="email"
@@ -37,7 +37,7 @@ function Form() {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...formikForm.getFieldProps("password")}
             type="password"
-            classNames="input"
+            classNames="signIn-input"
             name="lastName"
             placeholder="lastName"
             label="password"
@@ -45,12 +45,12 @@ function Form() {
             errorMessage={formikForm.errors.password}
           />
 
-       <Button
+       {/* <Button
             text="Checkout"
             type="submit"
             backgroundColor="#ffff"
             className="btn"
-          />
+          /> */}
           </fieldset>
         </form>
       </div>
