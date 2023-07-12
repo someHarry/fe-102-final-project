@@ -1,0 +1,28 @@
+.footer {
+  background-color: #f4f4f4;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer__wrapper {
+  display: flex;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: 0.25px;
+}
+
+.footer-title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0.15px;
+  text-transform: uppercase;
+}
+
+.footer-list {
+  list-style: none;
+}
