@@ -10,7 +10,10 @@ function Input(props) {
   return (
     <label className={classNames + hasValidation} htmlFor={name}>
       <p className="form-label">{label}</p>
-      <input className="form-control input" type={type} name={name} placeholder={placeholder} />
+       <div className="input-wrapper">
+    <input className="form-control input " type={type} name={name} placeholder={placeholder} />
+    <span className="icon"/>
+  </div>
       {error && <p className="error-message">{errorMessage}</p>}
     </label>
   );
