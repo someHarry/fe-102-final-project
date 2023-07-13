@@ -50,15 +50,25 @@
 
 .contacts__item {
   margin-bottom: 9px;
-
+  padding-left: 26px;
+  background-repeat: no-repeat;
+  background-position: left center;
   &--adress {
     max-width: 244px;
-    // background-color: url('/pics/location.svg');
+    background-image: url(../../../public/pics/location.svg);
+  }
+  &--email {
+    background-image: url(../../../public/pics/mail.svg);
   }
   &--tel {
     display: flex;
     flex-direction: column;
+    background-image: url(../../../public/pics/call.svg);
   }
+}
+
+.contacts__item:last-child {
+  margin-bottom: 0;
 }
 
 .contacts__text {
