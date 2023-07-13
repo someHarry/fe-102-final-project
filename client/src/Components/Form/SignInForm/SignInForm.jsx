@@ -1,11 +1,12 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { validationSchema } from "./validationShema";
 import Input from "../../Input/Input";
+import '../../Input/Input.scss'
+// import Button from "../../Button/Button";
 
-import Button from "../../Button/Button";
-
-function Form() {
+function SignInForm() {
     const navigate = useNavigate()
 
     const formikForm = useFormik({
@@ -25,12 +26,14 @@ function Form() {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...formikForm.getFieldProps("email")}
             type="email"
-            classNames="input-signIn"
+            classNames="signIn-input"
             name="email"
-            placeholder=""
-            label="email"
+            placeholder="email"
+            label=""
             error={formikForm.errors.email && formikForm.touched.email}
             errorMessage={formikForm.errors.email}
+            // eslint-disable-next-line react/jsx-boolean-value
+            hasIcon={true}
           />
 
           <Input
@@ -39,8 +42,8 @@ function Form() {
             type="password"
             classNames="signIn-input"
             name="lastName"
-            placeholder="lastName"
-            label="password"
+            placeholder="password"
+            label=""
             error={formikForm.errors.password && formikForm.touched.password}
             errorMessage={formikForm.errors.password}
           />
@@ -57,4 +60,4 @@ function Form() {
 
     )
 }
-export default Form
+export default SignInForm

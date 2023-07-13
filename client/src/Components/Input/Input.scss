@@ -23,6 +23,7 @@
   font-size: 16px;
   line-height: 24px;
   padding: 16px, 0px;
+  border-radius: 2px;
 }
 
 // HEADER INPUT
@@ -53,7 +54,7 @@
 
 .icon {
   content: '';
-  position: absolute;
+  position: absolute; 
   top: 50%;
   right: 13px;
   transform: translateY(-50%);
@@ -73,3 +74,35 @@
 }
 
 // SIGN IN INPUT 
+// .signIn-input {
+// border: 2px solid #000;
+// position: relative;
+// }
+// .icon{
+// content: '';
+//     position: absolute;
+//     top: 50%;
+//     right: 13px;
+//     transform: translateY(-50%);
+//     width: 25px;
+//     height: 25px;
+//     background: url('./icon/email.svg') no-repeat;
+//     background-size: cover;
+//     cursor: pointer;
+// }
+
+// SHIPPING ADRESS INPUT
+// first name,last name, street and, email
+.shipping-input {
+    width: 280px;
+    height: 40px;
+    border: 2px solid grey;
+    margin-bottom: 18px;
+}
+// post code, city
+.shipping-input2 {
+    width: 145px;
+    height: 40px;
+    border: 2px solid grey;
+    margin-bottom: 18px;
+ }
