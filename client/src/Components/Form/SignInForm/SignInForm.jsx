@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-boolean-value */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { validationSchema } from "./validationShema";
+import "./SignInForm.scss"
 import Input from "../../Input/Input";
 import '../../Input/Input.scss'
 // import Button from "../../Button/Button";
@@ -26,26 +28,26 @@ function SignInForm() {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...formikForm.getFieldProps("email")}
             type="email"
-            classNames="signIn-input"
+            className="signIn-input"
             name="email"
-            placeholder="email"
+            placeholder="email adress"
             label=""
             error={formikForm.errors.email && formikForm.touched.email}
-            errorMessage={formikForm.errors.email}
-            // eslint-disable-next-line react/jsx-boolean-value
-            hasIcon={true}
+              errorMessage={formikForm.errors.email}
+              hasEmailIcon={true}
           />
 
           <Input
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...formikForm.getFieldProps("password")}
             type="password"
-            classNames="signIn-input"
+            className="signIn-input"
             name="lastName"
             placeholder="password"
             label=""
             error={formikForm.errors.password && formikForm.touched.password}
-            errorMessage={formikForm.errors.password}
+              errorMessage={formikForm.errors.password}
+              hasPassIcon={true}
           />
 
        {/* <Button
