@@ -28,26 +28,38 @@ function SignInForm() {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...formikForm.getFieldProps("email")}
             type="email"
-            className="signIn-input"
+            className="pay-input"
             name="email"
-            placeholder="email adress"
-            label=""
+            placeholder="xxxxxxxxx"
+            label="Card number"
             error={formikForm.errors.email && formikForm.touched.email}
               errorMessage={formikForm.errors.email}
-              hasEmailIcon={true}
+            
           />
 
           <Input
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...formikForm.getFieldProps("password")}
             type="password"
-            className="signIn-input"
-            name="lastName"
-            placeholder="password"
-            label=""
+            className="pay-input"
+            name="password"
+            placeholder="xxx xxx"
+            label="ddddd"
             error={formikForm.errors.password && formikForm.touched.password}
               errorMessage={formikForm.errors.password}
-              hasPassIcon={true}
+             
+            />
+               <Input
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...formikForm.getFieldProps("password")}
+            type="password"
+            className="pay-input"
+            name="password"
+            placeholder="xxx"
+            label="CVV"
+            error={formikForm.errors.password && formikForm.touched.password}
+              errorMessage={formikForm.errors.password}
+             
           />
 
        {/* <Button

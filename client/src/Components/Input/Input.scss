@@ -1,3 +1,7 @@
+$font-family: 'Montserrat', sans-serif;
+* {
+  font-family: $font-family;
+}
 .form-item {
   &.has-validation {
     .form-control {
@@ -24,6 +28,11 @@
   line-height: 24px;
   padding: 16px, 0px;
   border-radius: 2px;
+}
+.input::placeholder {
+  size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 // HEADER INPUT
@@ -75,21 +84,27 @@
 }
 
 // SIGN IN INPUT
-
 .signIn-input {
+  width: 456px;
+  height: 56px;
   position: relative;
+  margin-bottom: 48px;
+}
+.signIn-input .input {
+  border: 2px solid rgb(0, 0, 0);
 }
 
 .signIn-input::placeholder {
+  padding-left: 50px;
   text-transform: uppercase;
-  padding-left: 30px;
+  color: #000000;
 }
 
 .signIn-icon--email {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 43%;
+  top: 26%;
+  left: 34%;
   transform: translateY(-50%);
   width: 25px;
   height: 25px;
@@ -101,8 +116,8 @@
 .signIn-icon--password {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 43%;
+  top: 26%;
+  left: 34%;
   transform: translateY(-50%);
   width: 25px;
   height: 25px;
@@ -110,18 +125,42 @@
   background-size: cover;
   cursor: pointer;
 }
+
 // SHIPPING ADRESS INPUT
+
 // first name,last name, street and, email
-.shipping-input {
-  width: 280px;
-  height: 40px;
+
+.shipping-input .input {
   border: 2px solid grey;
-  margin-bottom: 18px;
 }
-// post code, city
-.shipping-input2 {
-  width: 145px;
-  height: 40px;
-  border: 2px solid grey;
-  margin-bottom: 18px;
+.shipping-input {
+  // border: 2px solid grey;
+  margin-bottom: 48px;
+  height: 56px;
+
+  .shipping-input__1 {
+    width: 289px;
+  }
+  // post code, city
+  .shipping-input__2 {
+    width: 145px;
+  }
+}
+
+.shipping-input::placeholder {
+  padding-left: 10px;
+  color: #000000;
+}
+
+// INPUY PAY
+.pay-input .input {
+  border: none;
+  border-bottom: 1px solid grey;
+
+}
+.pay-input .lable {
+  padding-left: 0;
+}
+.pay-input::placeholder {
+  text-transform: uppercase;
 }
