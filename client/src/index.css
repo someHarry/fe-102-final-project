@@ -1,6 +1,12 @@
 /* Import Montserrat style from Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -15,4 +21,20 @@ body {
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (min-width: 576px) {
+    max-width: 536px;
+  }
+  @media (min-width: 768px) {
+    max-width: 728px;
+  }
+  @media (min-width: 992px) {
+    max-width: 952px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
+  @media (min-width: 1400px) {
+    max-width: 1400px;
+  }
 }
