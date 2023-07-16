@@ -1,8 +1,32 @@
+import {useEffect, useState} from "react";
 import "./ProductList.scss";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ProductCard from "../ProductCard";
 
-function ProductList({items}) {
+function ProductList() {
+    const queryString = window.location.search;
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        let queryParams = "?perPage=10&startPage=1"
+        if(queryString.length > 0){
+            queryParams = queryString;
+        }
+        fetch(`http://localhost:4000/api/products/filter${queryParams}`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result.products)
+                    if (result.productsQuantity > 0){
+                        setProducts(result.products);
+                    }
+                    // setIsLoaded(true);
+                },
+                // (error) => {
+                // setIsLoaded(true);
+                // setError(error);
+                // }
+            )
+    }, [])
 
     return (
         <div className="product-list__wrapper">
@@ -13,20 +37,25 @@ function ProductList({items}) {
                 <div className="product-list__content-block">
                     <div className="product-list__sorting">Here will be sorting component</div>
                     <ul className="product-list__products">
-                        {items.map((item) => (
+                        {products.length > 0 &&
+                            products.map((product) => (
                                 <ProductCard
-                                    id={item.id}
-                                    name={item.name}
-                                    variety={item.variety}
-                                    region={item.region}
-                                    country={item.country}
-                                    image={item.image}
-                                    price={item.price}
-                                    discount={item.discount}
-                                    key={item.id}
+                                    id={product.id}
+                                    name={product.name}
+                                    variety={product.variety}
+                                    region={product.region}
+                                    country={product.country}
+                                    image={product.image}
+                                    price={product.price}
+                                    basePrice={product.basePrice}
+                                    discount={product.discount}
+                                    key={product.id}
                                 />
                             )
                         )}
+                        {
+                            products.length <= 0 && <p>Nothing was found for your silly request. Try another one. 🤷‍♂️</p>
+                        }
                     </ul>
                 </div>
             </section>
@@ -34,8 +63,8 @@ function ProductList({items}) {
     )
 }
 
-ProductList.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))).isRequired,
-}
+// ProductList.propTypes = {
+//     items: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))).isRequired,
+// }
 
 export default ProductList;

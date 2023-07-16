@@ -1,26 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import {useEffect, useState} from "react";
 import './App.css'
 import Header from './Components/Header/Header'
 import ProductList from './Components/ProductList'
 
 function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:4000/api/products")
-        .then(res => res.json())
-        .then(
-            (result) => {
-              // setIsLoaded(true);
-              setProducts(result);
-            },
-            // (error) => {
-              // setIsLoaded(true);
-              // setError(error);
-            // }
-        )
-  }, [])
 
   return (
     <div className="App">
@@ -34,7 +17,7 @@ function App() {
               path="shop"
               element={
                 <ProductList
-                  items={products}
+                  items={[]}
                 />
               }
             />
