@@ -3,6 +3,7 @@ import './App.css'
 import Header from './Components/Header/Header'
 import ProductList from './Components/ProductList'
 import Footer from './Components/Footer/Footer'
+import ProductPage from './Pages/ProductPage'
 
 function App() {
   return (
@@ -115,6 +116,7 @@ function App() {
               element={<h2>Item id {window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} page</h2>}
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
+            <Route path="product" element={ProductPage} />
             <Route path={'*' || '404'} element={<h2>404 page</h2>} />
           </Route>
         </Routes>
