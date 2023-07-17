@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './Components/Header/Header'
 import ProductList from './Components/ProductList'
-import SignInForm from './Components/Form/SignInForm/SignInForm'
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
 
         <Routes>
           <Route path="/">
-            <Route index element={<SignInForm/>} />
+            <Route index element={<h2>Home page</h2>} />
             <Route
               path="shop"
               element={
