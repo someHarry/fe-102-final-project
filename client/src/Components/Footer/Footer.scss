@@ -5,16 +5,30 @@
 }
 
 .footer__wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content repeat(3, 1fr);
+  column-gap: 40px;
   justify-content: space-between;
   font-size: 14px;
   line-height: 143%;
   letter-spacing: 0.25px;
   align-items: flex-start;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0;
+    row-gap: 40px;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .footer__logo {
+  display: flex;
   align-items: center;
+  @media (max-width: 1200px) {
+    order: -2;
+  }
 }
 
 .footer-title {
@@ -46,6 +60,12 @@
   font-size: 14px;
   line-height: 143%;
   letter-spacing: 0.25px;
+}
+
+.footer__contacts {
+  @media (max-width: 1200px) {
+    order: -1;
+  }
 }
 
 .contacts__item {

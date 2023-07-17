@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { ReactComponent as Logo } from './img/Logo.svg'
 import './Footer.scss'
 
 function Footer({ catalogTitle, clientTitle }) {
@@ -8,7 +7,7 @@ function Footer({ catalogTitle, clientTitle }) {
     <footer className="footer">
       <div className="container footer__wrapper">
         <Link className="logo footer__logo" to="/">
-          <Logo className="logo__pic" />
+          <img src={`${process.env.PUBLIC_URL}/pics/logo_bottle.png`} alt="Good Wine" width="64" height="64" />
           <h1 className="logo__title">Good Wine</h1>
         </Link>
         <div className="footer__catalog catalog">
