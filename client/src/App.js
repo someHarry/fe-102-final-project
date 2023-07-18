@@ -10,6 +10,7 @@ function App() {
       <BrowserRouter>
         <Header />
         {/* END HEADER */}
+
         <Routes>
           <Route path="/">
             <Route index element={<h2>Home page</h2>} />
