@@ -53,7 +53,7 @@ function Footer({ catalogTitle, clientTitle }) {
         </div>
 
         <div className="footer__contacts contacts">
-          <h3 className="contacts__title footer-title">Контактна інформація</h3>
+          <h3 className="contacts__title footer-title">Contacts info</h3>
           <ul className="contacts__list footer-list">
             <li className="contacts__item contacts__item--adress">
               <a className="contacts__item-text contacts__text" href="tel:+1234567890">
