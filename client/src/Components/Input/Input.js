@@ -50,12 +50,12 @@ Input.defaultProps = {
 
 Input.propTypes = {
   type: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
-  error: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  label: PropTypes.string,
+  className: PropTypes.string,
+  error: PropTypes.bool,
+  errorMessage: PropTypes.string,
   hasIcon: PropTypes.element,
   hasEmailIcon: PropTypes.element,
   hasPassIcon: PropTypes.element,
