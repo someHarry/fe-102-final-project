@@ -5,7 +5,7 @@ import './Header.scss'
 
 function Header() {
   return (
-    <section className="header__wrapper">
+    <header className="header__wrapper">
       {/* LOGO */}
       <Link className="logo logo__link" to="/">
         <svg
@@ -78,7 +78,7 @@ function Header() {
         </li>
       </ul>
       {/* END OF ICONS MENU */}
-    </section>
+    </header>
   )
 }
 
