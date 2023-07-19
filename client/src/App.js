@@ -16,9 +16,7 @@ function App() {
             <Route
               path="shop"
               element={
-                <ProductList
-                  items={[]}
-                />
+                <ProductList />
               }
             />
             <Route
