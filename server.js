@@ -46,6 +46,13 @@ app.use(passport.initialize());
 // Passport Config
 require('./config/passport')(passport);
 
+// _ucking CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Use Routes
 app.use('/api/configs', globalConfigs);
 app.use('/api/customers', customers);
