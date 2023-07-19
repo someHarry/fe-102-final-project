@@ -11,11 +11,17 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        {/* END HEADER */}
-        <SalesSlider />
         <Routes>
           <Route path="/">
-            <Route index element={<h2>Home page</h2>} />
+            <Route
+              index
+              element={
+                <>
+                  <SalesSlider />
+                  <h2>Home page</h2>
+                </>
+              }
+            />
             <Route
               path="shop"
               element={
