@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import './Footer.scss'
+import Logo from '../Logo'
 
 function Footer({ catalogTitle, clientTitle }) {
   return (
     <footer className="footer">
       <div className="container footer__wrapper">
-        <Link className="logo footer__logo" to="/">
-          <img src={`${process.env.PUBLIC_URL}/pics/logo_bottle.png`} alt="Good Wine" width="64" height="64" />
-          <h1 className="logo__title">Good Wine</h1>
-        </Link>
+        <Logo classNames="footer__logo" />
         <div className="footer__catalog catalog">
           <h3 className="catalog__title footer-title">{catalogTitle}</h3>
 
@@ -55,7 +53,7 @@ function Footer({ catalogTitle, clientTitle }) {
         </div>
 
         <div className="footer__contacts contacts">
-          <h3 className="contacts__title footer-title">Контактна інформація</h3>
+          <h3 className="contacts__title footer-title">Contacts info</h3>
           <ul className="contacts__list footer-list">
             <li className="contacts__item contacts__item--adress">
               <a className="contacts__item-text contacts__text" href="tel:+1234567890">
