@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './Components/Header/Header'
+import SalesSlider from './Components/SalesSlider/SalesSlider'
 import ProductList from './Components/ProductList'
 import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
@@ -11,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Header />
         {/* END HEADER */}
-
+        <SalesSlider />
         <Routes>
           <Route path="/">
             <Route index element={<h2>Home page</h2>} />

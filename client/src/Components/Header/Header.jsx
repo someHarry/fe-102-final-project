@@ -6,7 +6,7 @@ import Logo from '../Logo'
 
 function Header() {
   return (
-    <section className="header__wrapper">
+    <header className="header__wrapper">
       {/* LOGO */}
       <Logo classNames="logo__link" />
       {/* END LOGO */}
@@ -55,7 +55,7 @@ function Header() {
         </li>
       </ul>
       {/* END OF ICONS MENU */}
-    </section>
+    </header>
   )
 }
 
