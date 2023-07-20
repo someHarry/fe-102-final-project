@@ -10,6 +10,8 @@
   &__image {
     img {
       height: 264px;
+      width: 264px;
+      object-fit: contain;
     }
   }
 
