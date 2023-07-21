@@ -1,10 +1,11 @@
 import "./ProductCard.scss";
 import PropTypes from 'prop-types';
 
-function ProductCard({id, name, variety, region, country, image, price, discount}) {
+function ProductCard({id, name, variety, region, country, image, price, basePrice, discount}) {
 
     let isDiscounted = false;
     let productCardPriceClassName = "product-card__price";
+    console.log(discount)
     if (discount > 0) {
         isDiscounted = true;
         productCardPriceClassName += " discounted";
@@ -12,16 +13,16 @@ function ProductCard({id, name, variety, region, country, image, price, discount
 
     return (
         <li className="product-card">
-            <div className="product-card__image"><img src={image} alt={name}/></div>
+            <div className="product-card__image"><img src={`http://localhost:4000${image}`} alt={name}/></div>
             <div className="product-card__content">
                 <div className="product-card__title-group">
                     <h3 className="product-card__title">{name}</h3>
                     <p className="product-card__origin-text">{`${variety} | ${region}, ${country}`}</p>
                 </div>
                 <div className="product-card__price-group">
-                    <p className={productCardPriceClassName}>${price}</p>
+                    <p className={productCardPriceClassName}>${basePrice}</p>
                     {isDiscounted &&
-                        <p className="product-card__price-after-discount">${(price * (1 - discount)).toFixed(2)}</p>
+                        <p className="product-card__price-after-discount">{price}</p>
                     }
                 </div>
             </div>
@@ -43,6 +44,7 @@ ProductCard.propTypes = {
     country: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    basePrice: PropTypes.number.isRequired,
     discount: PropTypes.number.isRequired,
 }
 
