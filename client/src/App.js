@@ -7,7 +7,6 @@ import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
 
 function App() {
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,18 +22,13 @@ function App() {
                 </>
               }
             />
-            <Route
-              path="shop"
-              element={
-                <ProductList />
-              }
-            />
+            <Route path="shop" element={<ProductList />} />
             <Route
               path={'shop/*'}
               element={<h2>Item id {window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} page</h2>}
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
-            <Route path="product" element={ProductPage} />
+            <Route path="product" element={<ProductPage />} />
             <Route path={'*' || '404'} element={<h2>404 page</h2>} />
           </Route>
         </Routes>
