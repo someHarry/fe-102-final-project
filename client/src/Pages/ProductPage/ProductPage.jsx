@@ -1,3 +1,4 @@
+import Button from '../../Components/Button/Button'
 import './ProductPage.scss'
 
 function ProductPage() {
@@ -15,6 +16,7 @@ function ProductPage() {
           <div className="product__wrapper">
             <h2 className="product__title">Ceylon Ginger Cinnamon chai tea</h2>
             <p className="product__description">A lovely warming Chai tea with ginger cinnamon flavours.</p>
+
             {true ? (
               <p className="product__price">Price: 20$</p>
             ) : (
@@ -26,6 +28,16 @@ function ProductPage() {
                 </p>
               </div>
             )}
+
+            <div className="product__buy buy">
+              <div className="buy__wrapper">
+                <button className="buy__minus">-</button>
+                <p className="buy__text">0</p>
+                <button className="buy__plus">+</button>
+              </div>
+              <Button text="ADD TO BAG" btnStyles="buttonDark" />
+            </div>
+
             <ul className="product__list">
               <li className="product__item product-item">
                 <p className="product-item__text">Country: France</p>
