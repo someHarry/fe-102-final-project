@@ -16,14 +16,14 @@ function ProductPage() {
           <h2 className="product__title">Ceylon Ginger Cinnamon chai tea</h2>
           <p className="product__description">A lovely warming Chai tea with ginger cinnamon flavours.</p>
 
-          {true ? (
+          {false ? (
             <p className="product__price">20$</p>
           ) : (
             <div>
               <p className="product__all-price">
-                <span className="product__price product__old-price">20$</span>
-                <span className="product__discount">13%</span>
-                <span className="product__new-price">20$</span>
+                <span className="product__price product__price--old-price">20$</span>
+                <span className="product__price product__price--discount">13%</span>
+                <span className="product__price product__price--new-price">20$</span>
               </p>
             </div>
           )}

@@ -28,6 +28,24 @@
   font-size: 36px;
   line-height: 122%;
   margin-bottom: 21px;
+  margin-right: 25px;
+
+  &--old-price {
+    text-decoration: line-through;
+  }
+
+  &--discount {
+    color: red;
+    font-size: 18px;
+  }
+
+  &--new-price {
+    text-decoration: underline;
+  }
+}
+
+.product__all-price {
+  margin-bottom: 21px;
 }
 
 .product__buy {
