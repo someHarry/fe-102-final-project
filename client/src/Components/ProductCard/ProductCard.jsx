@@ -5,14 +5,13 @@ function ProductCard({id, name, variety, region, country, image, price, basePric
 
     let isDiscounted = false;
     let productCardPriceClassName = "product-card__price";
-    console.log(discount)
     if (discount > 0) {
         isDiscounted = true;
         productCardPriceClassName += " discounted";
     }
 
     return (
-        <li className="product-card">
+        <li key={id} className="product-card">
             <div className="product-card__image"><img src={`http://localhost:4000${image}`} alt={name}/></div>
             <div className="product-card__content">
                 <div className="product-card__title-group">
