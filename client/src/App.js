@@ -6,6 +6,7 @@ import ProductList from './Components/ProductList'
 import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
 import PaymentPage from './Pages/PaymentPage'
+import ConfirmationPaymentPage from './Pages/ConfirmationPaymentPage'
 
 function App() {
 
@@ -36,7 +37,8 @@ function App() {
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
             <Route path="product" element={ProductPage} />
-            <Route path="payment" element={<PaymentPage/>} />
+            <Route path="payment" element={<PaymentPage />} />
+            <Route path="payment_confirm" element={<ConfirmationPaymentPage/>} />
             <Route path={'*' || '404'} element={<h2>404 page</h2>} />
           </Route>
         </Routes>
