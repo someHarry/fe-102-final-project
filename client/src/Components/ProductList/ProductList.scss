@@ -1,5 +1,5 @@
 .product-list {
-  &__wrapper{
+  &__wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@
   padding-left: 76px;
   padding-right: 76px;
 
-  &__filter-block{
+  &__filter-block {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -29,5 +29,9 @@
     flex-wrap: wrap;
     gap: 48px 24px;
     justify-content: space-evenly;
+  }
+
+  &__sorting {
+    text-align: right;
   }
 }

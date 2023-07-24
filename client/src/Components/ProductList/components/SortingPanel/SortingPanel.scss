@@ -1,0 +1,15 @@
+// typography
+// probably should be moved to a higher level:
+$fontColorDefault: #282828;
+$fontSizeDefault: 16px;
+$fontFamilyDefault: "Montserrat", sans-serif;
+
+.sorting-panel {
+  border: 0;
+  color: $fontColorDefault;
+  font-size: $fontSizeDefault;
+  font-family: $fontFamilyDefault;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  text-transform: uppercase;
+}
