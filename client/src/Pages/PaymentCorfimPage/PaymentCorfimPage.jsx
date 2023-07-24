@@ -2,10 +2,10 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { ReactComponent as MasterCard } from '../PaymentPage/icons/mastercardFormIcon.svg'
-import './ConfirmationPaymentPage.scss'
+import './PaymentCorfimPage.scss'
 import Button from '../../Components/Button/Button'
 
-function ConfirmationPaymentPage() {
+function PaymentCorfimPage() {
   const [isLoaderVisible, setLoaderVisible] = useState(true)
   const [isSuccessVisible, setSuccessVisible] = useState(false)
 
@@ -62,4 +62,4 @@ function ConfirmationPaymentPage() {
   )
 }
 
-export default ConfirmationPaymentPage
+export default PaymentCorfimPage
