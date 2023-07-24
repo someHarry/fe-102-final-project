@@ -86,7 +86,7 @@ function PaymentPage() {
         <div className="payment-type">
           <h4 className="payment-title">Payment type</h4>
           <div className="payment-type__btn">
-            <Button btnStyles="payment-type__btn--visa" />
+            <Button btnStyles="payment-type__btn--visa" text=""/>
           </div>
           <div className="form__pay">
             <Form onSubmit={formikForm.handleSubmit}>
