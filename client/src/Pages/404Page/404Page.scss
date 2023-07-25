@@ -1,0 +1,115 @@
+.section-404page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  &__title {
+    margin-top: 30px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 58px;
+    margin-bottom: 5px
+  }
+
+  &__desc {
+    font-weight: 700;    
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 10px;
+  }
+
+  &__img {
+    width: 600px;
+    height: 420px;
+  }
+
+  &__btn {
+      width: 185px;
+      height: 58px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #E26C56;
+      padding: 0 !important;
+      border: 0 !important;
+      text-transform: none !important;
+      color: white;
+      font-size: 18px;
+      border-radius: 30px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      cursor: pointer;
+      font-family: "Montserrat", sans-serif;
+      padding: 0;
+      text-transform: none;    
+  }
+
+  &__btn::before{
+    content: "";
+    width: 17px;
+    height: 12px;
+    margin-right: 5px;
+    background-image:url(../../../public/pics/notFound/arrow.svg);
+  }
+    
+  
+  &__btn-arrow{
+    padding-right: 5px;
+  }
+}
+
+@media (min-width:576px) and (max-width:992px) {
+  .section-404page{
+      &__title{
+      margin-top: 20px;
+      font-weight: 700;
+      font-size: 38px;
+      }
+
+      &__desc{
+        font-size: 16px;
+      }
+
+      &__img{
+        width: 100%;
+        height: 280px
+      }
+
+      &__btn{
+        width: 150px;
+        height: 42px;
+        font-size: 14px;
+        border-radius: 25px;
+      }
+  }
+  
+}
+
+@media (max-width:576px) {
+  .section-404page{
+    &__title{
+        margin-top: 20px;
+        font-weight: 700;
+        font-size: 32px;
+      }
+      &__desc{
+        font-size: 16px;
+      }
+      &__img{
+        width: 100%;
+        height: 196px
+      }
+
+      &__btn{
+        width: 150px;
+        height: 42px;
+        font-size: 14px;
+        border-radius: 25px;
+        margin-top: 33px;
+        margin-bottom: 33px;
+      }
+  }
+}

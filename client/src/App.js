@@ -5,6 +5,7 @@ import SalesSlider from './Components/SalesSlider/SalesSlider'
 import ProductList from './Components/ProductList'
 import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
+import NotFoundPage from './Pages/404Page/404Page'
 
 function App() {
   return (
