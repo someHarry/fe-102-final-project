@@ -72,7 +72,7 @@ function ProductList() {
                 </div>
                 <div className="product-list__content-block">
                     <div className="product-list__sorting">
-                        <FilterPanel 
+                        <SortingPanel 
                             queryParams={queryParams}
                             setQueryParams={setQueryParams}
                         />
