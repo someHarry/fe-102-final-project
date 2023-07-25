@@ -1,7 +1,20 @@
+import { useState, useEffect } from 'react'
 import Button from '../../Components/Button/Button'
 import './ProductPage.scss'
+// import sendRequest from '../../helpers/request'
 
 function ProductPage() {
+  // const [product, setProduct] = useState({})
+  const [isLoad, setIsLoad] = useState(false)
+  useEffect(() => {
+    // sendRequest().then().catch(setIsLoad(true))
+    setIsLoad(true)
+  }, [])
+
+  if (!isLoad) {
+    return <p>sdfghj</p>
+  }
+
   return (
     <div>
       <div className="container product">
