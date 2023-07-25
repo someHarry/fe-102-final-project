@@ -30,7 +30,7 @@ function App() {
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
             <Route path="product" element={<ProductPage />} />
-            <Route path={'*' || '404'} element={<h2>404 page</h2>} />
+            <Route path={'*' || '404'} element={<NotFoundPage />} />
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />
