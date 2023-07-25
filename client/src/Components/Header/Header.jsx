@@ -5,6 +5,7 @@ import './Header.scss'
 import Logo from '../Logo'
 
 function Header() {
+  const searchTrue = true;
   return (
     <header className="header__wrapper">
       {/* LOGO */}
@@ -41,7 +42,7 @@ function Header() {
       {/* ICONS MENU */}
       <ul className="icons__menu">
         <li className="icons__menu--item menu__link">
-          <Input className="icons__menu--search search" />
+          <Input hasIcon={searchTrue} classNames='classNames inputClassNames' />
         </li>
         <li className="icons__menu--item menu__link">
           <Link to="/">
