@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import "./ProductList.scss";
 // import PropTypes from 'prop-types';
 import ProductCard from "../ProductCard";
-// import FilterPanel from "./components/FilterPanel";
+import FilterPanel from "./components/FilterPanel";
 import SortingPanel from "./components/SortingPanel";
 
 function ProductList() {
@@ -72,7 +72,10 @@ function ProductList() {
                 </div>
                 <div className="product-list__content-block">
                     <div className="product-list__sorting">
-                        <p>Here will be SortingPanel component</p>
+                        <FilterPanel 
+                            queryParams={queryParams}
+                            setQueryParams={setQueryParams}
+                        />
                     </div>
                     <ul className="product-list__products">
                         {products.length > 0 &&
