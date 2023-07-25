@@ -26,10 +26,9 @@ function App() {
             <Route path="shop" element={<ProductList />} />
             <Route
               path={'shop/*'}
-              element={<h2>Item id {window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} page</h2>}
+              element={<ProductPage id={window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} />}
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
-            <Route path="product" element={<ProductPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
           </Route>
         </Routes>

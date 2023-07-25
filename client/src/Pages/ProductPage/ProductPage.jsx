@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Button from '../../Components/Button/Button'
 import './ProductPage.scss'
-// import sendRequest from '../../helpers/request'
+import sendRequest from '../../helpers/request'
 
-function ProductPage() {
-  // const [product, setProduct] = useState({})
+function ProductPage({ id }) {
+  const [product, setProduct] = useState({})
   const [isLoad, setIsLoad] = useState(false)
   useEffect(() => {
-    // sendRequest().then().catch(setIsLoad(true))
-    setIsLoad(true)
+    sendRequest(`http://localhost:4000/api/products/${id}`)
+      .then((data) => {
+        setProduct(data)
+        setIsLoad(true)
+      })
+      .catch(setIsLoad(true))
   }, [])
 
   if (!isLoad) {
@@ -26,7 +31,10 @@ function ProductPage() {
           height="507"
         />
         <div className="product__wrapper">
-          <h2 className="product__title">Ceylon Ginger Cinnamon chai tea</h2>
+          <h2 className="product__title">
+            Ceylon Ginger Cinnamon chai tea
+            {JSON.stringify(product)}
+          </h2>
           <p className="product__description">A lovely warming Chai tea with ginger cinnamon flavours.</p>
 
           {false ? (
@@ -108,6 +116,10 @@ function ProductPage() {
       </section>
     </div>
   )
+}
+
+ProductPage.propTypes = {
+  id: PropTypes.string.isRequired,
 }
 
 export default ProductPage
