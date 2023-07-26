@@ -1,5 +1,7 @@
+import React from "react";
 import "./ProductCard.scss";
 import PropTypes from 'prop-types';
+import Button from "../Button";
 
 function ProductCard({id, name, variety, region, country, image, price, basePrice, discount}) {
 
@@ -9,6 +11,22 @@ function ProductCard({id, name, variety, region, country, image, price, basePric
         isDiscounted = true;
         productCardPriceClassName += " discounted";
     }
+
+    const addToCart = () => {
+        // Get the existing cart items from localStorage
+        const existingCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Check if the product is already in the cart by its ID
+        const productInCart = existingCartItems.find(item => item.id === id);
+        
+        // If the product is not in the cart, add it to the cart
+        if (!productInCart) {
+            const newCartItem = { id, name, variety, region, country, image, price, basePrice, discount };
+            existingCartItems.push(newCartItem);
+            localStorage.setItem('cart', JSON.stringify(existingCartItems));
+        }
+    };
+
 
     return (
         <li key={id} className="product-card">
@@ -27,7 +45,7 @@ function ProductCard({id, name, variety, region, country, image, price, basePric
             </div>
             <div className="product-card__hover-content">
                 <a href={`/shop/${id}`} style={{color: "white", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase"}}>Read more</a>
-                <a href="/" style={{color: "white", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase"}}>Add to cart</a>
+                <Button btnClick={addToCart} btnStyles="AddToCart" text="Add to cart" />
             </div>
         </li>
     )
