@@ -2,22 +2,36 @@ import {useEffect, useState} from "react";
 import "./ProductList.scss";
 // import PropTypes from 'prop-types';
 import ProductCard from "../ProductCard";
+import FilterPanel from "./components/FilterPanel";
+import SortingPanel from "./components/SortingPanel";
 
 function ProductList() {
-    const queryString = window.location.search;
+    const initialQueryString = window.location.search;
     const [products, setProducts] = useState([]);
     const [isLoad, setIsLoad] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    useEffect(() => {
-        let queryParams = "?perPage=10&startPage=1"
-        if (queryString.length > 0) {
-            queryParams = queryString;
-        }
-        fetch(`http://localhost:4000/api/products/filter${queryParams}`)
+    const [queryParams, setQueryParams] = useState({perPage: 10, startPage: 1});
+
+    let queryParamsString = "";
+    if (initialQueryString.length > 0) {
+        queryParamsString = initialQueryString;
+    }
+
+    function getProducts() {
+        queryParamsString = "";
+        Object.keys(queryParams).forEach((key) => {
+            if (queryParamsString.length < 1) {
+                queryParamsString = `?${key}=${queryParams[key]}`;
+            } else {
+                queryParamsString += `&${key}=${queryParams[key]}`;
+            }
+        })
+
+        fetch(`http://localhost:4000/api/products/filter${queryParamsString}`)
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result.products)
+                    console.log(result);
                     if (result.productsQuantity > 0) {
                         setProducts(result.products);
                     }
@@ -28,7 +42,17 @@ function ProductList() {
                     setErrorMessage(JSON.stringify(error.message));
                 }
             )
+    }
+
+    useEffect(() => {
+        console.log("default use effect triggered")
+        getProducts();
     }, [])
+    useEffect(() => {
+        console.log("queryParams.sort triggered")
+        getProducts();
+    }, [queryParams.sort])
+
     if (!isLoad) {
         return (
             <h3>Loading...</h3>
@@ -44,10 +68,15 @@ function ProductList() {
         <div className="product-list__wrapper">
             <section className="product-list">
                 <div className="product-list__filter-block">
-                    Here will be filter panel component
+                    <FilterPanel/>
                 </div>
                 <div className="product-list__content-block">
-                    <div className="product-list__sorting">Here will be sorting component</div>
+                    <div className="product-list__sorting">
+                        <SortingPanel 
+                            queryParams={queryParams}
+                            setQueryParams={setQueryParams}
+                        />
+                    </div>
                     <ul className="product-list__products">
                         {products.length > 0 &&
                             products.map((product) => (
@@ -61,7 +90,6 @@ function ProductList() {
                                         price={product.price}
                                         basePrice={product.basePrice}
                                         discount={product.discount}
-                                        key={product.id}
                                     />
                                 )
                             )}
