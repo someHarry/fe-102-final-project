@@ -9,11 +9,18 @@
     column-gap: 50px;
     padding-bottom: 50px;
   }
+  @media (max-width: 992px) {
+    column-gap: 30px;
+  }
 }
 
 .product__img {
   width: 456px;
   height: 507px;
+  @media (max-width: 992px) {
+    width: 350px;
+    height: 380px;
+  }
 }
 
 .product__title {
