@@ -1,10 +1,134 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prosto+One&display=swap');
 
 * {
   font-family: Montserrat;
 }
 
-.payment-page {
+.success-page {
   margin: 0 auto;
   max-width: 1280px;
 }
+
+.success {
+  color: #282828;
+  .success-title {
+    text-align: center;
+    font-family: Prosto One;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 44px;
+  }
+  .success-info {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin-top: 16px;
+    margin-bottom: 28px;
+  }
+  .success-order-title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 53px;
+  }
+  .success-order {
+    display: flex;
+
+    gap: 72px;
+    .success-order__delivery {
+      max-width: 264px;
+    }
+    //  .success-order__payment{
+    //   margin-right: 0;
+    //  }
+    .success-order__title {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 28px;
+      margin-bottom: 12px;
+    }
+    &__info {
+      &-title {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        margin-bottom: 8px;
+      }
+
+      &-text {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+  .success-summery {
+    display: flex;
+    gap: 218px;
+    .success-summery_recipe {
+      margin-bottom: 139px;
+      .success-summery__order {
+        display: flex;
+        gap: 329px;
+
+        .success-summery__order-position {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          margin-bottom: 29px;
+        }
+        .success-summery__order-price {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 24px;
+          letter-spacing: 0.15px;
+          &-total {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 28px;
+          }
+        }
+        .success-summery__order-total {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 24px;
+          line-height: 24px;
+          letter-spacing: 0.15px;
+        }
+      }
+      .success-summery-line {
+        max-width:416.019px;
+        margin-bottom: 22px;
+        margin-right: 14px;
+      }
+    }
+  }
+  .success-btn{
+background-color: #282828;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+  width: 264px;
+  
+
+  &:hover {
+    background-color: #fff;
+    color: #282828;
+  }
+  }
+}
+   
