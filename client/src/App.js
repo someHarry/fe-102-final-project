@@ -6,6 +6,7 @@ import ProductList from './Components/ProductList'
 import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
 import NotFoundPage from './Pages/404Page/404Page'
+import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               element={<ProductPage id={window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} />}
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
+            <Route path="delivery" element={<DeliveryPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
           </Route>
         </Routes>
