@@ -37,9 +37,9 @@ function App() {
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
             <Route path="product" element={ProductPage} />
+            <Route path={'*' || '404'} element={<h2>404 page</h2>} />
             <Route path="payment" element={<PaymentPage />} />
             <Route path="payment_confirm" element={<PaymentCorfimPage/>} />
-            <Route path={'*' || '404'} element={<h2>404 page</h2>} />
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />
