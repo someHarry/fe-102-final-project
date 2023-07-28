@@ -6,7 +6,7 @@ import ProductList from './Components/ProductList'
 import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
 import NotFoundPage from './Pages/404Page/404Page'
-import PaymentPage from './Pages/PaymentPage'
+import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
 
 function App() {
   return (
@@ -27,10 +27,10 @@ function App() {
             <Route path="shop" element={<ProductList />} />
             <Route
               path={'shop/*'}
-              element={<h2>Item id {window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} page</h2>}
+              element={<ProductPage id={window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} />}
             />
             <Route path="cart" element={<h2>Cart page</h2>} />
-            <Route path="product" element={<ProductPage />} />
+            <Route path="delivery" element={<DeliveryPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
             <Route path="payment" element={<PaymentPage/>} />
           </Route>
