@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.delivery-page{
+    margin-bottom: 90px;
+}
+
+.routes{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    justify-content: center;
+    margin-bottom: 55px;
+
+}
+
+.routes-line{
+    width: 250px;
+    height: 1px;
+    margin: auto 29px;  
+    background: #282828;
+}
+
+.routes-title{
+    font-family: Montserrat;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.routes-title:nth-of-type(2n) {
+    color:#ec1d1d;
+    font-family: Montserrat;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.form-label{
+    display: none;
+}
+
+.delivery-form{
+    display: flex;
+    gap: 55px;
+    justify-content: space-evenly;
+
+    &__button{
+        background-color: black;
+        color: white;
+        padding: 15px 40px !important;
+    }
+}
+
+.delivery-form-address, .delivery-form-contact, .delivery-form-order{
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
+    font-family: Montserrat;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 18px;
+    margin-top: 0;
+}
+
+.delivery-form-order{
+    &__label{
+        font-family: Montserrat;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: 15px;
+        justify-content: space-between;
+        display: flex;
+    }
+}
+
+.form-input{
+    display: flex;
+    padding: 10px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-indent: 10px;
+    width: 288px;
+}
+
+.form-button{
+    background-color: black;
+    color: white;
+    padding: 15px 40px !important;
+}
+
+.line{
+    width: 340px;
+    height: 1px;
+    background-color: #282828;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+@media (min-width: 768px) and (max-width:1200px) {
+    .delivery-page{
+        margin-bottom: 63px;
+    }
+    
+    .routes{
+        margin-top: 28px;
+        margin-bottom: 38px;
+    }
+    .routes-line{
+        width: 115px;
+        height: 1px;
+        margin: auto 20px; 
+    }
+    .routes-title{
+        font-size: 16px;
+        align-self: center;
+    }
+    .routes-title:nth-of-type(2n){
+        font-size: 18px;
+    }
+
+    .delivery-form{
+        gap: 38px;
+        &__button{
+            font-size: 14px;
+            padding: 10px 28px !important;
+        }
+    }
+
+    .delivery-form-order{
+        &__label{
+           font-size: 16px;          
+           margin-bottom: 10px;
+        }
+    }
+
+    .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        margin-bottom: 12px;
+    }
+
+    .form-input{
+        padding: 7px 0px;
+        text-indent: 7px;
+        width: 200px;
+    }
+    
+    .form-button{
+        background-color: black;
+        color: white;
+        padding: 10px 28px !important;
+    }
+    
+    .line{
+        width: 238px;
+        height: 1px;
+        background-color: #282828;
+    }
+    
+    .form-field {
+        margin-bottom: 14px;
+    }
+    
+    .error-message {
+        color: red;
+        margin-bottom: 0px;
+        margin-top: 5px;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 321px) and (max-width:768px){
+    .delivery-page{
+        margin-bottom: 36px;
+    }
+    
+
+    .routes {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 16px;
+        margin-bottom: 22px;
+      }
+    
+      .routes-title:nth-of-type(2n) {
+        font-size: 24px;
+        margin: 10px 0px;
+      }
+    
+      .routes-title {
+        text-align: center;
+        margin: 10px 0px;
+      }
+    
+    .form-label{
+        display: none;
+    }
+    
+    .delivery-form{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        justify-content: center;
+        &__button{
+            padding: 15px 40px !important;
+        }
+    }
+    
+    .delivery-form-address, .delivery-form-contact, .delivery-form-order{
+        display: flex;
+        flex-direction: column;
+        width: 288px;
+    }
+
+    .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
+        font-family: Montserrat;
+        align-self: center;
+    }
+    
+    .form-button{
+        background-color: black;
+        color: white;
+        padding: 15px 40px !important;
+    }
+    
+    .line{
+        width: 100%;
+        height: 1px;
+        background-color: #282828;
+    }
+    
+    .form-field {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:320px) {
+    .delivery-page{
+        margin-bottom: 30px;
+    }
+    
+    .routes {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 16px;
+        margin-bottom: 22px;
+      }
+    
+      .routes-title:nth-of-type(2n) {
+        font-size: 20px;
+        margin: 10px 0px;
+      }
+    
+      .routes-title {
+        text-align: center;
+        font-size: 18px;
+        margin: 10px 0px;
+      }
+    
+    .form-label{
+        display: none;
+    }
+    
+    .delivery-form{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &__button{
+            padding: 10px 30px !important;
+        }
+    }
+    
+    .delivery-form-address, .delivery-form-contact, .delivery-form-order{
+        display: flex;
+        flex-direction: column;
+        max-width: 268px
+    }
+    
+    .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
+        font-size: 20px;
+        margin-bottom: 14px;
+        align-self: center;
+    }
+    
+    .form-input{
+        align-self: center;
+        width: 180px;
+    }
+    
+    .form-button{
+        padding: 10px 30px !important;
+    }
+    
+    .line{
+        width: 100%;
+        height: 1px;
+        background-color: #282828;
+    }
+    
+    .form-field {
+        margin-bottom: 15px;
+    }
+    
+    .error-message {
+        margin-top: 5px;
+        font-size: 14px;
+    }
+}

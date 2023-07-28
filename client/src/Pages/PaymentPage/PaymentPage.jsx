@@ -155,9 +155,7 @@ function PaymentPage() {
             </div>
             <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
-          <Link to="/Confirmation_of_payment_Page">
-            <Button text="Pay" btnStyles="payment-summery__order-btn" />
-          </Link>
+          <Button text="Pay" btnStyles="payment-summery__order-btn" />
         </div>
       </div>
     </section>
