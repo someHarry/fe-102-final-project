@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import Header from './Components/Header/Header'
 import SalesSlider from './Components/SalesSlider/SalesSlider'
@@ -7,7 +7,7 @@ import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
 import NotFoundPage from './Pages/404Page/404Page'
 import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
-
+import PaymentPage from './Pages/PaymentPage/PaymentPage'
 function App() {
   return (
     <div className="App">
@@ -32,6 +32,7 @@ function App() {
             <Route path="cart" element={<h2>Cart page</h2>} />
             <Route path="delivery" element={<DeliveryPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
+            <Route path="payment" element={<PaymentPage/>} />
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />
