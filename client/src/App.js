@@ -7,7 +7,7 @@ import Footer from './Components/Footer/Footer'
 import ProductPage from './Pages/ProductPage'
 import NotFoundPage from './Pages/404Page/404Page'
 import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
-
+import PaymentPage from './Pages/PaymentPage/PaymentPage'
 function App() {
   return (
     <div className="App">
