@@ -9,7 +9,6 @@ import PaymentPage from './Pages/PaymentPage'
 import PaymentSuccessPage from './Pages/PaymentSuccessPage/PaymentSuccessPage'
 
 function App() {
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -38,8 +37,8 @@ function App() {
             <Route path="cart" element={<h2>Cart page</h2>} />
             <Route path="product" element={ProductPage} />
             <Route path="payment" element={<PaymentPage />} />
-            <Route path="payment_success" element={<PaymentSuccessPage/>} />
             <Route path={'*' || '404'} element={<h2>404 page</h2>} />
+            <Route path="payment_success" element={<PaymentSuccessPage/>} />
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />

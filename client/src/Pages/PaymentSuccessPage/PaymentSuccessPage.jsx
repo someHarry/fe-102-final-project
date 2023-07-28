@@ -1,8 +1,31 @@
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './PaymentSuccessPage.scss'
 import Button from '../../Components/Button/Button'
 
 function PaymentSuccessPage() {
+  const [cartItems, setCartItems] = useState([])
+
+  useEffect(() => {
+    // Retrieve cart items from localStorage and parse them
+    const cartItemsFromStorage = localStorage.getItem('cart')
+    if (cartItemsFromStorage) {
+      setCartItems(JSON.parse(cartItemsFromStorage))
+    }
+  }, [])
+
+   const CartList = cartItems.map((el) => (
+    <div className="cart-list__item" key={el.id}>
+      <span className="cart-list__item-img">
+        <img src={`http://localhost:4000${el.image}`} alt="" />
+      </span>
+      <span className="cart-list__item-info">
+        <span className='cart-list__item-name-quantity'>
+          <p>{el.name}</p>
+        </span>
+      </span>
+    </div>
+  ))
   return (
     <section className="success-page">
       <div className="success">
@@ -12,6 +35,7 @@ function PaymentSuccessPage() {
           confirmation email in a moment.
         </p>
         <h3 className="success-order-title">Order details - 8972491047359</h3>
+        {CartList}
         <div className="success-order">
           <div className="success-order__delivery">
             <h4 className="success-order__title">Delivery Details</h4>
