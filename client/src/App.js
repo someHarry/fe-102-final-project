@@ -8,6 +8,7 @@ import ProductPage from './Pages/ProductPage'
 import NotFoundPage from './Pages/404Page/404Page'
 import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
 import PaymentPage from './Pages/PaymentPage'
+import PaymentCorfimPage from './Pages/PaymentCorfimPage'
 
 function App() {
   return (
@@ -33,8 +34,8 @@ function App() {
            <Route path="cart" element={<h2>Cart page</h2>} />
             <Route path="delivery" element={<DeliveryPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
-            <Route path="payment" element={<PaymentPage/>} />
-            <Route path={'*' || '404'} element={<h2>404 page</h2>} />
+            <Route path="payment" element={<PaymentPage />} />
+            <Route path="payment_confirm" element={<PaymentCorfimPage/>} />
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />
