@@ -81,14 +81,14 @@ function ProductList() {
                         {products.length > 0 &&
                             products.map((product) => (
                                     <ProductCard
-                                        id={product.id}
+                                        itemNo={product.itemNo}
                                         name={product.name}
                                         variety={product.variety}
                                         region={product.region}
                                         country={product.country}
-                                        image={product.image}
-                                        price={product.price}
-                                        basePrice={product.basePrice}
+                                        imageUrls={product.imageUrls}
+                                        currentPrice={product.currentPrice}
+                                        previousPrice={product.previousPrice}
                                         discount={product.discount}
                                     />
                                 )
