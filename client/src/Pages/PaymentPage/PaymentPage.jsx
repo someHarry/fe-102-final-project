@@ -59,11 +59,11 @@ function PaymentPage() {
   return (
     <section className='payment-page'>
       <div className="routes">
-        <p className="routes-title">1. MY BAG</p>
+        <p className="routes-titl">1. MY BAG</p>
         <hr className="routes-line" />
-        <p className="routes-title">2. DELIVERY</p>
+        <p className="routes-titl">2. DELIVERY</p>
         <hr className="routes-line" />
-        <p className="routes-title">3. REVIEW & PAYMENT</p>
+        <p className="routes-titl">3. REVIEW & PAYMENT</p>
       </div>
       <div className="payment">
         <div className='payment-adaptive'>
@@ -155,7 +155,7 @@ function PaymentPage() {
             </div>
             <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
-          <Link to="/payment_confirm">
+           <Link to="/payment_confirm">
             <Button text="Pay" btnStyles="payment-summery__order-btn" />
           </Link>
         </div>
