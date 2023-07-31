@@ -68,7 +68,7 @@ Input.propTypes = {
   className: PropTypes.string,
   error: PropTypes.bool,
   errorMessage: PropTypes.string,
-  hasIcon: PropTypes.bool,
+  hasIcon: PropTypes.element,
   hasEmailIcon: PropTypes.element,
   hasPassIcon: PropTypes.element,
   options: PropTypes.element,

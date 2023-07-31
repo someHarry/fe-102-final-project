@@ -55,8 +55,7 @@ function ProductList() {
 
     if (!isLoad) {
         return (
-            <Loader />
-        )
+            <h3>Loading...</h3>        )
     }
     if (errorMessage) {
         return (
