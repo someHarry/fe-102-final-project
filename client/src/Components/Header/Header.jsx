@@ -8,9 +8,7 @@ function Header() {
   const searchTrue = true;
   return (
     <header className="header__wrapper">
-      {/* LOGO */}
       <Logo classNames="logo__link" />
-      {/* END LOGO */}
 
       {/* NAVIGATION WITH MAIN LINKS */}
       <nav className="header__wrapper--nav nav__menu">
@@ -42,7 +40,7 @@ function Header() {
       {/* ICONS MENU */}
       <ul className="icons__menu">
         <li className="icons__menu--item menu__link">
-          <Input hasIcon={searchTrue} classNames='classNames inputClassNames' />
+        <Input className="icons__menu--search search header-input" hasIcon={searchTrue}/>
         </li>
         <li className="icons__menu--item menu__link">
           <Link to="/">

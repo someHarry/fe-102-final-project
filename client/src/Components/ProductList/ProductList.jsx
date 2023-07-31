@@ -55,7 +55,7 @@ function ProductList() {
 
     if (!isLoad) {
         return (
-            <h3>Loading...</h3>
+            <Loader />
         )
     }
     if (errorMessage) {
@@ -65,6 +65,7 @@ function ProductList() {
     }
 
     return (
+        
         <div className="product-list__wrapper">
             <section className="product-list">
                 <div className="product-list__filter-block">

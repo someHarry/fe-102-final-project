@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './Components/Header/Header'
 import SalesSlider from './Components/SalesSlider/SalesSlider'
@@ -31,11 +31,11 @@ function App() {
               path={'shop/*'}
               element={<ProductPage id={window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} />}
             />
-           <Route path="cart" element={<h2>Cart page</h2>} />
+            <Route path="cart" element={<h2>Cart page</h2>} />
             <Route path="delivery" element={<DeliveryPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
             <Route path="payment" element={<PaymentPage />} />
-            <Route path="payment_confirm" element={<PaymentCorfimPage/>} />
+            <Route path="payment_confirm" element={<PaymentCorfimPage />} />
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />
