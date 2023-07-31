@@ -13,6 +13,7 @@ function Button(props) {
 Button.defaultProps = {
   btnClick: () => {},
   btnStyles: '',
+  
 }
 
 Button.propTypes = {
