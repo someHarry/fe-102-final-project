@@ -8,6 +8,7 @@ import ProductPage from './Pages/ProductPage'
 import NotFoundPage from './Pages/404Page/404Page'
 import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
 import PaymentPage from './Pages/PaymentPage'
+import PaymentConfirmPage from './Pages/PaymentCorfimPage'
 import PaymentSuccessPage from './Pages/PaymentSuccessPage/PaymentSuccessPage'
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
             <Route path="delivery" element={<DeliveryPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
             <Route path="payment" element={<PaymentPage />} />
-            <Route path="payment_confirm" element={<PaymentCorfimPage/>} />
+            <Route path="payment_confirm" element={<PaymentConfirmPage/>} />
              <Route path="payment_success" element={<PaymentSuccessPage/>} />
           </Route>
         </Routes>
