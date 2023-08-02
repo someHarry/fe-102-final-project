@@ -7,6 +7,17 @@ import Loader from '../../Components/Loader/Loader'
 
 function ProductPage({ id }) {
   const [product, setProduct] = useState({})
+  const [count, setCount] = useState(1)
+
+  const increment = () => {
+    setCount((prevCount) => prevCount + 1)
+  }
+
+  const decrement = () => {
+    if (count > 0) {
+      setCount((prevCount) => prevCount - 1)
+    }
+  }
 
   useEffect(() => {
     ;<Loader />
@@ -46,7 +57,7 @@ function ProductPage({ id }) {
 
           <div className="product__buy buy">
             <div className="buy__wrapper">
-              <button className="buy__btn buy__btn--minus">
+              <button className="buy__btn buy__btn--minus" onClick={decrement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                   <mask maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
                     <rect y="0.742981" width="24" height="24" fill="#D9D9D9" />
@@ -57,9 +68,9 @@ function ProductPage({ id }) {
                 </svg>
               </button>
 
-              <p className="buy__text">1</p>
+              <p className="buy__text">{count}</p>
 
-              <button className="buy__btn buy__btn--plus">
+              <button className="buy__btn buy__btn--plus" onClick={increment}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                   <mask maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
                     <rect y="0.742981" width="24" height="24" fill="#D9D9D9" />
