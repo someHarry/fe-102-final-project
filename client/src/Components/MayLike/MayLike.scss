@@ -1,0 +1,30 @@
+.like {
+  text-align: center;
+  padding-top: 68px;
+  padding-bottom: 93px;
+}
+
+.like__title {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.like__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.like__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 264px);
+  column-gap: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.like-product__title {
+  margin-top: 9px;
+  margin-bottom: 9px;
+}
