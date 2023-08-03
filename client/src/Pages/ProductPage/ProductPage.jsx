@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../../Components/Button/Button'
+import MayLike from '../../Components/MayLike'
 import './ProductPage.scss'
 import sendRequest from '../../helpers/request'
 import Loader from '../../Components/Loader/Loader'
@@ -120,6 +121,7 @@ function ProductPage({ id }) {
           </ul>
         </div>
       </section>
+      <MayLike />
     </div>
   )
 }
