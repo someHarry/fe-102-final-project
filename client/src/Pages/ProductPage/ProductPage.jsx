@@ -1,58 +1,64 @@
-// import { useState, useEffect } from 'react'
-// import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Button from '../../Components/Button/Button'
+import MayLike from '../../Components/MayLike'
 import './ProductPage.scss'
-// import sendRequest from '../../helpers/request'
+import sendRequest from '../../helpers/request'
+import Loader from '../../Components/Loader/Loader'
 
-function ProductPage() {
-// { id }
-  // const [product, setProduct] = useState({})
-  // const [isLoad, setIsLoad] = useState(false)
-  // useEffect(() => {
-  //   sendRequest(`http://localhost:4000/api/products/${id}`)
-  //     .then((data) => {
-  //       setProduct(data)
-  //       setIsLoad(true)
-  //     })
-  //     .catch(setIsLoad(true))
-  // }, [])
+function ProductPage({ id }) {
+  const [product, setProduct] = useState({})
+  const [count, setCount] = useState(1)
 
-  // if (!isLoad) {
-  //   return <p>sdfghj</p>
-  // }
+  const increment = () => {
+    setCount((prevCount) => prevCount + 1)
+  }
+
+  const decrement = () => {
+    if (count > 0) {
+      setCount((prevCount) => prevCount - 1)
+    }
+  }
+
+  useEffect(() => {
+    ;<Loader />
+    sendRequest(`http://localhost:4000/api/products/${id}`)
+      .then((data) => {
+        setProduct(data)
+      })
+      .catch((error) => {
+        console.error('Произошла ошибка:', error)
+      })
+  }, [])
+
+  let isDiscounted = false
+  if (Number(product.discount > 0)) {
+    isDiscounted = true
+  }
 
   return (
     <div>
       <div className="container product">
-        <img
-          className="product__img"
-          src={`${process.env.PUBLIC_URL}/pics/product-page-img.jpg`}
-          alt="product"
-          width="456"
-          height="507"
-        />
+        <img className="product__img" src={product.imageUrls} alt="product" width="456" height="507" />
         <div className="product__wrapper">
-          <h2 className="product__title">
-            Ceylon Ginger Cinnamon chai tea
-            {/* {JSON.stringify(product)} */}
-          </h2>
-          <p className="product__description">A lovely warming Chai tea with ginger cinnamon flavours.</p>
+          <h2 className="product__title">{product.name}</h2>
+          <p className="product__description">{product.description}</p>
 
-          {false ? (
-            <p className="product__price">20$</p>
+          {!isDiscounted ? (
+            <p className="product__price">{product.previousPrice}</p>
           ) : (
             <div>
               <p className="product__all-price">
-                <span className="product__price product__price--old-price">20$</span>
-                <span className="product__price product__price--discount">13%</span>
-                <span className="product__price product__price--new-price">20$</span>
+                <span className="product__price product__price--old-price">{`${product.previousPrice}$`}</span>
+                <span className="product__price product__price--discount"> {`${Number(product.discount)}%`}</span>
+                <span className="product__price product__price--new-price">{`${product.currentPrice}$`}</span>
               </p>
             </div>
           )}
 
           <div className="product__buy buy">
             <div className="buy__wrapper">
-              <button className="buy__btn buy__btn--minus">
+              <button className="buy__btn buy__btn--minus" onClick={decrement}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                   <mask maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
                     <rect y="0.742981" width="24" height="24" fill="#D9D9D9" />
@@ -63,9 +69,9 @@ function ProductPage() {
                 </svg>
               </button>
 
-              <p className="buy__text">1</p>
+              <p className="buy__text">{count}</p>
 
-              <button className="buy__btn buy__btn--plus">
+              <button className="buy__btn buy__btn--plus" onClick={increment}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                   <mask maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
                     <rect y="0.742981" width="24" height="24" fill="#D9D9D9" />
@@ -86,41 +92,42 @@ function ProductPage() {
 
           <ul className="product-info__list">
             <li className="product-info__item">
-              <p className="product-info__text">Region: Burgundy</p>
+              <p className="product-info__text">Region: {product.region}</p>
             </li>
 
             <li className="product-info__item">
-              <p className="product-info__text">Country: France</p>
+              <p className="product-info__text">Country: {product.country}</p>
             </li>
 
             <li className="product-info__item">
-              <p className="product-info__text">Brand: Pinot Noir</p>
+              <p className="product-info__text">Brand: {product.variety}</p>
             </li>
 
             <li className="product-info__item">
-              <p className="product-info__text">Volume: 750 ml</p>
+              <p className="product-info__text">Volume: {product.volume} ml</p>
             </li>
 
             <li className="product-info__item">
-              <p className="product-info__text">Alcohol: 13 %</p>
+              <p className="product-info__text">Alcohol: {product.ABV}%</p>
             </li>
 
             <li className="product-info__item">
-              <p className="product-info__text">Year: 2020</p>
+              <p className="product-info__text">Year: {product.year}</p>
             </li>
 
             <li className="product-info__item">
-              <p className="product-info__text">Color: red</p>
+              <p className="product-info__text">Color: {product.color}</p>
             </li>
           </ul>
         </div>
       </section>
+      <MayLike />
     </div>
   )
 }
 
-// ProductPage.propTypes = {
-//   id: PropTypes.string.isRequired,
-// }
+ProductPage.propTypes = {
+  id: PropTypes.string.isRequired,
+}
 
 export default ProductPage
