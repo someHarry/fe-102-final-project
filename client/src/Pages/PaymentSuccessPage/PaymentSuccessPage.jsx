@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './PaymentSuccessPage.scss'
 import Button from '../../Components/Button/Button'
+import MayLike from '../../Components/MayLike'
 
 function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
 
   useEffect(() => {
-    // Retrieve cart items from localStorage and parse them
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
       setCartItems(JSON.parse(cartItemsFromStorage))
@@ -114,7 +114,7 @@ function PaymentSuccessPage() {
         </div>
       </div>
       <div>
-        <h3>Suggested items base on your order</h3>
+        <MayLike/>
       </div>
     </section>
   )

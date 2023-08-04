@@ -133,7 +133,7 @@ function PaymentPage() {
                   </div>
                 </fieldset>
               </Form>
-              <Button text="Advanced payment" btnStyles="payment-type__btn__form" onClick={formikForm.handleSubmit} />
+              <Button text="Advanced payment" btnStyles="payment-type__btn__form"  />
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@ function PaymentPage() {
             <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
            <Link to="/payment_confirm">
-            <Button text="Pay" btnStyles="payment-summery__order-btn" />
+            <Button   text="Pay" btnStyles="payment-summery__order-btn" onClick={formikForm.handleSubmit} type="button"/>
           </Link>
         </div>
       </div>
