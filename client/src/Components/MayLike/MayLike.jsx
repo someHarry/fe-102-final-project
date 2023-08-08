@@ -22,52 +22,49 @@ function MayLike() {
           <li className="like__item like-product">
             <img className="like-product__img" src={productOne.imageUrls} alt="" width="264" height="264" />
             <p className="like-product__title">{productOne.name}</p>
-            <p className="like-product__price">
-              {productOne.currentPrice}$ / {productOne.volume}ml
+            <p className="like-product__price price">
+              <span className="price__active">{productOne.currentPrice} $</span>/ {productOne.volume}ml
             </p>
+            <div className="like-product__hover-content">
+              <a className="like-product__link" href={`/shop/${productOne.itemNo}`}>
+                Read more
+              </a>
+              <a className="like-product__link" href="/">
+                Add to cart
+              </a>
+            </div>
           </li>
 
           <li className="like__item like-product">
             <img className="like-product__img" src={productTwo.imageUrls} alt="" width="264" height="264" />
             <p className="like-product__title">{productTwo.name}</p>
-            <p className="like-product__price">
-              {productTwo.currentPrice}$ / {productTwo.volume}ml
+            <p className="like-product__price price">
+              <span className="price__active">{productTwo.currentPrice} $</span>/ {productTwo.volume}ml
             </p>
+            <div className="like-product__hover-content">
+              <a className="like-product__link" href={`/shop/${productTwo.itemNo}`}>
+                Read more
+              </a>
+              <a className="like-product__link" href="/">
+                Add to cart
+              </a>
+            </div>
           </li>
 
           <li className="like__item like-product">
             <img className="like-product__img" src={productThree.imageUrls} alt="" width="264" height="264" />
             <p className="like-product__title">{productThree.name}</p>
-            <p className="like-product__price">
-              {productThree.currentPrice}$ / {productThree.volume}ml
+            <p className="like-product__price price">
+              <span className="price__active">{productThree.currentPrice} $</span>/ {productThree.volume}ml
             </p>
-          </li>
-
-          <li className="like-product__hover-content">
-            <a className="like-product__link" href={`/shop/${productOne.itemNo}`}>
-              Read more
-            </a>
-            <a className="like-product__link" href="/">
-              Add to cart
-            </a>
-          </li>
-
-          <li className="like-product__hover-content">
-            <a className="like-product__link" href={`/shop/${productTwo.itemNo}`}>
-              Read more
-            </a>
-            <a className="like-product__link" href="/">
-              Add to cart
-            </a>
-          </li>
-
-          <li className="like-product__hover-content">
-            <a className="like-product__link" href={`/shop/${productThree.itemNo}`}>
-              Read more
-            </a>
-            <a className="like-product__link" href="/">
-              Add to cart
-            </a>
+            <div className="like-product__hover-content">
+              <a className="like-product__link" href={`/shop/${productThree.itemNo}`}>
+                Read more
+              </a>
+              <a className="like-product__link" href="/">
+                Add to cart
+              </a>
+            </div>
           </li>
         </ul>
       </div>
