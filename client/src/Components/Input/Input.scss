@@ -14,7 +14,8 @@ $font-family: 'Montserrat', sans-serif;
     }
 
     .error-message {
-      margin-top: 4px;
+      margin-top: -36px;
+      margin-bottom: 16px;
       text-align: left;
       color: #ff0018;
     }
@@ -155,7 +156,13 @@ $font-family: 'Montserrat', sans-serif;
 .pay-input .input {
   border: none;
   border-bottom: 1px solid grey;
-
+  margin-bottom: 41px;
+}
+.pay-input1 .input {
+  width: 255px;
+}
+.pay-input2 .input {
+  width: 107px;
 }
 .pay-input .lable {
   padding-left: 0;

@@ -55,8 +55,7 @@ function ProductList() {
 
     if (!isLoad) {
         return (
-            <h3>Loading...</h3>
-        )
+            <h3>Loading...</h3>        )
     }
     if (errorMessage) {
         return (
@@ -65,6 +64,7 @@ function ProductList() {
     }
 
     return (
+        
         <div className="product-list__wrapper">
             <section className="product-list">
                 <div className="product-list__filter-block">
@@ -81,14 +81,14 @@ function ProductList() {
                         {products.length > 0 &&
                             products.map((product) => (
                                     <ProductCard
-                                        id={product.id}
+                                        itemNo={product.itemNo}
                                         name={product.name}
                                         variety={product.variety}
                                         region={product.region}
                                         country={product.country}
-                                        image={product.image}
-                                        price={product.price}
-                                        basePrice={product.basePrice}
+                                        imageUrls={product.imageUrls}
+                                        currentPrice={product.currentPrice}
+                                        previousPrice={product.previousPrice}
                                         discount={product.discount}
                                     />
                                 )

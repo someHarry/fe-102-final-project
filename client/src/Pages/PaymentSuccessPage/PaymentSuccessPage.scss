@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prosto+One&display=swap');
+
+* {
+  font-family: Montserrat;
+}
+
+.success-page {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+.success-order-title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 53px;
+  @media (max-width: 992px) {
+    margin-bottom: 0;
+  }
+}
+.success-title {
+  text-align: center;
+  font-family: Prosto One;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 44px;
+}
+.success-info {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+.success {
+  color: #282828;
+  @media (max-width: 992px) {
+    display: flex;
+  }
+  @media (max-width: 769px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .success-order {
+    display: flex;
+    gap: 72px;
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .success-card {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      max-width: 453px;
+      margin-right: 72px;
+      margin-top: 34px;
+      @media (max-width: 992px) {
+        margin-top: 60px;
+      }
+      .success-card__info {
+        display: flex;
+        gap: 26px;
+        .success-card__info-img {
+          width: 71px;
+          height: 71px;
+        }
+        .success-card__info-title {
+          font-size: 14px;
+          font-weight: 400;
+        }
+        .success-card__info-price {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 24px;
+          letter-spacing: 0.15px;
+          margin-left: 100px;
+        }
+      }
+    }
+    .success-order__info-container {
+      display: flex;
+      @media (max-width: 992px) {
+        gap: 61px;
+        margin-top: 60px;
+      }
+      @media (max-width: 769px) {
+        flex-direction: column;
+        margin-left: 115px;
+      }
+    }
+    .success-order__delivery {
+      max-width: 264px;
+      margin-right: 72px;
+      @media (max-width: 992px) {
+        margin-bottom: -40px;
+      }
+    }
+    .success-order__title {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 28px;
+      margin-bottom: 12px;
+    }
+    &__info {
+      &-title {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        margin-bottom: 8px;
+      }
+
+      &-text {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+  .success-summery {
+    display: flex;
+    gap: 218px;
+    margin-top: 57px;
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .success-summery_recipe {
+      margin-bottom: 139px;
+      @media (max-width: 992px) {
+        margin-bottom: 40px;
+      }
+      .success-summery__order {
+        display: flex;
+        gap: 329px;
+        @media (max-width: 992px) {
+          gap: 160px;
+        }
+
+        .success-summery__order-position {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          margin-bottom: 29px;
+        }
+        .success-summery__order-price {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 24px;
+          letter-spacing: 0.15px;
+          &-total {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 28px;
+          }
+        }
+        .success-summery__order-total {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 24px;
+          line-height: 24px;
+          letter-spacing: 0.15px;
+        }
+      }
+      .success-summery-line {
+        max-width: 416.019px;
+        margin-bottom: 22px;
+        margin-right: 14px;
+      }
+    }
+  }
+  .success-btn {
+    background-color: #282828;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    text-transform: uppercase;
+    width: 264px;
+
+    &:hover {
+      background-color: #fff;
+      color: #282828;
+    }
+  }
+}

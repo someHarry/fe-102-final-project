@@ -11,8 +11,8 @@ function SortingPanel({queryParams, setQueryParams}) {
     return (
         <select className="sorting-panel" name="sortingPanel" id="_sortingPanel" onChange={sortingPanelHandler} defaultValue="">
             <option value="">Sort by</option>
-            <option value="-price">Price high to low</option>
-            <option value="+price">Price low to high</option>
+            <option value="-currentPrice">Price high to low</option>
+            <option value="+currentPrice">Price low to high</option>
             <option value="-year">Year high to low</option>
             <option value="+year">Year low to high</option>
         </select>
