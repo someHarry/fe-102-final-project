@@ -15,7 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/">
-            <Route
+          <Route
               index
               element={
                 <>
@@ -28,9 +28,12 @@ function App() {
             <Route
               path={'shop/*'}
               element={<ProductPage id={window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} />}
-            />
-            <Route path="cart" element={<CartPage/>} />
+            />            <Route path="delivery" element={<DeliveryPage />} />
             <Route path={'*' || '404'} element={<NotFoundPage />} />
+            <Route path="payment" element={<PaymentPage />} />
+            <Route path="payment_confirm" element={<PaymentConfirmPage/>} />
+             <Route path="payment_success" element={<PaymentSuccessPage/>} />
+            <Route path="cart" element={<CartPage/>} />
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />
