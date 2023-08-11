@@ -31,7 +31,7 @@ function ProductList() {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
+                    // console.log(result);
                     if (result.productsQuantity > 0) {
                         setProducts(result.products);
                     }
@@ -45,13 +45,14 @@ function ProductList() {
     }
 
     useEffect(() => {
-        console.log("default use effect triggered")
         getProducts();
     }, [])
     useEffect(() => {
-        console.log("queryParams.sort triggered")
         getProducts();
     }, [queryParams.sort])
+    useEffect(() => {
+        getProducts();
+    }, [queryParams])
 
     if (!isLoad) {
         return (
@@ -68,7 +69,10 @@ function ProductList() {
         <div className="product-list__wrapper">
             <section className="product-list">
                 <div className="product-list__filter-block">
-                    <FilterPanel/>
+                    <FilterPanel
+                        queryParams={queryParams}
+                        setQueryParams={setQueryParams}
+                    />
                 </div>
                 <div className="product-list__content-block">
                     <div className="product-list__sorting">
@@ -82,6 +86,7 @@ function ProductList() {
                             products.map((product) => (
                                     <ProductCard
                                         itemNo={product.itemNo}
+                                        key={product.itemNo}
                                         name={product.name}
                                         variety={product.variety}
                                         region={product.region}
