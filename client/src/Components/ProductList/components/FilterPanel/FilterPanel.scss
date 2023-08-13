@@ -113,14 +113,4 @@ $fontFamilyDefault: "Montserrat", sans-serif;
     transition: 1s;
     max-height: 100vh;
   }
-
-  &__option {
-    color: inherit;
-    font-size: $fontSizeDefaultSmall;
-    font-family: inherit;
-    font-weight: 400;
-    letter-spacing: 0.25px;
-    text-transform: capitalize;
-    margin-bottom: 8px;
-  }
 }

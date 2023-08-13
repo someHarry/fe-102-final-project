@@ -50,7 +50,7 @@ function ProductCard({itemNo, name, variety, region, country, imageUrls, current
 // TODO: replace links with Button component in .product-card__hover-content
 
 ProductCard.propTypes = {
-    itemNo: PropTypes.number.isRequired,
+    itemNo: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     variety: PropTypes.string.isRequired,
     region: PropTypes.string.isRequired,
