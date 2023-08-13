@@ -21,6 +21,14 @@
   }
 }
 
+.product-loader {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .product__img {
   width: 456px;
   height: 507px;
@@ -127,6 +135,7 @@
   background-color: transparent;
   padding-top: 0;
   padding-bottom: 0;
+  cursor: pointer;
 }
 
 .buy__text {
