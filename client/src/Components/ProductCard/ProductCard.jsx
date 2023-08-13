@@ -13,15 +13,10 @@ function ProductCard({itemNo, name, variety, region, country, imageUrls, current
     }
 
     const addToCart = () => {
-        // Get the existing cart items from localStorage
         const existingCartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Check if the product is already in the cart by its ID
-        const productInCart = existingCartItems.find(item => item.id === id);
-        
-        // If the product is not in the cart, add it to the cart
+        const productInCart = existingCartItems.find(item => item.itemNo === itemNo);
         if (!productInCart) {
-            const newCartItem = { id, name, variety, region, country, image, price, basePrice, discount };
+            const newCartItem = { itemNo, name, variety, region, country, imageUrls, currentPrice };
             existingCartItems.push(newCartItem);
             localStorage.setItem('cart', JSON.stringify(existingCartItems));
         }
@@ -44,13 +39,9 @@ function ProductCard({itemNo, name, variety, region, country, imageUrls, current
                 </div>
             </div>
             <div className="product-card__hover-content">
-<<<<<<< HEAD
-                <a href={`/shop/${id}`} style={{color: "white", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase"}}>Read more</a>
-                <Button btnClick={addToCart} btnStyles="AddToCart" text="Add to cart" />
-=======
                 <a href={`/shop/${itemNo}`} style={{color: "white", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase"}}>Read more</a>
-                <a href="/" style={{color: "white", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase"}}>Add to cart</a>
->>>>>>> main
+                <Button btnClick={addToCart} btnStyles="AddToCart" text="Add to cart" />
+
             </div>
         </li>
     )

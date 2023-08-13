@@ -4,36 +4,33 @@ import Button from '../../Components/Button/Button'
 import RadioButton from '../../Components/RadioButton'
 
 export default function CartPage() {
-  // Initialize state to store cart items retrieved from localStorage
   const [cartItems, setCartItems] = useState([])
 
   useEffect(() => {
-    // Retrieve cart items from localStorage and parse them
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
       setCartItems(JSON.parse(cartItemsFromStorage))
     }
   }, [])
 
-  // Function to remove an item from the cart and update localStorage
-  const removeFromCart = (id) => {
-    const updatedCart = cartItems.filter((item) => item.id !== id)
+  const removeFromCart = (itemNo) => {
+    const updatedCart = cartItems.filter((item) => item.itemNo !== itemNo)
     setCartItems(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   }
 
-  const increaseQuantity = (id) => {
+  const increaseQuantity = (itemNo) => {
     const updatedCart = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+      item.itemNo === itemNo ? { ...item, quantity: (item.quantity || 1) + 1 } : item
     )
     setCartItems(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   }
 
   // Function to decrease the quantity of an item in the cart and update localStorage
-  const decreaseQuantity = (id) => {
+  const decreaseQuantity = (itemNo) => {
     const updatedCart = cartItems.map((item) =>
-      item.id === id && item.quantity > 1 ? { ...item, quantity: (item.quantity || 1) - 1 } : item
+      item.itemNo === itemNo && item.quantity > 1 ? { ...item, quantity: (item.quantity || 1) - 1 } : item
     )
     setCartItems(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart))
@@ -44,25 +41,25 @@ export default function CartPage() {
   }
 
   const CartList = cartItems.map((el) => (
-    <div className="cart-list__item" key={el.id}>
+    <div className="cart-list__item" key={el.itemNo}>
       <span className="cart-list__item-img">
-        <img src={`http://localhost:4000${el.image}`} alt="" />
+        <img src={`${el.imageUrls}`} alt="" />
       </span>
       <span className="cart-list__item-info">
         <span className='cart-list__item-name-quantity'>
           <p>{el.name}</p>
           <div className="cart-list__item-price__quantity">
-            <Button btnStyles="Quantity" btnClick={() => decreaseQuantity(el.id)} text="-" />
+            <Button btnStyles="Quantity" btnClick={() => decreaseQuantity(el.itemNo)} text="-" />
             <p>{el.quantity || 1}</p>
-            <Button btnStyles="Quantity" btnClick={() => increaseQuantity(el.id)} text="+" />
+            <Button btnStyles="Quantity" btnClick={() => increaseQuantity(el.itemNo)} text="+" />
           </div>
         </span>
 
         <span className="cart-list__item-price">
-          <Button text="Remove" btnStyles="Remove" btnClick={() => removeFromCart(el.id)} />
+          <Button text="Remove" btnStyles="Remove" btnClick={() => removeFromCart(el.itemNo)} />
 
           <p>
-            ${rounded((el.price || 0) * (el.quantity || 1) - (el.price || 0) * (el.quantity || 1) * (el.discount || 0))}
+          {el.currentPrice}
           </p>
         </span>
       </span>
@@ -72,8 +69,8 @@ export default function CartPage() {
   const subtotal = cartItems.reduce(
     (total, item) =>
       total +
-      (item.price || 0) * (item.quantity || 1) -
-      (item.price || 0) * (item.quantity || 1) * (item.discount || 0),
+      (item.currentPrice || 0) * (item.quantity || 1),
+   
     0
   )
 
@@ -99,7 +96,7 @@ export default function CartPage() {
               />
               <div className="cart-list__subtotal">
                 <span>Subtotal</span>
-                <span>${rounded(subtotal)}</span>
+                <span>${subtotal}</span>
               </div>
               <span className="cart-list__link">
                 <a className="cart-list__link-shop" href="/shop">
