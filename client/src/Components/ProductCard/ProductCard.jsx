@@ -1,5 +1,7 @@
+import React from "react";
 import "./ProductCard.scss";
 import PropTypes from 'prop-types';
+import Button from "../Button";
 
 function ProductCard({itemNo, name, variety, region, country, imageUrls, currentPrice, previousPrice, discount}) {
 
@@ -9,6 +11,17 @@ function ProductCard({itemNo, name, variety, region, country, imageUrls, current
         isDiscounted = true;
         productCardPriceClassName += " discounted";
     }
+
+    const addToCart = () => {
+        const existingCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const productInCart = existingCartItems.find(item => item.itemNo === itemNo);
+        if (!productInCart) {
+            const newCartItem = { itemNo, name, variety, region, country, imageUrls, currentPrice };
+            existingCartItems.push(newCartItem);
+            localStorage.setItem('cart', JSON.stringify(existingCartItems));
+        }
+    };
+
 
     return (
         <li key={itemNo} className="product-card">
@@ -27,7 +40,8 @@ function ProductCard({itemNo, name, variety, region, country, imageUrls, current
             </div>
             <div className="product-card__hover-content">
                 <a href={`/shop/${itemNo}`} style={{color: "white", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase"}}>Read more</a>
-                <a href="/" style={{color: "white", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase"}}>Add to cart</a>
+                <Button btnClick={addToCart} btnStyles="AddToCart" text="Add to cart" />
+
             </div>
         </li>
     )
