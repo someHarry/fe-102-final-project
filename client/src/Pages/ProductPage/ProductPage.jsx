@@ -28,7 +28,7 @@ function ProductPage({ id }) {
   useEffect(() => {
     setIsLoading(true)
 
-    sendRequest(`http://localhost:4000/api/poducts/${id}`)
+    sendRequest(`http://localhost:4000/api/products/${id}`)
       .then((data) => {
         setProduct(data)
       })
