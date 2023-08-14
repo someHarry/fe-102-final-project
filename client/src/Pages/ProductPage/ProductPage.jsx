@@ -23,16 +23,18 @@ function ProductPage({ id }) {
 
   useEffect(() => {
     setIsLoading(true)
-    sendRequest(`http://localhost:4000/api/products/${id}`)
-      .then((data) => {
-        setProduct(data)
-      })
-      .catch((error) => {
-        console.error('Произошла ошибка:', error)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+    try {
+      sendRequest(`http://localhost:4000/api/products/${id}`)
+        .then((data) => {
+          setProduct(data)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    } catch (error) {
+      console.error('Произошла ошибка:', error)
+      setIsLoading(false)
+    }
   }, [])
 
   let isDiscounted = false
