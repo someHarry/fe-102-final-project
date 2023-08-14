@@ -25,12 +25,6 @@ function ProductPage({ id }) {
     setIsLoading(true)
     try {
       sendRequest(`http://localhost:4000/api/products/${id}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Произошла ошибка при получении данных')
-          }
-          return response
-        })
         .then((data) => {
           setProduct(data)
         })
