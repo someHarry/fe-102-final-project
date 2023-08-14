@@ -1,15 +1,19 @@
+/* eslint-disable no-nested-ternary */
 import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Button from '../../Components/Button/Button'
 import MayLike from '../../Components/MayLike'
 import './ProductPage.scss'
 import sendRequest from '../../helpers/request'
 import Loader from '../../Components/Loader/Loader'
+import NotFoundPage from '../404Page/404Page'
 
 function ProductPage({ id }) {
   const [product, setProduct] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const [count, setCount] = useState(1)
+  const [isError, setIsError] = useState(false)
 
   const increment = () => {
     setCount((prevCount) => prevCount + 1)
@@ -23,18 +27,18 @@ function ProductPage({ id }) {
 
   useEffect(() => {
     setIsLoading(true)
-    try {
-      sendRequest(`http://localhost:4000/api/products/${id}`)
-        .then((data) => {
-          setProduct(data)
-        })
-        .finally(() => {
-          setIsLoading(false)
-        })
-    } catch (error) {
-      console.error('Произошла ошибка:', error)
-      setIsLoading(false)
-    }
+
+    sendRequest(`http://localhost:4000/api/poducts/${id}`)
+      .then((data) => {
+        setProduct(data)
+      })
+      .catch((error) => {
+        console.error('Произошла ошибка:', error)
+        setIsError(true)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }, [])
 
   let isDiscounted = false
@@ -48,6 +52,10 @@ function ProductPage({ id }) {
         <div className="container product-loader">
           <Loader />
         </div>
+      ) : isError ? (
+        <Routes>
+          <Route path={'*' || '404'} element={<NotFoundPage />} />
+        </Routes>
       ) : (
         <div>
           <div className="container product">
