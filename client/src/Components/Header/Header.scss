@@ -1,34 +1,62 @@
-// LOGO
 .header__wrapper {
-
   height: 108px;
   padding: 30px 72px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-content: center;
   border-bottom: 1px solid black;
   box-sizing: border-box;
-  gap: 120px;
-}
+    @media screen and (max-width: 992px) {
+    height: 120px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 468px) {
+      padding: 10px 10px;
+    }
 
-//  END LOGO
+}
 
 // NAVIGATION WITH MAIN LINKS
 
 .nav__menu {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
   flex-grow: 1;
+  order: 2;
+  @media screen and (max-width: 992px) {
+    order: 3;
+    width: 100%;
+  }
+
 }
 
 .menu__list {
   display: inherit;
   justify-content: space-between;
-  width: 100%;
+  width: calc(500px + 10%);
   margin: auto 0;
   padding: 0;
   list-style: none;
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+    .menu__list--item__link {
+      font-size: 16px;
+    }
+    width: calc(400px + 5%);
+  }
+  @media screen and (max-width: 768px) {
+    .menu__list--item__link {
+      font-size: 14px;
+    }
+  }
+  @media screen and (min-width: 320px) and (max-width: 540px) {
+    .menu__list--item__link {
+      font-size: 12px;
+    }
+  }
+
 }
 
 .item__link {
@@ -49,12 +77,14 @@
 
 .icons__menu {
   display: flex;
-  justify-content: space-around;
+  order: 3;
+  justify-content: flex-end;
   align-items: center;
   margin: auto 0;
-  padding: 0;
   list-style: none;
-  width: 350px;
+  @media screen and (max-width: 992px) {
+    order: 2;
+  }
 }
 
 .menu__link {
@@ -62,7 +92,6 @@
     width: 30px;
     height: 30px;
   }
-
   &--cart {
     width: 25px;
     height: 25px;

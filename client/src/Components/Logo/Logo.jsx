@@ -10,7 +10,7 @@ function Logo({ classNames }) {
         className="logo__pic"
         width="64.000000pt"
         height="64.000000pt"
-        viewBox="0 0 64.000000 64.000000"
+        viewBox="16 0 64.000000 64.000000"
         preserveAspectRatio="xMidYMid meet"
         fill="currentColor"
       >
