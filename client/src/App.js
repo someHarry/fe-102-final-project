@@ -10,7 +10,7 @@ import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
 import PaymentPage from './Pages/PaymentPage'
 import PaymentConfirmPage from './Pages/PaymentCorfimPage'
 import PaymentSuccessPage from './Pages/PaymentSuccessPage/PaymentSuccessPage'
-import InfoBlog from './Components/InfoBlog'
+import AboutUs from './Components/AboutUs/AboutUs'
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
               element={
                 <>
                   <SalesSlider />
-                  <InfoBlog />
+                  <AboutUs />
                 </>
               }
             />

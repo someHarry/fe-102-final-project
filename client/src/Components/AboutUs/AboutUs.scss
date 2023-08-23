@@ -1,0 +1,134 @@
+.aboutUs-title {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
+  color: #4e4e4e;
+  position: relative;
+  margin-top: 150px;
+  &::before {
+    content: '';
+    background-color: #ec1d1d;
+    width: 85px;
+    height: 2px;
+    display: block;
+    margin-top: 70px;
+    margin-left: 728px;
+    position: absolute;
+    @media (max-width: 992px) {
+    margin-left: 550px;
+      }
+        @media (max-width: 769px) {
+         }
+  }
+  &::after {
+    content: '';
+    background-color: #ec1d1d;
+    width: 85px;
+    height: 2px;
+    display: block;
+    margin-top: 24px;
+    margin-left: 715px;
+    position: absolute;
+      @media (max-width: 992px) {
+            margin-left: 515px;
+        }
+          @media (max-width: 769px) {
+        
+         }
+  }
+}
+.aboutUs-block {
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 400px;
+  @media (max-width: 992px) {
+            max-width: 950px;
+       }
+         @media (max-width: 769px) {
+        max-width: 750px;
+         }
+}
+
+.aboutUs-list-item {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 15.9859px;
+  line-height: 39px;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 30px;
+  margin-left: 90px;
+  @media (max-width: 992px) {
+  margin-left: 70px;
+    }
+      @media (max-width: 769px) {
+        margin-left: 45px;
+         }
+  .aboutUs-list__items {
+    background: #f8fcfe;
+    border: 1px solid #edefef;
+    padding: 20px 90px 20px;
+    position: relative;
+    @media (max-width: 992px) {
+        padding: 20px 60px 20px;
+      }
+        @media (max-width: 769px) {
+        padding: 20px 34px 20px;
+        
+         }
+    &:hover {
+      border: 1.5px solid #ec1d1d;
+    }
+
+    
+  }
+}
+.aboutUs-list__items.active {
+  background: #ec1d1d !important;
+  color: #ffffff;
+}
+.aboutUs-content {
+  display: flex;
+  .aboutUs-content-img {
+    max-width: 300px;
+    max-height: 200px;
+    margin-right: 55px;
+    margin-left: 42px;
+    @media (max-width: 992px) {
+        max-width: 250px;
+        max-height: 150px;
+          margin-left: 80px;
+      }
+        @media (max-width: 769px) {
+            max-width: 200px;
+            max-height: 150px;
+              margin-left: 50px;
+         }
+  }
+  .aboutUs-content-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #555555;
+    @media (max-width: 992px) {
+        font-size: 16px;
+      }
+  }
+}
+
+.section-hide {
+  display: none;
+}
+
+.section-active {
+  display: block;
+}
+.aboutUs-content-text__hide {
+  display: none;
+}
+
+.aboutUs-content-text__active {
+  display: block;
+}
