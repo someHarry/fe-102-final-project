@@ -8,7 +8,7 @@ const initialState = {
   cart: JSON.parse(localStorage.getItem('cart')) || [],
 }
 
-const cartReducer = createReducer(initialState, (builder) => {
+const reducerCart = createReducer(initialState, (builder) => {
   builder
     .addCase(actionReadyCart, (state, { payload }) => {
       state.readyToCart = payload
@@ -31,4 +31,4 @@ const cartReducer = createReducer(initialState, (builder) => {
     })
 })
 
-export default cartReducer
+export default reducerCart
