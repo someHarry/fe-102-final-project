@@ -11,6 +11,7 @@ import PaymentPage from './Pages/PaymentPage'
 import PaymentConfirmPage from './Pages/PaymentCorfimPage'
 import PaymentSuccessPage from './Pages/PaymentSuccessPage/PaymentSuccessPage'
 import AboutUs from './Components/AboutUs/AboutUs'
+import Reviews from './Components/Reviews/Reviews'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 <>
                   <SalesSlider />
                   <AboutUs />
+                  <Reviews />
                 </>
               }
             />
