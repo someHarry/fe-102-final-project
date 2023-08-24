@@ -40,7 +40,9 @@ function BlogPage() {
                 Porto is a major city located in the northwest of Portugal, situated on the banks of the Douro River.
                 This city is renowned for its rich history, cultural heritage, and, of course, its winemaking tradition.
                 One of Porto&apos;s distinctive features in the realm of winemaking is the{' '}
-                <span className="wine-blog__accent">production...</span>
+                <a href="/blog/porto" className="wine-blog__accent">
+                  production...
+                </a>
               </p>
             </div>
           </li>
@@ -58,7 +60,9 @@ function BlogPage() {
                 The Priorat region is a renowned wine-producing area in Spain, located in the province of Tarragona
                 within the autonomous community of Catalonia. This region is famous for its high-quality wines, as well
                 as its unique geology and climate, which significantly{' '}
-                <span className="wine-blog__accent">influence...</span>
+                <a href="/blog/priorat" className="wine-blog__accent">
+                  influence...
+                </a>
               </p>
             </div>
           </li>
@@ -76,7 +80,9 @@ function BlogPage() {
                 Sicily is the largest island in the Mediterranean Sea, located to the south of Italy. This region is
                 rich in history, culture, and, of course, winemaking. Sicilian wines have a long history and are known
                 for their diversity and quality. Sicily is considered one of the oldest wine-producing{' '}
-                <span className="wine-blog__accent">regions...</span>
+                <a href="/blog/sicily" className="wine-blog__accent">
+                  regions...
+                </a>
               </p>
             </div>
           </li>
@@ -93,7 +99,10 @@ function BlogPage() {
               <p className="wine-blog__text">
                 Switzerland is a small but incredibly beautiful and culturally rich country located in Central Europe.
                 It is known for its mountains, lakes, watchmaking, chocolate, and, of course, winemaking. Switzerland is
-                one of the few countries <span className="wine-blog__accent">where...</span>
+                one of the few countries{' '}
+                <a href="/blog/switzerland" className="wine-blog__accent">
+                  where...
+                </a>
               </p>
             </div>
           </li>
