@@ -12,6 +12,7 @@ import PaymentPage from './Pages/PaymentPage'
 import PaymentConfirmPage from './Pages/PaymentCorfimPage'
 import PaymentSuccessPage from './Pages/PaymentSuccessPage/PaymentSuccessPage'
 import BlogPage from './Pages/BlogPage'
+import Jura from './Pages/BlogPage/Blogs/Jura'
 
 function App() {
   return (
@@ -40,7 +41,9 @@ function App() {
             <Route path="payment_confirm" element={<PaymentConfirmPage />} />
             <Route path="payment_success" element={<PaymentSuccessPage />} />
             <Route path="cart" element={<CartPage />} />
-            <Route path="blog" element={<BlogPage />} />
+            <Route path="blog" element={<BlogPage />}>
+              <Route path="jura" element={<Jura />} />
+            </Route>
           </Route>
         </Routes>
         <Footer catalogTitle="Collections" clientTitle="Clients" />
