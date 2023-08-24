@@ -11,6 +11,7 @@ import DeliveryPage from './Pages/DeliveryPage/DeliveryPage'
 import PaymentPage from './Pages/PaymentPage'
 import PaymentConfirmPage from './Pages/PaymentCorfimPage'
 import PaymentSuccessPage from './Pages/PaymentSuccessPage/PaymentSuccessPage'
+import AboutUs from './Components/AboutUs/AboutUs'
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
               element={
                 <>
                   <SalesSlider />
-                  <h2>Home page</h2>
+                  <AboutUs />
                 </>
               }
             />
