@@ -19,6 +19,7 @@ import Sicily from './Pages/BlogPage/Blogs/Sicily'
 import Switzerland from './Pages/BlogPage/Blogs/Switzerland'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Reviews from './Components/Reviews/Reviews'
+import Contact from './Pages/ContactUs/Contact'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               }
             />
             <Route path="shop" element={<ProductList />} />
+            <Route path="contact" element={<Contact />} />
             <Route
               path={'shop/*'}
               element={<ProductPage id={window.location.href.substr(window.location.href.indexOf('/shop/') + 6)} />}
