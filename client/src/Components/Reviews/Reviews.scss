@@ -1,0 +1,92 @@
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(212 212 212 / 38%);
+  margin-top: 100px;
+  margin-bottom: 300px;
+  padding: 50px;
+}
+.reviews-img {
+  width: 200px;
+  height: 150px;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+  border-bottom-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+  margin-top: 50px;
+}
+
+.reviews__item {
+  text-align: center;
+  color: #000;
+
+  &--text {
+    max-width: calc(80% - (50px / 2));
+    margin: 25px auto 40px;
+    padding: 10px;
+    line-height: 30px;
+    font-size: 18px;
+  }
+
+  &--time-limited {
+    color: #ff1919;
+    text-shadow: #a01c1c 1px 10px 10px;
+    font-size: 20px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: #8a8585;
+  margin-bottom: 150px;
+}
+
+.aboutUs-title {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
+  color: #4e4e4e;
+  position: relative;
+  margin-top: 50px;
+
+  &::before {
+    content: '';
+    background-color: #ec1d1d;
+    width: 85px;
+    height: 2px;
+    display: block;
+    margin-top: 70px;
+    margin-left: 728px;
+    position: absolute;
+
+    @media (max-width: 992px) {
+      margin-left: 550px;
+    }
+
+    @media (max-width: 769px) {
+    }
+  }
+
+  &::after {
+    content: '';
+    background-color: #ec1d1d;
+    width: 85px;
+    height: 2px;
+    display: block;
+    margin-top: 24px;
+    margin-left: 715px;
+    position: absolute;
+
+    @media (max-width: 992px) {
+      margin-left: 515px;
+    }
+
+    @media (max-width: 769px) {
+    }
+  }
+}

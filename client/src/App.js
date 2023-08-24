@@ -17,6 +17,8 @@ import Porto from './Pages/BlogPage/Blogs/Porto/Porto'
 import Priorat from './Pages/BlogPage/Blogs/Priorat'
 import Sicily from './Pages/BlogPage/Blogs/Sicily'
 import Switzerland from './Pages/BlogPage/Blogs/Switzerland'
+import AboutUs from './Components/AboutUs/AboutUs'
+import Reviews from './Components/Reviews/Reviews'
 
 function App() {
   return (
@@ -30,7 +32,8 @@ function App() {
               element={
                 <>
                   <SalesSlider />
-                  <h2>Home page</h2>
+                  <AboutUs />
+                  <Reviews />
                 </>
               }
             />
