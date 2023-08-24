@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
-import "./CartComponent.scss"
+import './CartComponent.scss'
 
 export default function CartComponent({ cartStyles, updateSubtotals }) {
   const [cartItems, setCartItems] = useState([])
-  const [subtotal, setSubtotal] = useState(0);
+  const [subtotal, setSubtotal] = useState(0)
 
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
@@ -15,20 +15,10 @@ export default function CartComponent({ cartStyles, updateSubtotals }) {
   }, [])
 
   useEffect(() => {
-    const newSubtotal = cartItems.reduce(
-      (total, item) => total + (item.currentPrice || 0) * (item.quantity || 1),
-      0
-    );
-    setSubtotal(newSubtotal);
-    updateSubtotals(newSubtotal.toFixed(2)); // Округлення до двох знаків після коми
-  }, [cartItems, updateSubtotals]);
-
-
-  // const subtotal = cartItems.reduce(
-  //   (total, item) => total + (item.currentPrice || 0) * (item.quantity || 1),
-
-  //   0
-  // )
+    const newSubtotal = cartItems.reduce((total, item) => total + (item.currentPrice || 0) * (item.quantity || 1), 0)
+    setSubtotal(newSubtotal)
+    updateSubtotals(newSubtotal.toFixed(2)) // Округлення до двох знаків після коми
+  }, [cartItems, updateSubtotals])
 
   const removeFromCart = (itemNo) => {
     const updatedCart = cartItems.filter((item) => item.itemNo !== itemNo)
@@ -46,7 +36,6 @@ export default function CartComponent({ cartStyles, updateSubtotals }) {
     updateSubtotals(subtotal)
   }
 
-  // Function to decrease the quantity of an item in the cart and update localStorage
   const decreaseQuantity = (itemNo) => {
     const updatedCart = cartItems.map((item) =>
       item.itemNo === itemNo && item.quantity > 1 ? { ...item, quantity: (item.quantity || 1) - 1 } : item
@@ -81,10 +70,22 @@ export default function CartComponent({ cartStyles, updateSubtotals }) {
   ))
 
   return (
-    <div className={`cart-${cartStyles}`}>
+    <div
+      className={`cart-${cartStyles}`}
+      onClick={(e) => e.stopPropagation()}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          console.log('close modal')
+        }
+      }}
+    >
       {CartList.length > 0 ? (
         <>
-          {CartList}
+          {cartStyles === 'collection' && <h2>My Bag</h2>}
+          {cartStyles === 'collection' && <div className='cart-collection__container'>{CartList}</div>}
+          {cartStyles === 'lis' && <div>{CartList}</div>}
           <span
             style={{
               display: 'block',
@@ -95,21 +96,30 @@ export default function CartComponent({ cartStyles, updateSubtotals }) {
               marginBottom: '25px',
             }}
           />
+          {/* <div className='cart-collection__bottom'> */}
           <div className={`cart-${cartStyles}__subtotal`}>
             <span>Subtotal</span>
             <span>${subtotal.toFixed(2)}</span>
           </div>
           <span className={`cart-${cartStyles}__link`}>
-            <a className={`cart-${cartStyles}__link-shop`} href="/shop">
-              Back to shopping
-            </a>
+            {cartStyles === 'lis' && (
+              <a className={`cart-${cartStyles}__link-shop`} href="/shop">
+                Back to shopping
+              </a>
+            )}
+            {cartStyles === 'collection' && (
+              <a className={`cart-${cartStyles}__link-shop`} href="/cart">
+                Purchace
+              </a>
+            )}
           </span>
+          {/* </div> */}
         </>
       ) : (
         <p className="no-items">
           Товарів в корзині немає!
           <br />
-          <a href="/">Головна</a>
+          <a href="/shop">Перейти до колекції</a>
         </p>
       )}
     </div>

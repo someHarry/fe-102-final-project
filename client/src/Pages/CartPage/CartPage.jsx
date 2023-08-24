@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './CartPage.scss'
 import CartComponent from '../../Components/CartComponent/CartComponent'
-// import Button from '../../Components/Button/Button'
+import MayLike from '../../Components/MayLike'
 import RadioButton from '../../Components/RadioButton'
 
 export default function CartPage() {
@@ -11,6 +11,7 @@ export default function CartPage() {
     setSubtotal(newSubtotal);
   };
 
+ 
   return (
     <section className="cart">
       <div className="routes">
@@ -46,7 +47,7 @@ export default function CartPage() {
             />
             <div className="cart-subtotal">
               <span>Total</span>
-              <span>${subtotal}</span>
+              <span>${parseFloat(subtotal)+15}</span>
             </div>
             <p>Estimated shipping time: 2 days</p>
             <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'rgba(40, 40, 40, 1)' }}>
@@ -88,6 +89,7 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+      <MayLike/>
     </section>
   )
 }

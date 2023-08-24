@@ -8,12 +8,19 @@ import './ProductPage.scss'
 import sendRequest from '../../helpers/request'
 import Loader from '../../Components/Loader/Loader'
 import NotFoundPage from '../404Page/404Page'
+import CartComponent from '../../Components/CartComponent/CartComponent'
 
 function ProductPage({ id }) {
   const [product, setProduct] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const [count, setCount] = useState(1)
   const [isError, setIsError] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [subtotal, setSubtotal] = useState(0)
+
+  const updateSubtotals = (newSubtotal) => {
+    setSubtotal(newSubtotal)
+  }
 
   const increment = () => {
     setCount((prevCount) => prevCount + 1)
@@ -44,6 +51,25 @@ function ProductPage({ id }) {
   let isDiscounted = false
   if (Number(product.discount > 0)) {
     isDiscounted = true
+  }
+
+  const addToCart = () => {
+    const existingCartItems = JSON.parse(localStorage.getItem('cart')) || []
+    const productInCart = existingCartItems.find((item) => item.itemNo === product.id) // Assuming the product id is stored in 'id' property
+    if (!productInCart) {
+      const newCartItem = {
+        itemNo: product.itemNo,
+        name: product.name,
+        variety: product.variety,
+        region: product.region,
+        country: product.country,
+        imageUrls: product.imageUrls,
+        currentPrice: product.currentPrice,
+      }
+      existingCartItems.push(newCartItem)
+      localStorage.setItem('cart', JSON.stringify(existingCartItems))
+      setIsModalOpen(true) // Відкрити модальне вікно
+    }
   }
 
   return (
@@ -108,7 +134,24 @@ function ProductPage({ id }) {
                     </svg>
                   </button>
                 </div>
-                <Button text="ADD TO CART" btnStyles="buttonDark" />
+                <Button btnClick={addToCart} text="ADD TO CART" btnStyles="buttonDark" />
+                <span style={{ display: 'none' }}>{subtotal}</span>
+
+                {isModalOpen && (
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className="overlay"
+                    onClick={() => setIsModalOpen(false)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        setIsModalOpen(false)
+                      }
+                    }}
+                  >
+                    <CartComponent updateSubtotals={updateSubtotals} cartStyles="collection" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
