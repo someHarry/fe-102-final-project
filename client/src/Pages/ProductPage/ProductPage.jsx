@@ -30,7 +30,12 @@ function ProductPage({ id }) {
 
     sendRequest(`http://localhost:4000/api/products/${id}`)
       .then((data) => {
-        setProduct(data)
+        if ((product.itemNo && data.itemNo === product.itemNo) || !product.itemNo) {
+          console.log(product.itemNo)
+          setProduct(data)
+        } else {
+          throw new Error('Invalid product ID')
+        }
       })
       .catch((error) => {
         console.error('Произошла ошибка:', error)
@@ -39,7 +44,7 @@ function ProductPage({ id }) {
       .finally(() => {
         setIsLoading(false)
       })
-  }, [])
+  }, [id, product.itemNo])
 
   let isDiscounted = false
   if (Number(product.discount > 0)) {
@@ -54,7 +59,7 @@ function ProductPage({ id }) {
         </div>
       ) : isError ? (
         <Routes>
-          <Route path={'*' || '404'} element={<NotFoundPage />} />
+          <Route path={'*' || '404'} element={<NotFoundPage text="An error occurred while retrieving data" />} />
         </Routes>
       ) : (
         <div>
