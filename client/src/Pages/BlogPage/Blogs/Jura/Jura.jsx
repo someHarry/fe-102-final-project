@@ -4,25 +4,29 @@ function Jura() {
   return (
     <div className="container blog">
       <h1 className="blog__title">Jura</h1>
-      <img
-        className="blog__img"
-        src={`${process.env.PUBLIC_URL}/pics/blog_page/jura-1.jpeg`}
-        alt="jira"
-        width="1000"
-        height="625"
-      />
+      <div className="blog__img-wrapper">
+        <img
+          className="blog__img"
+          src={`${process.env.PUBLIC_URL}/pics/blog_page/jura-1.jpeg`}
+          alt="jira"
+          width="1000"
+          height="625"
+        />
+      </div>
       <p className="blog__text">
         Jura is one of the most renowned regions in France, celebrated for its winemaking and production of high-quality
         wines. Situated in the eastern part of France, in the department of Jura, this region boasts a rich history of
         winemaking and is particularly famous for its wines made from the Chardonnay grape variety.
       </p>
-      <img
-        className="blog__img"
-        src={`${process.env.PUBLIC_URL}/pics/blog_page/jura-3.jpeg`}
-        alt="jira"
-        width="550"
-        height="451"
-      />
+      <div className="blog__img-wrapper">
+        <img
+          className="blog__img"
+          src={`${process.env.PUBLIC_URL}/pics/blog_page/jura-3.jpeg`}
+          alt="jira"
+          width="550"
+          height="451"
+        />
+      </div>
       <h3 className="blog__subtitle">Key aspects of the Jura region related to winemaking:</h3>
 
       <ul className="blog__list">
@@ -74,13 +78,15 @@ function Jura() {
           </p>
         </li>
       </ul>
-      <img
-        className="blog__img"
-        src={`${process.env.PUBLIC_URL}/pics/blog_page/jura-2.webp`}
-        alt="jira"
-        width="1400"
-        height="600"
-      />
+      <div className="blog__img-wrapper">
+        <img
+          className="blog__img"
+          src={`${process.env.PUBLIC_URL}/pics/blog_page/jura-2.webp`}
+          alt="jira"
+          width="1000"
+          height="500"
+        />
+      </div>
       <p className="blog__text">
         In essence, the Jura region is a haven for wine enthusiasts, offering unique and authentic wines that embody the
         richness of French winemaking traditions and history.
