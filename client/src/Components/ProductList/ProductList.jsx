@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import "./ProductList.scss";
 // import PropTypes from 'prop-types';
 import ProductCard from "../ProductCard";
-// import FilterPanel from "./components/FilterPanel";
+import FilterPanel from "./components/FilterPanel";
 import SortingPanel from "./components/SortingPanel";
 
 function ProductList() {
@@ -31,7 +31,7 @@ function ProductList() {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
+                    // console.log(result);
                     if (result.productsQuantity > 0) {
                         setProducts(result.products);
                     }
@@ -45,18 +45,18 @@ function ProductList() {
     }
 
     useEffect(() => {
-        console.log("default use effect triggered")
         getProducts();
     }, [])
     useEffect(() => {
-        console.log("queryParams.sort triggered")
         getProducts();
     }, [queryParams.sort])
+    useEffect(() => {
+        getProducts();
+    }, [queryParams])
 
     if (!isLoad) {
         return (
-            <h3>Loading...</h3>
-        )
+            <h3>Loading...</h3>        )
     }
     if (errorMessage) {
         return (
@@ -65,27 +65,35 @@ function ProductList() {
     }
 
     return (
+        
         <div className="product-list__wrapper">
             <section className="product-list">
                 <div className="product-list__filter-block">
-                    <FilterPanel/>
+                    <FilterPanel
+                        queryParams={queryParams}
+                        setQueryParams={setQueryParams}
+                    />
                 </div>
                 <div className="product-list__content-block">
                     <div className="product-list__sorting">
-                        <p>Here will be SortingPanel component</p>
+                        <SortingPanel 
+                            queryParams={queryParams}
+                            setQueryParams={setQueryParams}
+                        />
                     </div>
                     <ul className="product-list__products">
                         {products.length > 0 &&
                             products.map((product) => (
                                     <ProductCard
-                                        id={product.id}
+                                        itemNo={product.itemNo}
+                                        key={product.itemNo}
                                         name={product.name}
                                         variety={product.variety}
                                         region={product.region}
                                         country={product.country}
-                                        image={product.image}
-                                        price={product.price}
-                                        basePrice={product.basePrice}
+                                        imageUrls={product.imageUrls}
+                                        currentPrice={product.currentPrice}
+                                        previousPrice={product.previousPrice}
                                         discount={product.discount}
                                     />
                                 )

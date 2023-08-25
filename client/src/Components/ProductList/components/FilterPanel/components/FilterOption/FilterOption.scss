@@ -1,0 +1,16 @@
+// typography
+// probably should be moved to a higher level:
+$fontColorDefault: #282828;
+$fontSizeDefault: 16px;
+$fontSizeDefaultSmall: 14px;
+$fontFamilyDefault: "Montserrat", sans-serif;
+
+.filter-panel__option {
+  color: inherit;
+  font-size: $fontSizeDefaultSmall;
+  font-family: inherit;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
