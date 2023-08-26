@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable import/no-unresolved */
-// import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Scrollbar, Navigation } from 'swiper/modules'
-import Button from '../Button/Button'
+import Button from '../Button'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/scrollbar'
@@ -15,9 +14,21 @@ function SalesSlider() {
     <section className="slider__wrapper">
       <Swiper
         spaceBetween={50}
+        slidesPerView={1}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
+        }}
+        breakpoints={{
+          320: {
+            spaceBetween: 20
+          },
+          480: {
+            spaceBetween: 30
+          },
+          640: {
+            spaceBetween: 40
+          }
         }}
         navigation={true}
         scrollbar={{
@@ -27,9 +38,9 @@ function SalesSlider() {
         className="sales_swiper"
       >
         <SwiperSlide>
-          <article className="salesList__container">
+          <article className="salesList__container sale1 intro-pic-red-wine">
             <img
-              className="salesList__container--pic sales__pic"
+              className="salesList__container--pic sales__pic slider__pic"
               alt="white wine for sale"
               src="./pics/sales/red wine table.jpg"
             />
@@ -61,17 +72,17 @@ function SalesSlider() {
           </article>
         </SwiperSlide>
         <SwiperSlide>
-          <article className="salesList__container">
-            <div className="salesList__container--item  salesList__banner--item sales__item">
-              <h3 className="sales__item--title">Special Offers for Wine Enthusiasts!</h3>
-              <p className="sales__item--text sales__item--time-limited">Limited-Time Offer!</p>
-              <p className="sales__item--text">
+          <article className="sale2 adapt-pic-glass">
+            <div className="salesList__container--item  salesList__banner--item sales__item-glass">
+              <h3 className="sales__item-glass--title">Special Offers for Wine Enthusiasts!</h3>
+              <p className="sales__item-glass--text sales__item-glass--time-limited">Limited-Time Offer!</p>
+              <p className="sales__item-glass--text">
                 Don&apos;t let this incredible opportunity pass you by! Upgrade your wine-drinking experience or
                 surprise a loved one with the gift of elegance. Head over to our website or visit our store to explore
                 our stunning collection of wine glasses.
               </p>
             </div>
-            <img className="sales__item" alt="white wine for sale" src="./pics/sales/redWineGlass.jpg" />
+            <img className="sales__item--pic slider__pic" alt="white wine for sale" src="./pics/sales/redWineGlass.jpg" />
           </article>
         </SwiperSlide>
         <SwiperSlide>
@@ -86,6 +97,7 @@ function SalesSlider() {
             </div>
           </article>
         </SwiperSlide>
+        
       </Swiper>
     </section>
   )
