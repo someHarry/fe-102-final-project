@@ -1,0 +1,233 @@
+.contactUs{
+    &__title{
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 2rem;
+        margin: 20px auto 0;
+    }
+    &__desc{
+        text-align: center;
+        width: 696px;
+        margin: 21px auto 21px;
+    }
+
+    &__line{
+        width: 86px;
+        height: 5px;
+        transform-origin: right center;
+        margin: 20px auto 0;
+        background-color: red;
+    }
+}
+
+.block{
+    display: flex;
+    flex-direction: row;
+    width: 1140px;
+    background-color: black;
+    margin: 0 auto 50px;
+    justify-content: space-between;
+}
+
+.block-info{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    gap: 10px;
+    justify-content: center;
+    margin-left: 10px;
+    width: 100%;
+    max-width: 520px; 
+    align-items: center;
+}
+
+
+.block-info-item{
+    width: 48%;
+    height: 150px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+}
+
+.item{
+    &__img{
+        width: 40px;
+    }
+    &__title{
+        font-weight: 700;
+        font-size: 1.25rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 20px 0 0;
+        color: #999999;
+    }
+    &__desc{
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: white;
+        text-decoration: none;
+    }
+    &__desc:last-child:hover{
+        color: rgb(190, 0, 0);
+    }
+    &__icon{
+        display: flex;
+        gap: 10px;
+    }
+
+}
+.block-location{
+    display: flex;
+    &__map{
+        width: 520px;
+        height:450px;
+        border: 0;
+        text-align: center;
+    }
+}
+
+/* Для мобильных устройств и планшетов */
+@media (min-width:992px) and (max-width: 1200px) {
+    .contactUs{
+        &__title{
+            font-size: 1.5rem;
+        }
+        &__desc{
+            font-size: 0.8rem;
+        }
+        &__line{
+            margin: 15px auto 0;
+        }
+    }
+    .block{
+        width: 900px;
+    }
+    .block-location__map{
+        width: 390px;
+        height: 337px;
+    }
+
+    .item{
+        &__title{
+            font-size: 0.9rem;
+        }
+        &__desc{
+            font-size: 0.6rem;
+        }
+    }
+}
+@media  (min-width:769px) and (max-width: 992px) {
+    .contactUs{
+        &__title{
+            font-size: 1.3rem;
+        }
+        &__desc{
+            font-size: 0.7rem;
+        }
+        &__line{
+            margin: 10px auto 0;
+        }
+    }
+    .block{
+        width: 668px;
+    }
+    .block-location__map{
+        width: 312px;
+        height: 320px;
+    }
+
+    .item{
+        &__title{
+            font-size: 0.7rem;
+        }
+        &__desc{
+            font-size: 0.6rem;
+        }
+    }
+}
+  
+  /* Для мобильных устройств */
+  @media (min-width:576px) and (max-width: 768px) {
+    .contactUs{
+        &__title{
+            font-size: 0.8rem;
+        }
+        &__desc{
+            font-size: 0.6rem;
+            width: 385px;
+        }
+        &__line{
+            width: 50px;
+            margin: 10px auto 0;
+        }
+    }
+    .block{
+        width: 100%;
+        flex-direction: column;
+
+    }
+    .block-info{
+        align-self: center;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+    .block-location__map{
+        width: 100%;
+        height: 390px;
+    }
+
+    .item{
+        &__title{
+            font-size: 0.7rem;
+        }
+        &__desc{
+            font-size: 0.6rem;
+        }
+    }
+}
+
+@media (max-width:576px) {
+    .contactUs{
+        &__title{
+            font-size: 0.8rem;
+        }
+        &__desc{
+            font-size: 0.6rem;
+            width: 280px;
+        }
+        &__line{
+            margin: 10px auto 0;
+            width: 35px;
+        }
+    }
+    .block{
+        width: 100%;
+        flex-direction: column;
+
+    }
+    .block-info{
+        align-self: center;
+        flex-direction: column;
+        margin-left: 0px;
+    }
+    .block-location__map{
+        width: 100%;
+        height: 265px;
+    }
+
+    .item{
+        &__title{
+            font-size: 0.7rem;
+        }
+        &__desc{
+            font-size: 0.6rem;
+        }
+    }
+}
+  
