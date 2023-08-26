@@ -12,7 +12,7 @@ export default function Contact() {
                     <div className='block-info-item'>
                         <img src="./pics/contactUs/address.svg" className='item__img' alt="" />
                         <p className='item__title'>ADDRESS</p>
-                        <a className='item__desc' href="https://www.google.com/maps/place/%D0%A2%D0%A6+%D0%A1%D0%B8%D0%BB%D1%8C%D0%B2%D0%B5%D1%80+%D0%91%D1%80%D0%B8%D0%B7/@50.4281241,30.5953389,17.25z/data=!4m6!3m5!1s0x40d4c57dd85632a3:0x60a23243bc1fbf89!8m2!3d50.4286997!4d30.5933804!16s%2Fg%2F11bychb6v9?entry=ttu" 
+                        <a className='item__desc' href="https://www.google.com/maps/place/Silver+Breeze/@50.4272584,30.5955212,17.15z/data=!4m6!3m5!1s0x40d4c57dd85632a3:0x60a23243bc1fbf89!8m2!3d50.4286997!4d30.5933804!16s%2Fg%2F11bychb6v9?hl=en&entry=ttu" 
                           target="_blank" rel="noopener noreferrer">Pavla Tychyna Avenue, 1B, Kyiv
                         </a>
                     </div>
@@ -45,7 +45,7 @@ export default function Contact() {
                     <iframe
                         className='block-location__map'
                         title="Google Maps"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2142.454115440189!2d30.59533892103017!3d50.42812414009036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c57dd85632a3%3A0x60a23243bc1fbf89!2z0KLQpiDQodC40LvRjNCy0LXRgCDQkdGA0LjQtw!5e0!3m2!1sru!2sua!4v1692898849161!5m2!1sru!2sua"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2285.183454990317!2d30.595521199221427!3d50.42725840608596!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c57dd85632a3%3A0x60a23243bc1fbf89!2sSilver%20Breeze!5e0!3m2!1sen!2sua!4v1693050612847!5m2!1sen!2sua" 
                         allowFullScreen=""
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
