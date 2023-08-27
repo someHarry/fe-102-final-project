@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import './PaymentSuccessPage.scss'
 import Button from '../../Components/Button/Button'
@@ -6,7 +7,14 @@ import MayLike from '../../Components/MayLike'
 
 function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
- const [paymentDate, setPaymentDate] = useState(null);
+  const [paymentDate, setPaymentDate] = useState(null);
+  const street = useSelector((state) => state.user.dataUser)
+  const email = useSelector((state) => state.user.dataUser)
+  const city = useSelector((state) => state.user.dataUser)
+  console.log(street)
+  console.log(email)
+  console.log(city)
+  
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
