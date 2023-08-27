@@ -1,10 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './DeliveryPage.scss';
 import { PatternFormat } from 'react-number-format';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../Components/Input/Input';
 import Button from "../../Components/Button/Button"
+import actionAddUser from '../../redux/user/actionUser'; 
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -25,8 +28,14 @@ export default function DeliveryForm() {
     street: '',
   };
 
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const onSubmit = (values, { resetForm }) => {
     console.log(values);
+    dispatch(actionAddUser(values));
+    navigate('/payment');
     resetForm();
   };
 
@@ -118,7 +127,7 @@ export default function DeliveryForm() {
           <hr className='line'/>
           <p className='delivery-form-order__label'>Total : <span className='section-order__span'>€7.85</span></p>
 
-          <Button btnStyles='delivery-form__button' text='GO TO PAYMENT' disabled={formik.isSubmitting}> </Button>
+          <Button btnStyles='delivery-form__button' text='GO TO PAYMENT' disabled={formik.isSubmitting} btnClick={formik.handleSubmit} />
         </div>
       </form>
     </section>
