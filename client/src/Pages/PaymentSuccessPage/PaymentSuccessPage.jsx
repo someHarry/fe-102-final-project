@@ -6,14 +6,21 @@ import MayLike from '../../Components/MayLike'
 
 function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
-
+ const [paymentDate, setPaymentDate] = useState(null);
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
       setCartItems(JSON.parse(cartItemsFromStorage))
     }
+     const now = new Date();
+    const formattedDate = now.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    setPaymentDate(formattedDate);
   }, [])
-
+  
   const CartList = cartItems.map((el) => (
     <div className="cart-list__item" key={el.id}>
       <span className="cart-list__item-img">
@@ -26,6 +33,8 @@ function PaymentSuccessPage() {
       </span>
     </div>
   ))
+
+const randomOrderNumber = Math.floor(Math.random()*100000000)
   return (
     <section className="success-page">
       
@@ -34,7 +43,7 @@ function PaymentSuccessPage() {
           We received your order and will start preparing your package right away. <br /> You will receive a
           confirmation email in a moment.
         </p>
-        <h3 className="success-order-title">Order details - 8972491047359</h3>
+      <h3 className="success-order-title">Order details - {randomOrderNumber}</h3>
       <div className="success">
         <div className="success-order">
           <div className="success-card">
@@ -86,7 +95,7 @@ function PaymentSuccessPage() {
               <h4 className="success-order__info-title">Master card</h4>
               <p className="success-order__info-text"> XXXX XXXX XXXX 5425 </p>
               <h4 className="success-order__info-title">Estimated shipping</h4>
-              <p className="success-order__inf-text"> 16 June 2024 </p>
+              <p className="success-order__inf-text"> {paymentDate}</p>
             </div>
             </div>
             </div>
