@@ -10,6 +10,7 @@ const initialState = {
 const reduserBankCard = createReducer(initialState, (builder) => {
   builder.addCase(actionAddBankCard, (state, { payload }) => {
     state.bankCard = payload
+    
   })
 })
 
