@@ -107,6 +107,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 20px;
   background-color: rgba(40, 40, 40, 0.4);
   opacity: 0;
@@ -128,4 +129,14 @@
   color: white;
   font-family: "'Montserrat', sans-serif";
   text-transform: uppercase;
+}
+
+.like-product__btn {
+  border: none;
+  color: white;
+  font-family: "'Montserrat', sans-serif";
+  text-transform: uppercase;
+  text-decoration: underline;
+  background-color: transparent;
+  width: max-content;
 }
