@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './CartPage.scss'
-import CartComponent from '../../Components/CartComponent/CartComponent'
+import CartComponent from '../../Components/CartComponent/'
 import MayLike from '../../Components/MayLike'
 import RadioButton from '../../Components/RadioButton'
 
