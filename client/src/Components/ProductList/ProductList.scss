@@ -19,6 +19,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     min-width: 216px;
+    width: 216px;
+    max-width: 216px;
   }
 
   &__products {
