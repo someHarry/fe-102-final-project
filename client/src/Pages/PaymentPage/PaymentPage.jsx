@@ -8,9 +8,11 @@ import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
+import { number } from 'prop-types'
 import { ReactComponent as Visa } from './icons/visaFormIcon.svg'
 import { ReactComponent as MasterCard } from './icons/mastercardFormIcon.svg'
 import './PaymentPage.scss'
+
 import Button from '../../Components/Button/Button'
 import Form from '../../Components/Form/Form'
 import '../../Components/Form/Form.scss'
@@ -43,9 +45,10 @@ const validationSchema = yup.object({
     .required('cvc is required')
     .matches(/^\d{3}$/, 'Invalid CVC format (3 digits)'),
 })
+const randomShippingNumber = Math.floor(Math.random() * 10)
 
-function PaymentPage() {
-
+function PaymentPage(props) {
+   const { randomPrice } = props;
 
   const street = useSelector((state) => state.user.dataUser)
   const email = useSelector((state) => state.user.dataUser)
@@ -95,7 +98,6 @@ function PaymentPage() {
               <h4 className="payment-address__title">Contact information</h4>
               <p className="payment-address__text"> {email.email}</p>
             </div>
-            <Button btnStyles="payment-info__btn" text="EDIT DETAILES" />
           </div>
           <div className="payment-type">
             <h4 className="payment-title">Payment type</h4>
@@ -145,7 +147,6 @@ function PaymentPage() {
                   </div>
                 </fieldset>
               </Form>
-              <Button text="Advanced payment" btnStyles="payment-type__btn__form" />
             </div>
           </div>
         </div>
@@ -154,18 +155,18 @@ function PaymentPage() {
             <h4 className="payment-title">Order summery</h4>
             <div className="payment-summery__order">
               <p className="payment-summery__order-position">Subtotal</p>
-              <span className="payment-summery__order-price">€3.90</span>
+              <span className="payment-summery__order-price">$3.90</span>
             </div>
             <div className="payment-summery__order">
               <p className="payment-summery__order-position">Delivery</p>
-              <span className="payment-summery__order-price">€3.95</span>
+              <span className="payment-summery__order-price">${randomPrice}</span>
             </div>
             <hr className="payment-summery-line" />
             <div className="payment-summery__order">
               <p className="payment-summery__order-total">Total</p>
-              <span className="payment-summery__order-price-total">€7.85</span>
+              <span className="payment-summery__order-price-total">$7.85</span>
             </div>
-            <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
+            <p className="payment-summery__order-info">Estimated shipping time: {randomShippingNumber} days</p>
           </div>
           <Link to="/payment_confirm">
             <Button text="Pay" btnStyles="payment-summery__order-btn" onClick={formikForm.handleSubmit} type="button" />
@@ -179,12 +180,14 @@ PaymentPage.defaultProps = {
   street: 'street',
   city: 'city',
   email: 'email',
+  randomPrice: 0,
 }
 
 PaymentPage.propTypes = {
   street: PropTypes.string,
   city: PropTypes.string,
   email: PropTypes.string,
+  randomPrice: number,
 }
 
 export default PaymentPage
