@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react'
 import { useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -11,10 +12,12 @@ function PaymentSuccessPage() {
   const street = useSelector((state) => state.user.dataUser)
   const email = useSelector((state) => state.user.dataUser)
   const city = useSelector((state) => state.user.dataUser)
+  const card = useSelector((state => state.card.bankCard))
   console.log(street)
   console.log(email)
   console.log(city)
-  
+  console.log(card)
+
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
@@ -101,7 +104,7 @@ const randomOrderNumber = Math.floor(Math.random()*100000000)
             <h4 className="success-order__title">Payment method</h4>
             <div className="success-address">
               <h4 className="success-order__info-title">Master card</h4>
-              <p className="success-order__info-text"> XXXX XXXX XXXX 5425 </p>
+              <p className="success-order__info-text"> {card.cardNumber} </p>
               <h4 className="success-order__info-title">Estimated shipping</h4>
               <p className="success-order__inf-text"> {paymentDate}</p>
             </div>

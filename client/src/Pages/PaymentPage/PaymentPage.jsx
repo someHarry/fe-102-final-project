@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable object-shorthand */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -44,7 +45,7 @@ const validationSchema = yup.object({
 })
 
 function PaymentPage() {
-  const dispatch = useDispatch()
+
 
   const street = useSelector((state) => state.user.dataUser)
   const email = useSelector((state) => state.user.dataUser)
@@ -58,7 +59,7 @@ function PaymentPage() {
     expirationDate: '',
     cvc: '',
   }
-
+  const dispatch = useDispatch()
   const formikForm = useFormik({
     initialValues: { ...initialValues },
     validationSchema: validationSchema,
