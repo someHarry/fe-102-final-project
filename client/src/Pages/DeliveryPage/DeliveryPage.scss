@@ -13,7 +13,7 @@
 
 }
 
-.routes-line{
+.route-line{
     width: 250px;
     height: 1px;
     margin: auto 29px;  
@@ -25,6 +25,7 @@
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
+    // display: none;
 }
 
 .routes-title:nth-of-type(2n) {
@@ -110,7 +111,7 @@
     font-size: 18px;
 }
 
-@media (min-width: 768px) and (max-width:1200px) {
+@media (min-width: 993px) and (max-width:1200px) {
     .delivery-page{
         margin-bottom: 63px;
     }
@@ -119,17 +120,19 @@
         margin-top: 28px;
         margin-bottom: 38px;
     }
-    .routes-line{
-        width: 115px;
+    .route-line{
+        width: 130px;
         height: 1px;
         margin: auto 20px; 
     }
     .routes-title{
-        font-size: 16px;
+        font-size: 20px;
         align-self: center;
+        display: block;
     }
     .routes-title:nth-of-type(2n){
-        font-size: 18px;
+        font-size: 22px;
+        // display: none;
     }
 
     .delivery-form{
@@ -184,7 +187,79 @@
     }
 }
 
-@media (min-width: 321px) and (max-width:768px){
+@media (min-width: 769px) and (max-width:992px) {
+    .routes{
+        margin-top: 28px;
+        margin-bottom: 38px;
+    }
+    .route-line{
+        width: 115px;
+        height: 1px;
+        margin: auto 20px; 
+    }
+    .routes-title{
+        font-size: 16px;
+        align-self: center;
+        display: block;
+    }
+    .routes-title:nth-of-type(2n){
+        font-size: 18px;
+        // display: none;
+    }
+
+    .delivery-form{
+        gap: 38px;
+        &__button{
+            font-size: 14px;
+            padding: 10px 28px !important;
+        }
+    }
+
+    .delivery-form-order{
+        &__label{
+           font-size: 16px;          
+           margin-bottom: 10px;
+        }
+    }
+
+    .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        margin-bottom: 12px;
+    }
+
+    .form-input{
+        padding: 7px 0px;
+        text-indent: 7px;
+        width: 200px;
+    }
+    
+    .form-button{
+        background-color: black;
+        color: white;
+        padding: 10px 28px !important;
+    }
+    
+    .line{
+        width: 238px;
+        height: 1px;
+        background-color: #282828;
+    }
+    
+    .form-field {
+        margin-bottom: 14px;
+    }
+    
+    .error-message {
+        color: red;
+        margin-bottom: 0px;
+        margin-top: 5px;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 425px) and (max-width:768px){
     .delivery-page{
         margin-bottom: 36px;
     }
@@ -193,18 +268,22 @@
     .routes {
         flex-direction: column;
         align-items: center;
-        margin-top: 16px;
-        margin-bottom: 22px;
+        margin-top: 16px !important;
+        margin-bottom: 22px !important;
       }
     
       .routes-title:nth-of-type(2n) {
-        font-size: 24px;
+        display: block;
+        font-size: 20px;
         margin: 10px 0px;
       }
-    
-      .routes-title {
-        text-align: center;
-        margin: 10px 0px;
+      
+      .route-line{
+        display: none;
+      }
+        
+      .routes-title{
+        display: none;
       }
     
     .form-label{
@@ -249,7 +328,7 @@
     }
 }
 
-@media (max-width:320px) {
+@media (min-width:320px) and (max-width: 424px) {
     .delivery-page{
         margin-bottom: 30px;
     }
@@ -257,19 +336,22 @@
     .routes {
         flex-direction: column;
         align-items: center;
-        margin-top: 16px;
-        margin-bottom: 22px;
+        margin-top: 16px !important;
+        margin-bottom: 22px !important;
       }
     
       .routes-title:nth-of-type(2n) {
         font-size: 20px;
+        display: block;
         margin: 10px 0px;
       }
     
       .routes-title {
-        text-align: center;
-        font-size: 18px;
-        margin: 10px 0px;
+        display: none;
+      }
+
+      .route-line{
+        display: none;
       }
     
     .form-label{

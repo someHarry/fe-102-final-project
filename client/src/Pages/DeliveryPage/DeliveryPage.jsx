@@ -38,8 +38,6 @@ export default function DeliveryForm() {
     navigate('/payment');
     resetForm();
   };
-
-
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -52,9 +50,9 @@ export default function DeliveryForm() {
     <section className='container delivery-page'>
       <div className="routes">
         <p className='routes-title'>1. MY BAG</p>
-          <hr className='routes-line' />
+          <hr className='route-line' />
         <p className='routes-title'>2. DELIVERY</p>
-          <hr className='routes-line' />
+          <hr className='route-line' />
         <p className='routes-title'>3. REVIEW & PAYMENT</p>
       </div>
       <form className='delivery-form' onSubmit={formik.handleSubmit}>
@@ -123,10 +121,10 @@ export default function DeliveryForm() {
         </div>
         <div className='delivery-form-order'>
           <h2 className='delivery-form-order__title'>Order summery: </h2>
-          <p className='delivery-form-order__label'>Subtotal: <span className='delivery-form-order__span'>€3.90</span> </p>
-          <p className='delivery-form-order__label'>Delivery: <span className='delivery-form-order__span'>€3.95</span></p>
+          <p className='delivery-form-order__label'>Subtotal: <span className='delivery-form-order__span'>$3.00</span> </p>
+          <p className='delivery-form-order__label'>Delivery: <span className='delivery-form-order__span'>$15.00</span></p>
           <hr className='line'/>
-          <p className='delivery-form-order__label'>Total : <span className='section-order__span'>€7.85</span></p>
+          <p className='delivery-form-order__label'>Total : <span className='section-order__span'>$18.00</span></p>
 
           <Button btnStyles='delivery-form__button' text='GO TO PAYMENT' disabled={formik.isSubmitting} btnClick={formik.handleSubmit} />
         </div>
