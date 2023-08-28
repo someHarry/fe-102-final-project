@@ -1,16 +1,60 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Link } from 'react-router-dom'
-import Input from '../Input/Input'
+import { useEffect, useCallback } from 'react'
 import './Header.scss'
 import Logo from '../Logo'
 
 
 function Header() {
-  const searchTrue = true;
+
+  useEffect(() => {
+      const burger = document.querySelector(".burger-menu");
+      const menuExtended = document.querySelector(".menu__list");
+      // Menu Burger
+      document.addEventListener("click", (e) => {
+        if (e && !(e.target.className === "menu__list--item") && !(e.target.className === "menu__list--item__link") ) { 
+          burger.classList.remove("checked");
+          menuExtended.classList.remove("menu-extended");
+        }
+      });
+  
+      document.addEventListener("keydown", (el) => {
+        if (el.key === "Escape") {
+          menuExtended.classList.remove("menu-extended");
+          burger.classList.remove("checked");
+        }
+      });
+  
+      // END Burger
+    }, [])
+  
+    const burgerHandler = useCallback((e) => {
+      const burger = e.target.closest(".burger-menu");
+      e.stopPropagation();
+      e.target.closest(".burger-menu").classList.toggle("checked");
+      const menuExtended = document.querySelector(".menu__list");
+      if (burger.classList.contains("checked")) {
+        menuExtended.classList.add("menu-extended");
+      } else {
+        menuExtended.classList.remove("menu-extended");
+      }
+    }, [])
+
   return (
     <header className="header__wrapper">
       <Logo classNames="logo__link" />
 
       {/* NAVIGATION WITH MAIN LINKS */}
+
+       {/* Burger  */}
+           <div className="burger-menu" onClick={burgerHandler}>
+            <span className="burger-menu__item1" />
+            <span className="burger-menu__item2" />
+            <span className="burger-menu__item3" />
+          </div> 
+         {/* End Burger */}
+
       <nav className="header__wrapper--nav nav__menu">
       
         <ul className="nav__menu--list menu__list">
@@ -20,12 +64,12 @@ function Header() {
             </Link>
           </li>
           <li className="menu__list--item">
-            <Link className="menu__list--item__link item__link" to="/">
-              Accessories
+            <Link className="menu__list--item__link item__link" to="/blog">
+              Blog
             </Link>
           </li>
           <li className="menu__list--item">
-            <Link className="menu__list--item__link item__link" to="/">
+            <Link className="menu__list--item__link item__link" to="/contact">
               Contact Us
             </Link>
           </li>
@@ -33,18 +77,10 @@ function Header() {
       </nav>
       {/* END of NAVIGATION WITH MAIN LINKS */}
 
-     {/* ICONS MENU */}
-      <ul className="icons__menu">
-        <li className="icons__menu--item menu__link">
-          <Input hasIcon={searchTrue} className='icons__menu--search search header-input' />
-        </li>
-        <li className="icons__menu--item menu__link">
-          <Link to="/cart">
-            <img className="menu__link--cart" src="./pics/shopping_cart.png" alt="shopping cart icon" />
-          </Link>
-        </li>
-      </ul>
-      {/* END OF ICONS MENU */}
+      <Link className=" icons__link" to="/cart">
+        <img className="icons__link--cart" src="./pics/shopping_cart.png" alt="shopping cart icon" />
+      </Link>
+        
     </header>
   )
 }
