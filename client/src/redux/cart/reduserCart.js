@@ -14,10 +14,11 @@ const reducerCart = createReducer(initialState, (builder) => {
       state.readyToCart = payload
     })
     .addCase(actionAddToCart, (state, { payload }) => {
-      const isInCart = state.cart.some((item) => item.id === payload.id)
+      const isInCart = state.cart.some((item) => item.itemNo === payload.itemNo)
 
       if (!isInCart) {
         state.cart = [...state.cart, payload]
+        localStorage.setItem('cart', JSON.stringify(state.cart))
       }
     })
     .addCase(actionRemoveCart, (state, { payload }) => {

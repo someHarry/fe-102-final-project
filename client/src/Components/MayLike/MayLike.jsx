@@ -1,11 +1,25 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import sendRequest from '../../helpers/request'
 import './MayLike.scss'
+import { actionAddToCart } from '../../redux/cart/actionCart'
 
 function MayLike() {
   const [productOne, setProductOne] = useState({})
   const [productTwo, setProductTwo] = useState({})
   const [productThree, setProductThree] = useState({})
+
+  const dispatch = useDispatch()
+
+  const addToCartProductOne = () => {
+    dispatch(actionAddToCart(productOne))
+  }
+  const addToCartProductTwo = () => {
+    dispatch(actionAddToCart(productTwo))
+  }
+  const addToCartProductThree = () => {
+    dispatch(actionAddToCart(productThree))
+  }
 
   useEffect(() => {
     sendRequest(`http://localhost:4000/api/products/filter?perPage=3`).then((data) => {
@@ -29,9 +43,9 @@ function MayLike() {
               <a className="like-product__link" href={`/shop/${productOne.itemNo}`}>
                 Read more
               </a>
-              <a className="like-product__link" href="/">
+              <button className="like-product__btn" onClick={addToCartProductOne}>
                 Add to cart
-              </a>
+              </button>
             </div>
           </li>
 
@@ -45,9 +59,9 @@ function MayLike() {
               <a className="like-product__link" href={`/shop/${productTwo.itemNo}`}>
                 Read more
               </a>
-              <a className="like-product__link" href="/">
+              <button className="like-product__btn" onClick={addToCartProductTwo}>
                 Add to cart
-              </a>
+              </button>
             </div>
           </li>
 
@@ -61,9 +75,9 @@ function MayLike() {
               <a className="like-product__link" href={`/shop/${productThree.itemNo}`}>
                 Read more
               </a>
-              <a className="like-product__link" href="/">
+              <button className="like-product__btn" onClick={addToCartProductThree}>
                 Add to cart
-              </a>
+              </button>
             </div>
           </li>
         </ul>
