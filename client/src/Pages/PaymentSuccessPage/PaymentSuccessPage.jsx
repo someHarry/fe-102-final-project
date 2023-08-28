@@ -3,13 +3,11 @@ import React, { useState, useEffect } from 'react'
 import { useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import './PaymentSuccessPage.scss'
-import { number } from 'prop-types'
 import Button from '../../Components/Button/Button'
 import MayLike from '../../Components/MayLike'
 
 
-function PaymentSuccessPage(props) {
-   const { randomPrice } = props;
+function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
   const [paymentDate, setPaymentDate] = useState(null);
   const street = useSelector((state) => state.user.dataUser)
@@ -108,7 +106,7 @@ function PaymentSuccessPage(props) {
             </div>
             <div className="success-summery__order">
               <p className="success-summery__order-position">Delivery</p>
-              <span className="success-summery__order-price">${randomPrice}</span>
+              <span className="success-summery__order-price">$15</span>
             </div>
             <hr className="success-summery-line" />
             <div className="success-summery__order">
@@ -127,11 +125,5 @@ function PaymentSuccessPage(props) {
     </section>
   )
 }
-PaymentSuccessPage.defaultProps = {
-  randomPrice: 0,
-}
 
-PaymentSuccessPage.propTypes = {
-    randomPrice: number,
-}
 export default PaymentSuccessPage

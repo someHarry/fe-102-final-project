@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
-import { number } from 'prop-types'
 import { ReactComponent as Visa } from './icons/visaFormIcon.svg'
 import { ReactComponent as MasterCard } from './icons/mastercardFormIcon.svg'
 import './PaymentPage.scss'
@@ -47,8 +46,7 @@ const validationSchema = yup.object({
 })
 const randomShippingNumber = Math.floor(Math.random() * 10)
 
-function PaymentPage(props) {
-   const { randomPrice } = props;
+function PaymentPage() {
 
   const street = useSelector((state) => state.user.dataUser)
   const email = useSelector((state) => state.user.dataUser)
@@ -159,7 +157,7 @@ function PaymentPage(props) {
             </div>
             <div className="payment-summery__order">
               <p className="payment-summery__order-position">Delivery</p>
-              <span className="payment-summery__order-price">${randomPrice}</span>
+              <span className="payment-summery__order-price">$15</span>
             </div>
             <hr className="payment-summery-line" />
             <div className="payment-summery__order">
@@ -180,14 +178,12 @@ PaymentPage.defaultProps = {
   street: 'street',
   city: 'city',
   email: 'email',
-  randomPrice: 0,
 }
 
 PaymentPage.propTypes = {
   street: PropTypes.string,
   city: PropTypes.string,
   email: PropTypes.string,
-  randomPrice: number,
 }
 
 export default PaymentPage
