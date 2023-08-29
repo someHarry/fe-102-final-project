@@ -46,7 +46,6 @@ const validationSchema = yup.object({
     .required('cvc is required')
     .matches(/^\d{3}$/, 'Invalid CVC format (3 digits)'),
 })
-const randomShippingNumber = Math.floor(Math.random() * 10)
 
 function PaymentPage() {
   const dispatch = useDispatch()
@@ -168,7 +167,7 @@ function PaymentPage() {
               <p className="payment-summery__order-total">Total</p>
               <span className="payment-summery__order-price-total">${parseFloat(subtotal)+15}</span>
             </div>
-            <p className="payment-summery__order-info">Estimated shipping time: {randomShippingNumber} days</p>
+            <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
           <Link to="/payment_confirm">
             <Button text="Pay" btnStyles="payment-summery__order-btn" onClick={formikForm.handleSubmit} type="button" />

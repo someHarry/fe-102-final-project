@@ -10,15 +10,9 @@ import MayLike from '../../Components/MayLike'
 function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
   const [paymentDate, setPaymentDate] = useState(null);
-  const street = useSelector((state) => state.user.dataUser)
-  const email = useSelector((state) => state.user.dataUser)
-  const city = useSelector((state) => state.user.dataUser)
-  const card = useSelector((state => state.card.bankCard))
-  console.log(street)
-  console.log(email)
-  console.log(city)
-  console.log(card)
-
+  const user = useSelector((state) => state.user.dataUser)
+  const card = useSelector((state) => state.card.bankCard)
+  
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
@@ -74,16 +68,17 @@ function PaymentSuccessPage() {
             <div className="success-order__info">
               <h4 className="success-order__info-title">Shipping address</h4>
               <p className="success-order__info-text">
-                3 Falahi St , Falahi Ave, Pasdaran Blvd, Fars Province , Shiraz 71856-95159 Iran
+                {`${user.city}, ${user.street}`}
               </p>
             </div>
             <div className="success-order__address">
-              <h4 className="success-order__info-title">Billing addresss</h4>
-              <p className="success-order__info-text">Same as shipping address</p>
+              <h4 className="success-order__info-title">Recipient data</h4>
+              <p className="success-order__info-text">{`${user.name} ${user.lastName}`}</p>
             </div>
             <div className="success-order__address">
               <h4 className="success-order__info-title">Contact information</h4>
-              <p className="success-order__info-text">amoopur@gmail.com</p>
+              <p className="payment-address__text"> {user.email}</p>
+              <p className="payment-address__text"> {user.phone}</p>
             </div>
             </div>
             
@@ -91,7 +86,7 @@ function PaymentSuccessPage() {
             <h4 className="success-order__title">Payment method</h4>
             <div className="success-address">
               <h4 className="success-order__info-title">Master card</h4>
-              <p className="success-order__info-text">  </p>
+              <p className="success-order__info-text"> {card.phone} </p>
               <h4 className="success-order__info-title">Estimated shipping</h4>
               <p className="success-order__inf-text"> {paymentDate}</p>
             </div>
