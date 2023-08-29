@@ -47,13 +47,8 @@ const validationSchema = yup.object({
 function PaymentPage() {
   const dispatch = useDispatch()
 
-  const street = useSelector((state) => state.user.dataUser)
-  const email = useSelector((state) => state.user.dataUser)
-  const city = useSelector((state) => state.user.dataUser)
-  console.log(street)
-  console.log(email)
-  console.log(city)
-  
+  const user = useSelector((state) => state.user.dataUser)
+
   const initialValues = {
     cardNumber: '',
     expirationDate: '',
@@ -83,19 +78,17 @@ function PaymentPage() {
             <h4 className="payment-title">Delivery Details</h4>
             <div className="payment-address">
               <h4 className="payment-address__title">Shipping address</h4>
-              <p className="payment-address__text">
-                {street.street} {city.city}
-              </p>
+              <p className="payment-address__text">{`${user.city}, ${user.street}`}</p>
             </div>
             <div className="payment-address">
-              <h4 className="payment-address__title">Billing addresss</h4>
-              <p className="payment-address__text">Same as shipping address</p>
+              <h4 className="payment-address__title">Recipient data</h4>
+              <p className="payment-address__text">{`${user.name} ${user.lastName}`}</p>
             </div>
             <div className="payment-address">
               <h4 className="payment-address__title">Contact information</h4>
-              <p className="payment-address__text"> {email.email}</p>
+              <p className="payment-address__text"> {user.email}</p>
+              <p className="payment-address__text"> {user.phone}</p>
             </div>
-            <Button btnStyles="payment-info__btn" text="EDIT DETAILES" />
           </div>
           <div className="payment-type">
             <h4 className="payment-title">Payment type</h4>
@@ -145,7 +138,6 @@ function PaymentPage() {
                   </div>
                 </fieldset>
               </Form>
-              <Button text="Advanced payment" btnStyles="payment-type__btn__form" />
             </div>
           </div>
         </div>
