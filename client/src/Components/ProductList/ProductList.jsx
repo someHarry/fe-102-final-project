@@ -4,6 +4,8 @@ import "./ProductList.scss";
 import ProductCard from "../ProductCard";
 import FilterPanel from "./components/FilterPanel";
 import SortingPanel from "./components/SortingPanel";
+import Loader from "../Loader";
+import PaginationPanel from "./components/PaginationPanel";
 
 function ProductList() {
     const initialQueryString = window.location.search;
@@ -56,7 +58,26 @@ function ProductList() {
 
     if (!isLoad) {
         return (
-            <h3>Loading...</h3>        )
+            <div className="product-list__wrapper">
+                <section className="product-list">
+                    <div className="product-list__filter-block">
+                        <FilterPanel
+                            queryParams={queryParams}
+                            setQueryParams={setQueryParams}
+                        />
+                    </div>
+                    <div className="product-list__content-block">
+                        <div className="product-list__sorting">
+                            <SortingPanel
+                                queryParams={queryParams}
+                                setQueryParams={setQueryParams}
+                            />
+                        </div>
+                        <Loader/>
+                    </div>
+                </section>
+            </div>
+        )
     }
     if (errorMessage) {
         return (
@@ -65,7 +86,7 @@ function ProductList() {
     }
 
     return (
-        
+
         <div className="product-list__wrapper">
             <section className="product-list">
                 <div className="product-list__filter-block">
@@ -76,7 +97,7 @@ function ProductList() {
                 </div>
                 <div className="product-list__content-block">
                     <div className="product-list__sorting">
-                        <SortingPanel 
+                        <SortingPanel
                             queryParams={queryParams}
                             setQueryParams={setQueryParams}
                         />
@@ -103,6 +124,7 @@ function ProductList() {
                             <p>Nothing was found for your request. Try another one. 🤷‍♂️</p>
                         }
                     </ul>
+                    <PaginationPanel queryParams={queryParams} setQueryParams={setQueryParams}/>
                 </div>
             </section>
         </div>
