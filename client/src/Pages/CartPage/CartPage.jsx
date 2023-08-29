@@ -47,7 +47,7 @@ export default function CartPage() {
             />
             <div className="cart-subtotal">
               <span>Total</span>
-              <span>${parseFloat(subtotal)+15}</span>
+              <span>${(parseFloat(subtotal)+15).toFixed(2)}</span>
             </div>
             <p>Estimated shipping time: 2 days</p>
             <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'rgba(40, 40, 40, 1)' }}>

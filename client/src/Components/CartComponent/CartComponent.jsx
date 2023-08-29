@@ -24,12 +24,12 @@ export default function CartComponent({ cartStyles, updateSubtotals }) {
   }
 
   const handleIncreaseQuantity = (itemNo) => {
-    dispatch(actionIncreaseQuantity({ itemNo }));
-  };
-  
+    dispatch(actionIncreaseQuantity({ itemNo }))
+  }
+
   const handleDecreaseQuantity = (itemNo) => {
-    dispatch(actionDecreaseQuantity({ itemNo }));
-  };
+    dispatch(actionDecreaseQuantity({ itemNo }))
+  }
 
   const CartList = cartItems.map((el) => (
     <div className={`cart-${cartStyles}__item`} key={el.itemNo}>

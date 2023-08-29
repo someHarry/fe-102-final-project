@@ -18,6 +18,12 @@
     height: 1px;
     margin: auto 29px;
     background: #282828;
+    @media (max-width: 992px) {
+      width: 100px;
+    }
+    @media (max-width: 769px) {
+      display: none;
+    }
   }
 
   .routes-tit {
@@ -25,14 +31,27 @@
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
+    @media (max-width: 992px) {
+      font-size: 18px;
+    }
+    @media (max-width: 769px) {
+      display: none;
+    }
   }
 
   .routes-tit:first-of-type {
     color: #ec1d1d;
-    font-family: Montserrat;
     font-size: 26px;
     font-style: normal;
     font-weight: 700;
+    @media (max-width: 992px) {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    @media (max-width: 769px) {
+      display: block;
+      margin-right: 40px;
+    }
   }
 
   &-subtotal {
