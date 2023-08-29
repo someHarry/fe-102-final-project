@@ -58,7 +58,7 @@ function App() {
             <Route path="blog/switzerland" element={<Switzerland />} />
           </Route>
         </Routes>
-        <Footer catalogTitle="Collections" clientTitle="Clients" />
+        <Footer catalogTitle="Blog" clientTitle="Contacts" />
       </BrowserRouter>
     </div>
   )
