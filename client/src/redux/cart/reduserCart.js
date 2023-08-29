@@ -1,7 +1,13 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/no-extraneous-dependencies */
 import { createReducer } from '@reduxjs/toolkit'
-import { actionAddToCart, actionReadyCart, actionRemoveCart, actionRemoveLocalStorage } from './actionCart'
+import {
+  actionAddToCart,
+  actionClearCart,
+  actionReadyCart,
+  actionRemoveCart,
+  actionRemoveLocalStorage,
+} from './actionCart'
 
 const initialState = {
   readyToCart: null,
@@ -29,6 +35,9 @@ const reducerCart = createReducer(initialState, (builder) => {
     .addCase(actionRemoveLocalStorage, (state, { payload }) => {
       state.cart = payload
       localStorage.setItem('cart', JSON.stringify(payload))
+    })
+    .addCase(actionClearCart, (state) => {
+      state.cart = []
     })
 })
 
