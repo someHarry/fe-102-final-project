@@ -11,4 +11,16 @@ const actionRemoveLocalStorage = createAction('cart/actionRemoveLocalStorage')
 
 const actionClearCart = createAction('cart/actionClearCart')
 
-export { actionAddToCart, actionReadyCart, actionRemoveCart, actionRemoveLocalStorage, actionClearCart }
+const actionIncreaseQuantity = createAction('cart/actionIncreaseQuantity')
+
+const actionDecreaseQuantity = createAction('cart/actionDecreaseQuantity')
+
+export {
+  actionAddToCart,
+  actionReadyCart,
+  actionRemoveCart,
+  actionRemoveLocalStorage,
+  actionClearCart,
+  actionDecreaseQuantity,
+  actionIncreaseQuantity,
+}

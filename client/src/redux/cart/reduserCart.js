@@ -4,6 +4,8 @@ import { createReducer } from '@reduxjs/toolkit'
 import {
   actionAddToCart,
   actionClearCart,
+  actionDecreaseQuantity,
+  actionIncreaseQuantity,
   actionReadyCart,
   actionRemoveCart,
   actionRemoveLocalStorage,
@@ -23,12 +25,13 @@ const reducerCart = createReducer(initialState, (builder) => {
       const isInCart = state.cart.some((item) => item.itemNo === payload.itemNo)
 
       if (!isInCart) {
-        state.cart = [...state.cart, payload]
+        const newItem = { ...payload, quant: 1 }
+        state.cart = [...state.cart, newItem]
         localStorage.setItem('cart', JSON.stringify(state.cart))
       }
     })
     .addCase(actionRemoveCart, (state, { payload }) => {
-      const newCart = state.cart.filter((item) => item.id !== payload.id)
+      const newCart = state.cart.filter((item) => item.itemNo !== payload.itemNo)
       state.cart = newCart
       localStorage.setItem('cart', JSON.stringify(newCart))
     })
@@ -38,6 +41,22 @@ const reducerCart = createReducer(initialState, (builder) => {
     })
     .addCase(actionClearCart, (state) => {
       state.cart = []
+    })
+    .addCase(actionIncreaseQuantity, (state, { payload }) => {
+      const { itemNo } = payload
+      const updatedCart = state.cart.map((item) =>
+        item.itemNo === itemNo ? { ...item, quant: (item.quant || 1) + 1 } : item
+      )
+      localStorage.setItem('cart', JSON.stringify(updatedCart))
+      state.cart = updatedCart
+    })
+    .addCase(actionDecreaseQuantity, (state, { payload }) => {
+      const { itemNo } = payload
+      const updatedCart = state.cart.map((item) =>
+        item.itemNo === itemNo && item.quant > 1 ? { ...item, quant: (item.quant || 1) - 1 } : item
+      )
+      localStorage.setItem('cart', JSON.stringify(updatedCart))
+      state.cart = updatedCart
     })
 })
 
