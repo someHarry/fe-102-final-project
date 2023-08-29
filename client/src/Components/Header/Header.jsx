@@ -78,7 +78,7 @@ function Header() {
       {/* END of NAVIGATION WITH MAIN LINKS */}
 
       <Link className=" icons__link" to="/cart">
-        <img className="icons__link--cart" src="./pics/shopping_cart.png" alt="shopping cart icon" />
+        <img className="icons__link--cart" src="https://raw.githubusercontent.com/someHarry/fe-102-final-project/main/client/public/pics/shopping_cart.png" alt="shopping cart icon" />
       </Link>
         
     </header>
