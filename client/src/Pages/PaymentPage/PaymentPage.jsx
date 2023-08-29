@@ -17,7 +17,7 @@ import Form from '../../Components/Form/Form'
 import '../../Components/Form/Form.scss'
 import Input from '../../Components/Input/Input'
 import '../../Components/Input/Input.scss'
-import actionBankCard from '../../redux/bankCard/actionBankCard'
+import { actionAddBankCard } from '../../redux/bankCard/actionBankCard'
 
 function isValidExpirationDate(value) {
   if (!value) return false
@@ -67,7 +67,7 @@ function PaymentPage() {
     initialValues: { ...initialValues },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      dispatch(actionBankCard(values))
+      dispatch(actionAddBankCard(values))
       resetForm()
     },
   })
