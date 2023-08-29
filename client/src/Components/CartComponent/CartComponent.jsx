@@ -67,7 +67,13 @@ export default function CartComponent({
         </span>
 
         <span className={`cart-${cartStyles}__item-price`}>
-          <Button text="Remove" btnStyles="Remove" btnClick={removeFromCart(el)} />
+          <Button
+            text="Remove"
+            btnStyles="Remove"
+            btnClick={() => {
+              removeFromCart(el)
+            }}
+          />
 
           <p>{el.currentPrice}</p>
         </span>
