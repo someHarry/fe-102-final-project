@@ -86,7 +86,7 @@ function PaymentSuccessPage() {
             <h4 className="success-order__title">Payment method</h4>
             <div className="success-address">
               <h4 className="success-order__info-title">Master card</h4>
-              <p className="success-order__info-text"> {card.phone} </p>
+              <p className="success-order__info-text"> {card.cardNumber} </p>
               <h4 className="success-order__info-title">Estimated shipping</h4>
               <p className="success-order__inf-text"> {paymentDate}</p>
             </div>
