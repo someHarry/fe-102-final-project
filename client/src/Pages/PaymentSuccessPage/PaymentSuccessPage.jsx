@@ -11,7 +11,7 @@ function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
   const [paymentDate, setPaymentDate] = useState(null);
   const user = useSelector((state) => state.user.dataUser)
-  const card = useSelector((state) => state.card.bankCard)
+  // const card = useSelector((state) => state.card.bankCard)
   
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
@@ -83,10 +83,10 @@ function PaymentSuccessPage() {
             </div>
             
           <div className="success-order__payment">
-            <h4 className="success-order__title">Payment method</h4>
+            {/* <h4 className="success-order__title">Payment method</h4> */}
             <div className="success-address">
-              <h4 className="success-order__info-title">Master card</h4>
-              <p className="success-order__info-text"> {card.cardNumber} </p>
+              {/* <h4 className="success-order__info-title">Master card</h4> */}
+              {/* <p className="success-order__info-text"> {card.cardNumber} </p> */}
               <h4 className="success-order__info-title">Estimated shipping</h4>
               <p className="success-order__inf-text"> {paymentDate}</p>
             </div>
