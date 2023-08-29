@@ -13,18 +13,28 @@ function Footer({ catalogTitle, clientTitle }) {
 
           <ul className="catalog__list footer-list">
             <li className="catalog__item footer__item">
-              <Link className="catalog-link footer__link" to="/">
-                Вино
+              <Link className="catalog-link footer__link" to="blog/jura">
+                Jura
               </Link>
             </li>
-            <li className="catalog__item footer__item">
-              <Link className="catalog-link footer__link" to="/">
-                Ігристі
+            <li className="client__item footer__item">
+              <Link className="catalog-link footer__link" to="blog/porto">
+                Porto
               </Link>
             </li>
-            <li className="catalog__item footer__item">
-              <Link className="catalog-link footer__link" to="/">
-                Віскі
+            <li className="client__item footer__item">
+              <Link className="catalog-link footer__link" to="blog/priorat">
+                Priorat
+              </Link>
+            </li>
+            <li className="client__item footer__item">
+              <Link className="catalog-link footer__link" to="blog/sicily">
+                Sicily
+              </Link>
+            </li>
+            <li className="client__item footer__item">
+              <Link className="catalog-link footer__link" to="blog/switzerland">
+                Switzerland
               </Link>
             </li>
           </ul>
@@ -35,18 +45,8 @@ function Footer({ catalogTitle, clientTitle }) {
 
           <ul className="client__list footer-list">
             <li className="client__item footer__item">
-              <Link className="client-link footer__link" to="/">
-                Вхід до кабінету
-              </Link>
-            </li>
-            <li className="client__item footer__item">
-              <Link className="client-link footer__link" to="/">
-                Каталог
-              </Link>
-            </li>
-            <li className="client__item footer__item">
-              <Link className="client-link footer__link" to="/">
-                Про нас
+              <Link className="client-link footer__link" to="contact">
+                Contact us
               </Link>
             </li>
           </ul>
