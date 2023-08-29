@@ -33,23 +33,23 @@ export default function CartComponent({
     dispatch(actionRemoveCart(el))
   }
 
-  // const increaseQuantity = (itemNo) => {
-  //   const updatedCart = cartItems.map((item) =>
-  //     item.itemNo === itemNo ? { ...item, quantity: (item.quantity || 1) + 1 } : item
-  //   )
-  //   setCartItems(updatedCart)
-  //   localStorage.setItem('cart', JSON.stringify(updatedCart))
-  //   updateSubtotals(subtotal)
-  // }
+  const increaseQuantity = (itemNo) => {
+    const updatedCart = cart.map((item) =>
+      item.itemNo === itemNo ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+    )
+    setCartItems(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+    updateSubtotals(subtotal)
+  }
 
-  // const decreaseQuantity = (itemNo) => {
-  //   const updatedCart = cartItems.map((item) =>
-  //     item.itemNo === itemNo && item.quantity > 1 ? { ...item, quantity: (item.quantity || 1) - 1 } : item
-  //   )
-  //   setCartItems(updatedCart)
-  //   localStorage.setItem('cart', JSON.stringify(updatedCart))
-  //   updateSubtotals(subtotal)
-  // }
+  const decreaseQuantity = (itemNo) => {
+    const updatedCart = cartItems.map((item) =>
+      item.itemNo === itemNo && item.quantity > 1 ? { ...item, quantity: (item.quantity || 1) - 1 } : item
+    )
+    setCartItems(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+    updateSubtotals(subtotal)
+  }
 
   const CartList = cart.map((el) => (
     <div className={`cart-${cartStyles}__item`} key={el.itemNo}>
