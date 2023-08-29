@@ -5,6 +5,7 @@
 import React, { useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
+
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
@@ -12,6 +13,7 @@ import { ReactComponent as Visa } from './icons/visaFormIcon.svg'
 import { ReactComponent as MasterCard } from './icons/mastercardFormIcon.svg'
 import './PaymentPage.scss'
 import CartComponent from '../../Components/CartComponent/CartComponent'
+
 import Button from '../../Components/Button/Button'
 import Form from '../../Components/Form/Form'
 import '../../Components/Form/Form.scss'
@@ -47,22 +49,21 @@ const validationSchema = yup.object({
 const randomShippingNumber = Math.floor(Math.random() * 10)
 
 function PaymentPage() {
+  const dispatch = useDispatch()
  const [subtotal, setSubtotal] = useState(0);
 
   const updateSubtotals = (newSubtotal) => {
     setSubtotal(newSubtotal);
   };
   
-  const street = useSelector((state) => state.user.dataUser)
-  const email = useSelector((state) => state.user.dataUser)
-  const city = useSelector((state) => state.user.dataUser)
+ const user = useSelector((state) => state.user.dataUser)
   
   const initialValues = {
     cardNumber: '',
     expirationDate: '',
     cvc: '',
   }
-  const dispatch = useDispatch()
+
   const formikForm = useFormik({
     initialValues: { ...initialValues },
     validationSchema: validationSchema,
@@ -86,17 +87,16 @@ function PaymentPage() {
             <h4 className="payment-title">Delivery Details</h4>
             <div className="payment-address">
               <h4 className="payment-address__title">Shipping address</h4>
-              <p className="payment-address__text">
-                {street.street} {city.city}
-              </p>
+              <p className="payment-address__text">{`${user.city}, ${user.street}`}</p>
             </div>
             <div className="payment-address">
-              <h4 className="payment-address__title">Billing addresss</h4>
-              <p className="payment-address__text">Same as shipping address</p>
+              <h4 className="payment-address__title">Recipient data</h4>
+              <p className="payment-address__text">{`${user.name} ${user.lastName}`}</p>
             </div>
             <div className="payment-address">
               <h4 className="payment-address__title">Contact information</h4>
-              <p className="payment-address__text"> {email.email}</p>
+              <p className="payment-address__text"> {user.email}</p>
+              <p className="payment-address__text"> {user.phone}</p>
             </div>
           </div>
           <div className="payment-type">
