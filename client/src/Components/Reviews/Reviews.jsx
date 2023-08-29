@@ -79,7 +79,7 @@ function Reviews() {
               />
             )}
             <div className="reviews__item">
-              <p className="sales__item--text">{review.text}</p>
+              <p className="reviews__item--text">{review.text}</p>
             </div>
           </article>
         </SwiperSlide>

@@ -3,4 +3,6 @@ import { createAction } from '@reduxjs/toolkit'
 
 const actionAddBankCard = createAction('bankCard/actionAddBankCard')
 
-export default actionAddBankCard
+const actionClearBankCard = createAction('bankCard/actionClearBankCard')
+
+export { actionAddBankCard, actionClearBankCard }

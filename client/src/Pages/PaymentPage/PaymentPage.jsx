@@ -2,8 +2,11 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
+
 import { useFormik } from 'formik'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import * as yup from 'yup'
 import { ReactComponent as Visa } from './icons/visaFormIcon.svg'
 import { ReactComponent as MasterCard } from './icons/mastercardFormIcon.svg'
@@ -13,7 +16,7 @@ import Form from '../../Components/Form/Form'
 import '../../Components/Form/Form.scss'
 import Input from '../../Components/Input/Input'
 import '../../Components/Input/Input.scss'
-
+import { actionAddBankCard } from '../../redux/bankCard/actionBankCard'
 
 function isValidExpirationDate(value) {
   if (!value) return false
@@ -42,22 +45,26 @@ const validationSchema = yup.object({
 })
 
 function PaymentPage() {
+  const dispatch = useDispatch()
+
+  const user = useSelector((state) => state.user.dataUser)
+
   const initialValues = {
     cardNumber: '',
     expirationDate: '',
     cvc: '',
   }
+
   const formikForm = useFormik({
     initialValues: { ...initialValues },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      // navigate("/");
+      dispatch(actionAddBankCard(values))
       resetForm()
     },
   })
-
   return (
-    <section className='payment-page'>
+    <section className="payment-page">
       <div className="routes">
         <p className="routes-titl">1. MY BAG</p>
         <hr className="routes-line" />
@@ -66,24 +73,22 @@ function PaymentPage() {
         <p className="routes-titl">3. REVIEW & PAYMENT</p>
       </div>
       <div className="payment">
-        <div className='payment-adaptive'>
+        <div className="payment-adaptive">
           <div className="payment-info">
             <h4 className="payment-title">Delivery Details</h4>
             <div className="payment-address">
               <h4 className="payment-address__title">Shipping address</h4>
-              <p className="payment-address__text">
-                3 Falahi St , Falahi Ave, Pasdaran Blvd, Fars Province , Shiraz 71856-95159 Iran
-              </p>
+              <p className="payment-address__text">{`${user.city}, ${user.street}`}</p>
             </div>
             <div className="payment-address">
-              <h4 className="payment-address__title">Billing addresss</h4>
-              <p className="payment-address__text">Same as shipping address</p>
+              <h4 className="payment-address__title">Recipient data</h4>
+              <p className="payment-address__text">{`${user.name} ${user.lastName}`}</p>
             </div>
             <div className="payment-address">
               <h4 className="payment-address__title">Contact information</h4>
-              <p className="payment-address__text">amoopur@gmail.com</p>
+              <p className="payment-address__text"> {user.email}</p>
+              <p className="payment-address__text"> {user.phone}</p>
             </div>
-            <Button btnStyles="payment-info__btn" text="EDIT DETAILES" />
           </div>
           <div className="payment-type">
             <h4 className="payment-title">Payment type</h4>
@@ -133,7 +138,6 @@ function PaymentPage() {
                   </div>
                 </fieldset>
               </Form>
-              <Button text="Advanced payment" btnStyles="payment-type__btn__form"  />
             </div>
           </div>
         </div>
@@ -155,13 +159,24 @@ function PaymentPage() {
             </div>
             <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
-           <Link to="/payment_confirm">
-            <Button   text="Pay" btnStyles="payment-summery__order-btn" onClick={formikForm.handleSubmit} type="button"/>
+          <Link to="/payment_confirm">
+            <Button text="Pay" btnStyles="payment-summery__order-btn" onClick={formikForm.handleSubmit} type="button" />
           </Link>
         </div>
       </div>
     </section>
   )
+}
+PaymentPage.defaultProps = {
+  street: 'street',
+  city: 'city',
+  email: 'email',
+}
+
+PaymentPage.propTypes = {
+  street: PropTypes.string,
+  city: PropTypes.string,
+  email: PropTypes.string,
 }
 
 export default PaymentPage
