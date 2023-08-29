@@ -1,12 +1,18 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react'
+import { useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import './PaymentSuccessPage.scss'
 import Button from '../../Components/Button/Button'
 import MayLike from '../../Components/MayLike'
 
+
 function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
- const [paymentDate, setPaymentDate] = useState(null);
+  const [paymentDate, setPaymentDate] = useState(null);
+  const user = useSelector((state) => state.user.dataUser)
+  const card = useSelector((state) => state.card.bankCard)
+  
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
@@ -24,17 +30,24 @@ function PaymentSuccessPage() {
   const CartList = cartItems.map((el) => (
     <div className="cart-list__item" key={el.id}>
       <span className="cart-list__item-img">
-        <img src={`http://localhost:4000${el.image}`} alt="" />
+        <img className='img' src={`${el.imageUrls}`} alt="" />
       </span>
       <span className="cart-list__item-info">
-        <span className="cart-list__item-name-quantity">
-          <p>{el.name}</p>
+        <span className="cart-list__item-quantity">
+          <p className='cartList-text'>{el.name}</p>
+          <p>${el.currentPrice}</p>
         </span>
       </span>
     </div>
   ))
-
-const randomOrderNumber = Math.floor(Math.random()*100000000)
+ const subtotal = cartItems.reduce(
+    (total, item) =>
+      total +
+      (item.currentPrice || 0) * (item.quantity || 1),
+   
+    0
+  )
+  const randomOrderNumber = Math.floor(Math.random() * 100000000)
   return (
     <section className="success-page">
       
@@ -48,27 +61,6 @@ const randomOrderNumber = Math.floor(Math.random()*100000000)
         <div className="success-order">
           <div className="success-card">
             {CartList}
-            <div className='success-card__container'>
-              <div className='success-card__info'>
-              <img src="../../../public/pics/sales/red wine table.jpg" alt="" className='success-card__info-img'/>
-              <p className='success-card__info-title'>Ceylon Ginger Cinnamon <br />chai tea - 50 g</p>
-                <p className='success-card__info-price'>€3.90</p>
-                </div>
-            </div>
-             <div className='success-card__container'>
-              <div className='success-card__info'>
-              <img src="../../../public/pics/sales/red wine table.jpg" alt="" className='success-card__info-img'/>
-              <p className='success-card__info-title'>Ceylon Ginger Cinnamon <br />chai tea - 50 g</p>
-                <p className='success-card__info-price'>€3.90</p>
-                </div>
-            </div>
-             <div className='success-card__container'>
-              <div className='success-card__info'>
-              <img src="../../../public/pics/sales/red wine table.jpg" alt="" className='success-card__info-img'/>
-              <p className='success-card__info-title'>Ceylon Ginger Cinnamon <br />chai tea - 50 g</p>
-                <p className='success-card__info-price'>€3.90</p>
-                </div>
-            </div>
           </div>
           <div className='success-order__info-container'>
           <div className="success-order__delivery">
@@ -76,16 +68,17 @@ const randomOrderNumber = Math.floor(Math.random()*100000000)
             <div className="success-order__info">
               <h4 className="success-order__info-title">Shipping address</h4>
               <p className="success-order__info-text">
-                3 Falahi St , Falahi Ave, Pasdaran Blvd, Fars Province , Shiraz 71856-95159 Iran
+                {`${user.city}, ${user.street}`}
               </p>
             </div>
             <div className="success-order__address">
-              <h4 className="success-order__info-title">Billing addresss</h4>
-              <p className="success-order__info-text">Same as shipping address</p>
+              <h4 className="success-order__info-title">Recipient data</h4>
+              <p className="success-order__info-text">{`${user.name} ${user.lastName}`}</p>
             </div>
             <div className="success-order__address">
               <h4 className="success-order__info-title">Contact information</h4>
-              <p className="success-order__info-text">amoopur@gmail.com</p>
+              <p className="payment-address__text"> {user.email}</p>
+              <p className="payment-address__text"> {user.phone}</p>
             </div>
             </div>
             
@@ -93,7 +86,7 @@ const randomOrderNumber = Math.floor(Math.random()*100000000)
             <h4 className="success-order__title">Payment method</h4>
             <div className="success-address">
               <h4 className="success-order__info-title">Master card</h4>
-              <p className="success-order__info-text"> XXXX XXXX XXXX 5425 </p>
+              <p className="success-order__info-text"> {card.cardNumber} </p>
               <h4 className="success-order__info-title">Estimated shipping</h4>
               <p className="success-order__inf-text"> {paymentDate}</p>
             </div>
@@ -105,16 +98,16 @@ const randomOrderNumber = Math.floor(Math.random()*100000000)
             <hr className="success-summery-line" />
             <div className="success-summery__order">
               <p className="success-summery__order-position">Subtotal</p>
-              <span className="success-summery__order-price">€3.90</span>
+              <span className="success-summery__order-price">${subtotal}</span>
             </div>
             <div className="success-summery__order">
               <p className="success-summery__order-position">Delivery</p>
-              <span className="success-summery__order-price">€3.95</span>
+              <span className="success-summery__order-price">$15</span>
             </div>
             <hr className="success-summery-line" />
             <div className="success-summery__order">
               <p className="success-summery__order-total">Total</p>
-              <span className="success-summery__order-price-total">€7.85</span>
+              <span className="success-summery__order-price-total">${parseFloat(subtotal)+15}</span>
             </div>
           </div>
           <Link to="/">
