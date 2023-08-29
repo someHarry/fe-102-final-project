@@ -4,6 +4,11 @@
     margin-bottom: 90px;
 }
 
+
+.cart-list{
+    display: none;
+}
+
 .routes{
     display: flex;
     flex-direction: row;
@@ -49,12 +54,18 @@
         background-color: black;
         color: white;
         padding: 15px 40px !important;
+        margin-top: 15px;
     }
 }
 
 .delivery-form-address, .delivery-form-contact, .delivery-form-order{
     display: flex;
     flex-direction: column;
+}
+
+.delivery-form-order{
+    background-color: rgb(244, 244, 244);
+    padding: 20px 20px;
 }
 
 .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
