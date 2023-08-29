@@ -36,11 +36,12 @@ function PaymentSuccessPage() {
   const CartList = cartItems.map((el) => (
     <div className="cart-list__item" key={el.id}>
       <span className="cart-list__item-img">
-        <img src={`http://localhost:4000${el.image}`} alt="" />
+        <img className='img' src={`${el.imageUrls}`} alt="" />
       </span>
       <span className="cart-list__item-info">
         <span className="cart-list__item-quantity">
-          <p>{el.name}</p>
+          <p className='cartList-text'>{el.name}</p>
+          <p>${el.currentPrice}</p>
         </span>
       </span>
     </div>
@@ -111,7 +112,7 @@ function PaymentSuccessPage() {
             <hr className="success-summery-line" />
             <div className="success-summery__order">
               <p className="success-summery__order-total">Total</p>
-              <span className="success-summery__order-price-total">$7.85</span>
+              <span className="success-summery__order-price-total">${parseFloat(subtotal)+15}</span>
             </div>
           </div>
           <Link to="/">

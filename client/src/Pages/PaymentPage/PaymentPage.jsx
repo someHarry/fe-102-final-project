@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable object-shorthand */
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react'
+import React, { useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
@@ -11,7 +11,7 @@ import * as yup from 'yup'
 import { ReactComponent as Visa } from './icons/visaFormIcon.svg'
 import { ReactComponent as MasterCard } from './icons/mastercardFormIcon.svg'
 import './PaymentPage.scss'
-
+import CartComponent from '../../Components/CartComponent/CartComponent'
 import Button from '../../Components/Button/Button'
 import Form from '../../Components/Form/Form'
 import '../../Components/Form/Form.scss'
@@ -47,13 +47,15 @@ const validationSchema = yup.object({
 const randomShippingNumber = Math.floor(Math.random() * 10)
 
 function PaymentPage() {
+ const [subtotal, setSubtotal] = useState(0);
 
+  const updateSubtotals = (newSubtotal) => {
+    setSubtotal(newSubtotal);
+  };
+  
   const street = useSelector((state) => state.user.dataUser)
   const email = useSelector((state) => state.user.dataUser)
   const city = useSelector((state) => state.user.dataUser)
-  console.log(street)
-  console.log(email)
-  console.log(city)
   
   const initialValues = {
     cardNumber: '',
@@ -152,8 +154,10 @@ function PaymentPage() {
           <div className="payment-summery__order-container">
             <h4 className="payment-title">Order summery</h4>
             <div className="payment-summery__order">
+              <div className='none'><CartComponent updateSubtotals={updateSubtotals} cartStyles="none" /></div>
+                
               <p className="payment-summery__order-position">Subtotal</p>
-              <span className="payment-summery__order-price">$3.90</span>
+              <span className="payment-summery__order-price">${subtotal}</span>
             </div>
             <div className="payment-summery__order">
               <p className="payment-summery__order-position">Delivery</p>
@@ -162,7 +166,7 @@ function PaymentPage() {
             <hr className="payment-summery-line" />
             <div className="payment-summery__order">
               <p className="payment-summery__order-total">Total</p>
-              <span className="payment-summery__order-price-total">$7.85</span>
+              <span className="payment-summery__order-price-total">${parseFloat(subtotal)+15}</span>
             </div>
             <p className="payment-summery__order-info">Estimated shipping time: {randomShippingNumber} days</p>
           </div>
