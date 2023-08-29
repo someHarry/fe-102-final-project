@@ -54,7 +54,7 @@
     margin-bottom: 50px;
   }
   @media (max-width: 604px) {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
   }
   @media (max-width: 435px) {
     margin-bottom: 260px;
@@ -105,7 +105,7 @@
 }
 .aboutUs-content {
   display: flex;
-  @media (max-width: 435px) {
+  @media (max-width: 520px) {
     flex-direction: column;
     align-items: center;
   }

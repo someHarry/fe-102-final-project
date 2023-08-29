@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable object-shorthand */
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react'
+import React,{useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -17,6 +17,7 @@ import '../../Components/Form/Form.scss'
 import Input from '../../Components/Input/Input'
 import '../../Components/Input/Input.scss'
 import { actionAddBankCard } from '../../redux/bankCard/actionBankCard'
+import CartComponent from '../../Components/CartComponent/CartComponent'
 
 function isValidExpirationDate(value) {
   if (!value) return false
@@ -55,6 +56,11 @@ function PaymentPage() {
     cvc: '',
   }
 
+  const [subtotal, setSubtotal] = useState(0);
+
+  const updateSubtotals = (newSubtotal) => {
+    setSubtotal(newSubtotal);
+  };
   const formikForm = useFormik({
     initialValues: { ...initialValues },
     validationSchema: validationSchema,
@@ -65,6 +71,7 @@ function PaymentPage() {
   })
   return (
     <section className="payment-page">
+       <CartComponent updateSubtotals={updateSubtotals} cartStyles="list" />
       <div className="routes">
         <p className="routes-titl">1. MY BAG</p>
         <hr className="routes-line" />
@@ -150,12 +157,12 @@ function PaymentPage() {
             </div>
             <div className="payment-summery__order">
               <p className="payment-summery__order-position">Delivery</p>
-              <span className="payment-summery__order-price">€3.95</span>
+              <span className="payment-summery__order-price">${parseFloat(subtotal)}</span>
             </div>
             <hr className="payment-summery-line" />
             <div className="payment-summery__order">
               <p className="payment-summery__order-total">Total</p>
-              <span className="payment-summery__order-price-total">€7.85</span>
+              <span className="payment-summery__order-price-total">${(parseFloat(subtotal)+15).toFixed(2)}</span>
             </div>
             <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
