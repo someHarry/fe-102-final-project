@@ -29,7 +29,7 @@ export default function CartPage() {
             <h2 className="cart-info__title">Order summery</h2>
             <div className="cart-subtotal">
               <span>Subtotal</span>
-              <span>${subtotal}</span>
+              <span>${parseFloat(subtotal)}</span>
             </div>
             <div className="cart-subtotal">
               <span>Delivery</span>
