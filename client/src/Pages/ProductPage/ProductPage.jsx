@@ -9,25 +9,27 @@ import './ProductPage.scss'
 import sendRequest from '../../helpers/request'
 import Loader from '../../Components/Loader/Loader'
 import NotFoundPage from '../404Page/404Page'
-import { actionAddToCart } from '../../redux/cart/actionCart'
+import { actionAddToCart, actionDecreaseQuantity, actionIncreaseQuantity } from '../../redux/cart/actionCart'
 
 function ProductPage({ id }) {
   const [product, setProduct] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
   const [count, setCount] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
+  const dispatch = useDispatch()
+
   const increment = () => {
-    setCount((prevCount) => prevCount + 1)
+    setCount(count + 1)
+    dispatch(actionIncreaseQuantity({ itemNo: product.itemNo }))
   }
 
   const decrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1)
+    if (count > 1) {
+      setCount(count - 1)
+      dispatch(actionDecreaseQuantity({ itemNo: product.itemNo }))
     }
   }
-
-  const dispatch = useDispatch()
 
   const addToCart = () => {
     dispatch(actionAddToCart(product))
