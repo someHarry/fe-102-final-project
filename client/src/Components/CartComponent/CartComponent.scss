@@ -1,7 +1,11 @@
+.lis {
+  width: 40%;
+  margin-bottom: 50px;
+}
+
 .cart {
   &-lis {
-    width: 40%;
-    margin-bottom: 50px;
+    
     &__subtotal {
       display: flex;
       justify-content: space-between;
@@ -18,7 +22,6 @@
         box-sizing: border-box;
         padding: 10px 24px;
         margin: 0 auto;
-        //   margin-bottom: 25px;
       }
     }
 
@@ -29,6 +32,12 @@
       &-name-quantity {
         display: flex;
         justify-content: space-between;
+        a {
+          text-decoration: none;
+          color: black;
+          display: flex;
+          flex-wrap: wrap;
+        }
         p {
           display: flex;
           flex-wrap: wrap;
@@ -98,10 +107,20 @@
 }
 
 
+.collection{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  // width: 100vw;
+  // height: 100vh;
+  z-index: 1;
+  background-color: rgba(40, 40, 40, 0.2);
+}
 
 .cart {
   &-collection {
-    // height: 80vh;
     padding: 44px 22px;
     background-color: white;
     z-index: 2;
@@ -114,7 +133,7 @@
       margin-bottom: 44px;
     }
     &__container{
-      max-height: 460px; /* Максимальна висота контейнера перед прокручуванням */
+      max-height: 460px;
       overflow-y: auto;
     }
     &__subtotal {
@@ -137,7 +156,6 @@
         box-sizing: border-box;
         padding: 10px 24px;
         margin: 0 auto;
-        //   margin-bottom: 25px;
       }
     }
 
@@ -148,7 +166,9 @@
       &-name-quantity {
         display: flex;
         justify-content: space-between;
-        p {
+        a {
+          text-decoration: none;
+          color: black;
           display: flex;
           flex-wrap: wrap;
         }

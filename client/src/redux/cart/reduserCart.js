@@ -9,6 +9,7 @@ import {
   actionReadyCart,
   actionRemoveCart,
   actionRemoveLocalStorage,
+  // actionToggleModal,
 } from './actionCart'
 
 const initialState = {
@@ -28,6 +29,7 @@ const reducerCart = createReducer(initialState, (builder) => {
         const newItem = { ...payload, quant: 1 }
         state.cart = [...state.cart, newItem]
         localStorage.setItem('cart', JSON.stringify(state.cart))
+        state.showModal = true // Встановлення showModal в true, щоб показати модальне вікно
       }
     })
     .addCase(actionRemoveCart, (state, { payload }) => {
@@ -58,6 +60,9 @@ const reducerCart = createReducer(initialState, (builder) => {
       localStorage.setItem('cart', JSON.stringify(updatedCart))
       state.cart = updatedCart
     })
+    // .addCase(actionToggleModal, (state, { payload }) => {
+    //   state.showModal = payload
+    // })
 })
 
 export default reducerCart

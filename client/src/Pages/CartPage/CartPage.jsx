@@ -22,7 +22,7 @@ export default function CartPage() {
         <p className="routes-tit">3. REVIEW & PAYMENT</p>
       </div>
       <div className="cart-container">
-        <CartComponent updateSubtotals={updateSubtotals} cartStyles="lis" />
+        <CartComponent updateSubtotals={updateSubtotals} cartStyles='lis' modal={false}/>
 
         <div className="cart-details">
           <div className="cart-details__info">

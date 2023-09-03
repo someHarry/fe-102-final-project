@@ -15,6 +15,9 @@ const actionIncreaseQuantity = createAction('cart/actionIncreaseQuantity')
 
 const actionDecreaseQuantity = createAction('cart/actionDecreaseQuantity')
 
+// const actionToggleModal = createAction('cart/actionToggleModal')
+
+
 export {
   actionAddToCart,
   actionReadyCart,
@@ -23,4 +26,5 @@ export {
   actionClearCart,
   actionDecreaseQuantity,
   actionIncreaseQuantity,
+  // actionToggleModal,
 }
