@@ -8,7 +8,6 @@ import MayLike from '../../Components/MayLike'
 import './ProductPage.scss'
 import sendRequest from '../../helpers/request'
 import Loader from '../../Components/Loader/Loader'
-import CartComponent from '../../Components/CartComponent' // Hlib
 import NotFoundPage from '../404Page/404Page'
 import { actionAddToCart, actionDecreaseQuantity, actionIncreaseQuantity } from '../../redux/cart/actionCart'
 
@@ -17,9 +16,6 @@ function ProductPage({ id }) {
   const [count, setCount] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-
-  const [isCartOpen, setIsCartOpen] = useState(false) // додав Гліб
-  const [subtotal, setSubtotal] = useState(0) // додав Гліб
 
   const dispatch = useDispatch()
 
@@ -35,17 +31,7 @@ function ProductPage({ id }) {
     }
   }
 
-  const toggleCartModal = () => {
-    // додав Гліб
-    setIsCartOpen(!isCartOpen)
-  }
-
-  const updateSubtotals = (newSubtotal) => {
-    setSubtotal(newSubtotal)
-  }
-
   const addToCart = () => {
-    toggleCartModal() // додав Гліб
     dispatch(actionAddToCart(product))
   }
 
@@ -137,12 +123,6 @@ function ProductPage({ id }) {
                   </button>
                 </div>
                 <Button text="ADD TO CART" btnStyles="buttonDark" btnClick={addToCart} />
-                {isCartOpen && (                                                                // Hlib
-                  <>
-                    <CartComponent cartStyles="collection" updateSubtotals={updateSubtotals} modal={isCartOpen} />
-                    <span style={{ display: 'none' }}>{subtotal}</span>
-                  </>
-                )}
               </div>
             </div>
           </div>

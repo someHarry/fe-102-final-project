@@ -20,12 +20,14 @@ import Switzerland from './Pages/BlogPage/Blogs/Switzerland'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Reviews from './Components/Reviews/Reviews'
 import Contact from './Pages/ContactUs/Contact'
+import CartModal from './Components/CartModal'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Header />
+        <CartModal/>          
         <Routes>
           <Route path="/">
             <Route
