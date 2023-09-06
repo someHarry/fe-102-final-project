@@ -32,7 +32,7 @@ function AboutUs() {
     <section className="aboutUs">
       <h3 className="aboutUs-title">About Us</h3>
       <div className="aboutUs-block">
-        <ul className="aboutUs-list-item">
+        <ul className="aboutUs-list">
           {tabsData.map((tab) => (
             <li
               key={tab.id}
