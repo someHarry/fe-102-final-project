@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 import './Header.scss'
 import Logo from '../Logo'
+import CartCounter from '../CartCounter'
 
 
 function Header() {
@@ -78,6 +79,7 @@ function Header() {
       {/* END of NAVIGATION WITH MAIN LINKS */}
 
       <Link className=" icons__link" to="/cart">
+        <CartCounter/>
         <img className="icons__link--cart" src="https://raw.githubusercontent.com/someHarry/fe-102-final-project/main/client/public/pics/shopping_cart.png" alt="shopping cart icon" />
       </Link>
         

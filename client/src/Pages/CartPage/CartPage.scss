@@ -1,8 +1,6 @@
 .cart {
   max-width: 100vw;
   box-sizing: border-box;
-  // padding-left: 76px;
-  // padding-right: 76px;
   margin: 0 76px;
 
   .routes {
@@ -70,7 +68,6 @@
     &__info {
       background-color: rgba(244, 244, 244, 1);
       padding: 20px 30px;
-      // padding-bottom: 20px;
       margin-bottom: 50px;
       p {
         color: rgba(40, 40, 40, 0.7);
@@ -90,12 +87,21 @@
         line-height: 28px;
         letter-spacing: 0em;
         text-align: left;
-        // margin-block-start: 0;
       }
       &__total {
         display: flex;
         justify-content: space-between;
         margin-bottom: 25px;
+      }
+    }
+    &__payment {
+      background-color: rgba(244, 244, 244, 1);
+      padding: 20px 30px;
+      margin-bottom: 50px;
+      &-choose {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
       }
     }
     &__delivery {
@@ -129,30 +135,18 @@
           letter-spacing: 0.25px;
           text-align: left;
 
-          position: relative; /* Потрібно для вирівнювання стрілочок */
+          position: relative;
           padding-left: 20px;
           padding-top: 20px;
         }
         li::before {
           color: rgba(40, 40, 40, 1);
-          content: '>'; /* Код стрілки в шістнадцятковому форматі */
+          content: '>';
           position: absolute;
           left: 0;
         }
       }
     }
-  }
-}
-
-.payment {
-  background-color: rgba(244, 244, 244, 1);
-  padding: 20px 30px;
-  // padding-bottom: 20px;
-  margin-bottom: 50px;
-  &-choose {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
   }
 }
 
@@ -169,17 +163,17 @@
         margin-right: -76px;
         padding: 20px 76px;
       }
+      &__payment {
+        margin-left: -76px;
+        margin-right: -76px;
+        padding: 20px 76px;
+      }
       &__delivery {
         margin-left: -76px;
         margin-right: -76px;
         padding: 20px 76px;
       }
     }
-  }
-  .payment {
-    margin-left: -76px;
-    margin-right: -76px;
-    padding: 20px 76px;
   }
 }
 

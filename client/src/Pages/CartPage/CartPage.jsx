@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
+
+import { useSelector } from 'react-redux'
+
 import './CartPage.scss'
 import CartComponent from '../../Components/CartComponent/CartComponent'
 import MayLike from '../../Components/MayLike'
 import RadioButton from '../../Components/RadioButton'
 
 export default function CartPage() {
-  const [subtotal, setSubtotal] = useState(0);
 
-  const updateSubtotals = (newSubtotal) => {
-    setSubtotal(newSubtotal);
-  };
+  const subtotal = useSelector((state) => state.cart.subtotal)
 
- 
   return (
     <section className="cart">
       <div className="routes">
@@ -22,14 +21,14 @@ export default function CartPage() {
         <p className="routes-tit">3. REVIEW & PAYMENT</p>
       </div>
       <div className="cart-container">
-        <CartComponent updateSubtotals={updateSubtotals} cartStyles="lis" />
+        <CartComponent />
 
         <div className="cart-details">
           <div className="cart-details__info">
             <h2 className="cart-info__title">Order summery</h2>
             <div className="cart-subtotal">
               <span>Subtotal</span>
-              <span>${parseFloat(subtotal)}</span>
+              <span>${subtotal}</span>
             </div>
             <div className="cart-subtotal">
               <span>Delivery</span>
@@ -47,7 +46,7 @@ export default function CartPage() {
             />
             <div className="cart-subtotal">
               <span>Total</span>
-              <span>${(parseFloat(subtotal)+15).toFixed(2)}</span>
+              <span>${subtotal}</span>
             </div>
             <p>Estimated shipping time: 2 days</p>
             <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'rgba(40, 40, 40, 1)' }}>
@@ -68,9 +67,9 @@ export default function CartPage() {
               </a>
             </div>
           </div>
-          <div className="payment">
+          <div className="cart-details__payment">
             <h2 className="cart-info__title">Payment type</h2>
-            <div className="payment-choose">
+            <div className="cart-details__payment-choose">
               <RadioButton option="visa" imgsrc="./pics/payment/Visa.svg" />
               <RadioButton option="master" imgsrc="./pics/payment/Master.svg" />
               <RadioButton option="maestro" imgsrc="./pics/payment/Maestro.svg" />
@@ -89,7 +88,7 @@ export default function CartPage() {
           </div>
         </div>
       </div>
-      <MayLike/>
+      <MayLike />
     </section>
   )
 }
