@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 
 
 function PaginationPanel({queryParams, setQueryParams, productsQuantity}) {
-
-    console.log(setQueryParams)
-
     const [isLeftArrowActive, setIsLeftArrowActive] = useState(false);
     const [isRightArrowActive, setIsRightArrowActive] = useState(false);
 
@@ -37,9 +34,7 @@ function PaginationPanel({queryParams, setQueryParams, productsQuantity}) {
             {availablePageNumbers.length > 0 && availablePageNumbers.map((page) => (
                 <li className={`pagination-panel__page-number${currentPage === page ? " pagination-panel__page-number--current" : ""}`}
                     key={page.toString()}>
-                    <button onClick={changePageHandler} onKeyDown={(e) => {
-                        console.log(e)
-                    }}>{page}</button>
+                    <button onClick={changePageHandler} onKeyDown={() => {}}>{page}</button>
                 </li>))}
             <li className={`pagination-panel__arrow pagination-panel__arrow--right${isRightArrowActive ? " pagination-panel__arrow--active" : ""}`}>
                 <button>&gt;</button>
