@@ -10,6 +10,7 @@ import PaginationPanel from "./components/PaginationPanel";
 function ProductList() {
     const initialQueryString = window.location.search;
     const [products, setProducts] = useState([]);
+    const [productsQuantity, setProductsQuantity] = useState(0);
     const [isLoad, setIsLoad] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [queryParams, setQueryParams] = useState({perPage: 10, startPage: 1});
@@ -33,8 +34,8 @@ function ProductList() {
             .then(res => res.json())
             .then(
                 (result) => {
-                    // console.log(result);
                     if (result.productsQuantity > 0) {
+                        setProductsQuantity(result.productsQuantity)
                         setProducts(result.products);
                     }
                     setIsLoad(true);
@@ -86,7 +87,6 @@ function ProductList() {
     }
 
     return (
-
         <div className="product-list__wrapper">
             <section className="product-list">
                 <div className="product-list__filter-block">
@@ -124,7 +124,8 @@ function ProductList() {
                             <p>Nothing was found for your request. Try another one. 🤷‍♂️</p>
                         }
                     </ul>
-                    <PaginationPanel queryParams={queryParams} setQueryParams={setQueryParams}/>
+                    <PaginationPanel queryParams={queryParams} setQueryParams={setQueryParams}
+                                     productsQuantity={productsQuantity}/>
                 </div>
             </section>
         </div>

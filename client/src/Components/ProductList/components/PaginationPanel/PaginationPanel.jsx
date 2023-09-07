@@ -3,68 +3,47 @@ import {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 
 
-function PaginationPanel({queryParams, setQueryParams}) {
+function PaginationPanel({queryParams, setQueryParams, productsQuantity}) {
 
-    const [paginationPanelStatements, setPaginationPanelStatements] = useState({
-        activeArrows: {
-            left: false,
-            right: true,}
-        })
+    console.log(setQueryParams)
 
-    async function isNextPage(params) {
-        const newQuery = {...params};
-        let queryParamsString = "";
-        newQuery.startPage = (params.startPage - 1) * params.perPage + 1;
-        newQuery.perPage = 1;
+    const [isLeftArrowActive, setIsLeftArrowActive] = useState(false);
+    const [isRightArrowActive, setIsRightArrowActive] = useState(false);
 
-        Object.keys(newQuery).forEach((key) => {
-            if (queryParamsString.length < 1) {
-                queryParamsString = `?${key}=${newQuery[key]}`;
-            } else {
-                queryParamsString += `&${key}=${newQuery[key]}`;
-            }
-        })
-
-        return fetch(`http://localhost:4000/api/products/filter${queryParamsString}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    if (result.productsQuantity > 0) {
-                        setPaginationPanelStatements((prev)=> ({...prev, isExtraItem: true}));
-                    }
-                },
-                () => {
-                    setPaginationPanelStatements((prev)=> ({...prev, isExtraItem: false}));
-                }
-            )
-    }
+    const currentPage = queryParams.startPage;
+    const pageCount = Math.ceil(productsQuantity / queryParams.perPage);
+    const availablePageNumbers = [...Array(pageCount + 1).keys()].slice(1);
 
     useEffect(() => {
-        setPaginationPanelStatements({
-            activeArrows: {
-                left: false,
-                right: true,
-            },
-            pages: {
-                current: 1,
-                available: [1,],
-            }
-        })
+        setIsLeftArrowActive(currentPage > 1);
+        setIsRightArrowActive(currentPage !== Math.ceil(productsQuantity / queryParams.perPage));
 
-        isNextPage(queryParams)
-        console.log(queryParams)
-    }, [])
+    }, [queryParams]);
 
-
-    console.log(queryParams, setQueryParams)
-
+    function changePageHandler(e) {
+        const target = e.target.closest("button");
+        const li = target.closest("li");
+        if (!li.classList.contains("pagination-panel__page-number--current")) {
+            const targetNumber = +target.innerText;
+            setQueryParams((prev)=>({...prev, startPage:targetNumber}))
+        }
+    }
 
     return (
         <ul className="pagination-panel">
-            <li className={`pagination-panel__arrow--left${!paginationPanelStatements.activeArrows.left ? " pagination-panel__arrow--disabled" : ""}`}>&lt;</li>
-            {paginationPanelStatements.pages.available.length > 0 && paginationPanelStatements.pages.available.map((page) => (
-                <li className="pagination-panel__page-number">{page}</li>))}
-            <li className={`pagination-panel__arrow--right${!paginationPanelStatements.activeArrows.right ? " pagination-panel__arrow--disabled" : ""}`}>&gt;</li>
+            <li className={`pagination-panel__arrow pagination-panel__arrow--left${isLeftArrowActive ? " pagination-panel__arrow--active" : ""}`}>
+                <button>&lt;</button>
+            </li>
+            {availablePageNumbers.length > 0 && availablePageNumbers.map((page) => (
+                <li className={`pagination-panel__page-number${currentPage === page ? " pagination-panel__page-number--current" : ""}`}
+                    key={page.toString()}>
+                    <button onClick={changePageHandler} onKeyDown={(e) => {
+                        console.log(e)
+                    }}>{page}</button>
+                </li>))}
+            <li className={`pagination-panel__arrow pagination-panel__arrow--right${isRightArrowActive ? " pagination-panel__arrow--active" : ""}`}>
+                <button>&gt;</button>
+            </li>
         </ul>
     )
 }
@@ -72,6 +51,7 @@ function PaginationPanel({queryParams, setQueryParams}) {
 PaginationPanel.propTypes = {
     queryParams: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number,])).isRequired,
     setQueryParams: PropTypes.func.isRequired,
+    productsQuantity: PropTypes.number.isRequired,
 }
 
 
