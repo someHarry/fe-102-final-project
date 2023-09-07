@@ -17,7 +17,7 @@ function PaginationPanel({queryParams, setQueryParams, productsQuantity}) {
 
     }, [queryParams]);
 
-    function changePageHandler(e) {
+    function changePageByNumber(e) {
         const target = e.target.closest("button");
         const li = target.closest("li");
         if (!li.classList.contains("pagination-panel__page-number--current")) {
@@ -26,18 +26,29 @@ function PaginationPanel({queryParams, setQueryParams, productsQuantity}) {
         }
     }
 
+    function changePageByArrow(e) {
+        const target = e.target.closest("button");
+        const li = target.closest("li");
+        if (li.classList.contains("pagination-panel__arrow--left") && currentPage !== 1) {
+            setQueryParams((prev)=>({...prev, startPage:currentPage - 1}))
+        }
+        if (li.classList.contains("pagination-panel__arrow--right") && currentPage !== pageCount) {
+            setQueryParams((prev)=>({...prev, startPage:currentPage + 1}))
+        }
+    }
+
     return (
         <ul className="pagination-panel">
             <li className={`pagination-panel__arrow pagination-panel__arrow--left${isLeftArrowActive ? " pagination-panel__arrow--active" : ""}`}>
-                <button>&lt;</button>
+                <button onClick={changePageByArrow} onKeyDown={() => {}}>&lt;</button>
             </li>
             {availablePageNumbers.length > 0 && availablePageNumbers.map((page) => (
                 <li className={`pagination-panel__page-number${currentPage === page ? " pagination-panel__page-number--current" : ""}`}
                     key={page.toString()}>
-                    <button onClick={changePageHandler} onKeyDown={() => {}}>{page}</button>
+                    <button onClick={changePageByNumber} onKeyDown={() => {}}>{page}</button>
                 </li>))}
             <li className={`pagination-panel__arrow pagination-panel__arrow--right${isRightArrowActive ? " pagination-panel__arrow--active" : ""}`}>
-                <button>&gt;</button>
+                <button onClick={changePageByArrow} onKeyDown={() => {}}>&gt;</button>
             </li>
         </ul>
     )
