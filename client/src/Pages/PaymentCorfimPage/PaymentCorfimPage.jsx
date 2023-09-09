@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { ReactComponent as MasterCard } from '../PaymentPage/icons/mastercardFormIcon.svg'
 import './PaymentCorfimPage.scss'
+import CartComponent from '../../Components/CartComponent/CartComponent'
 import Button from '../../Components/Button/Button'
 
 function PaymentCorfimPage() {
   const [isLoaderVisible, setLoaderVisible] = useState(true)
   const [isSuccessVisible, setSuccessVisible] = useState(false)
+ const [subtotal, setSubtotal] = useState(0);
 
+  const updateSubtotals = (newSubtotal) => {
+    setSubtotal(newSubtotal);
+  };
+  
   const handleConfirmPayClick = () => {
     setLoaderVisible(false)
     setSuccessVisible(true)
@@ -52,8 +58,9 @@ function PaymentCorfimPage() {
             <p>payment amount</p>
           </div>
           <div className="confirm_info-payment">
+                <div className='none'><CartComponent updateSubtotals={updateSubtotals} cartStyles="none" /></div>
             <h4 className="confirm_info-payment_text">Good Wine</h4>
-            <h4 className="confirm_info-payment_text">€7.90</h4>
+            <h4 className="confirm_info-payment_text">${parseFloat(subtotal)+15}</h4>
           </div>
         </div>
         <Button text="Confirm pay" btnClick={handleConfirmPayClick} btnStyles="confirm-btn__pay" />

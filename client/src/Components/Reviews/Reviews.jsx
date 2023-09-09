@@ -15,15 +15,15 @@ function Reviews() {
   const reviewsData = [
     {
       imgSrc: './pics/reviews/review1.jpg',
-      text: "Good Wine  is an absolute delight for the senses! Its vibrant fruity aroma draws you in, and with the first sip, youre greeted by a burst of flavors that dance on your palate. The balance between the subtle sweetness and the hint of oak is perfection.",
+      text: "Good Wine  is an absolute delight for the senses! Its vibrant fruity aroma draws you in, and with the first sip, youre greeted by a burst of flavors that dance on your palate. The balance between the subtle sweetness and the hint of oak is .",
     },
     {
       imgSrc: './pics/reviews/review2.jpg',
-      text: 'I recently tried Good Wine  and was pleasantly surprised by its uniqueness. The name says it all – its like a journey through a vineyard. The initial notes of citrus and green apple transform into a medley of tropical fruits, leaving a crisp finish.',
+      text: 'I recently tried Good Wine  and was pleasantly surprised by its uniqueness. The name says it all – its like a journey through a vineyard. The initial notes of citrus and green apple transform into a medley of tropical fruits, leaving a crisp .',
     },
     {
       imgSrc: './pics/reviews/review3.jpg',
-      text: 'Good Wine embodies a lively spirit thats hard to resist. Its effervescence tickles your taste buds, and the subtle floral undertones create a delightful bouquet. While I enjoyed the playful experience, I would have preferred a slightly drier finish.',
+      text: 'Good Wine embodies a lively spirit thats hard to resist. Its effervescence tickles your taste buds, and the subtle floral undertones create a delightful bouquet. While I enjoyed the playful experience, I would have preferred a slightly drier .',
     },
     {
       imgSrc: './pics/reviews/review4.jpg',
@@ -31,11 +31,11 @@ function Reviews() {
     },
      {
        imgSrc: './pics/reviews/review5.jpg',
-       text: 'If youre tired of the same old wines, Good Wine is a refreshing departure. Its fusion of red and black berries with a touch of spice gives it a distinctive character. The smoothness belies its affordable price point, making it an excellent choice for both casual.',
+       text: 'If youre tired of the same old wines, Good Wine is a refreshing departure. Its fusion of red and black berries with a touch of spice gives it a distinctive character. The smoothness belies its affordable price point, making it an excellent choice for .',
     },
          {
            imgSrc: './pics/reviews/review6.jpg',
-           text: 'As a wine enthusiast, I appreciate Good Wine attempt to blend different grape varieties. The result is a harmonious composition of flavors that evolves as you enjoy it. However, I felt that the aroma could be more pronounced to complement the complex taste',
+           text: 'As a wine enthusiast, I appreciate Good Wine attempt to blend different grape varieties. The result is a harmonious composition of flavors that evolves as you enjoy it. However, I felt that the aroma could be more pronounced ',
     },
           {
            imgSrc: './pics/reviews/review7.jpg',
@@ -79,7 +79,7 @@ function Reviews() {
               />
             )}
             <div className="reviews__item">
-              <p className="sales__item--text">{review.text}</p>
+              <p className="reviews__item--text">{review.text}</p>
             </div>
           </article>
         </SwiperSlide>

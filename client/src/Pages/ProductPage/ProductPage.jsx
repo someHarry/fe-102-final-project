@@ -2,27 +2,37 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 import Button from '../../Components/Button/Button'
 import MayLike from '../../Components/MayLike'
 import './ProductPage.scss'
 import sendRequest from '../../helpers/request'
 import Loader from '../../Components/Loader/Loader'
 import NotFoundPage from '../404Page/404Page'
+import { actionAddToCart, actionDecreaseQuantity, actionIncreaseQuantity } from '../../redux/cart/actionCart'
 
 function ProductPage({ id }) {
   const [product, setProduct] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
   const [count, setCount] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
+  const dispatch = useDispatch()
+
   const increment = () => {
-    setCount((prevCount) => prevCount + 1)
+    setCount(count + 1)
+    dispatch(actionIncreaseQuantity({ itemNo: product.itemNo }))
   }
 
   const decrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1)
+    if (count > 1) {
+      setCount(count - 1)
+      dispatch(actionDecreaseQuantity({ itemNo: product.itemNo }))
     }
+  }
+
+  const addToCart = () => {
+    dispatch(actionAddToCart(product))
   }
 
   useEffect(() => {
@@ -31,7 +41,6 @@ function ProductPage({ id }) {
     sendRequest(`http://localhost:4000/api/products/${id}`)
       .then((data) => {
         if ((product.itemNo && data.itemNo === product.itemNo) || !product.itemNo) {
-          console.log(product.itemNo)
           setProduct(data)
         } else {
           throw new Error('Invalid product ID')
@@ -113,7 +122,7 @@ function ProductPage({ id }) {
                     </svg>
                   </button>
                 </div>
-                <Button text="ADD TO CART" btnStyles="buttonDark" />
+                <Button text="ADD TO CART" btnStyles="buttonDark" btnClick={addToCart} />
               </div>
             </div>
           </div>

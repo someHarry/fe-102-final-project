@@ -15,7 +15,6 @@
     @media screen and (min-width: 320px) and (max-width: 768px) {
       padding: 30px;
     }
-
 }
 
 // NAVIGATION WITH MAIN LINKS
@@ -180,6 +179,7 @@
 // ICONS MENU
 
 .icons__link {
+  position: relative;
   display: flex;
   order: 3;
   justify-content: flex-end;

@@ -9,4 +9,21 @@ const actionRemoveCart = createAction('cart/actionRemoveCart')
 
 const actionRemoveLocalStorage = createAction('cart/actionRemoveLocalStorage')
 
-export { actionAddToCart, actionReadyCart, actionRemoveCart, actionRemoveLocalStorage }
+const actionClearCart = createAction('cart/actionClearCart')
+
+const actionIncreaseQuantity = createAction('cart/actionIncreaseQuantity')
+
+const actionDecreaseQuantity = createAction('cart/actionDecreaseQuantity')
+
+const actionHandleModal = createAction('cart/actionHandleModal') // Hlib
+
+export {
+  actionAddToCart,
+  actionReadyCart,
+  actionRemoveCart,
+  actionRemoveLocalStorage,
+  actionClearCart,
+  actionDecreaseQuantity,
+  actionIncreaseQuantity,
+  actionHandleModal, // Hlib
+}

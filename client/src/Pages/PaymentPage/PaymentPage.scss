@@ -23,11 +23,11 @@
   margin: auto 29px;
   background: #282828;
   @media (max-width: 992px) {
-        width: 100px;
-    }
-         @media (max-width: 769px) {
-           display: none;
-         }
+    width: 100px;
+  }
+  @media (max-width: 769px) {
+    display: none;
+  }
 }
 
 .routes-titl {
@@ -35,12 +35,12 @@
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
-    @media (max-width: 992px) {
-          font-size: 18px;
-      }
-            @media (max-width: 769px) {
-              display: none;
-            }
+  @media (max-width: 992px) {
+    font-size: 18px;
+  }
+  @media (max-width: 769px) {
+    display: none;
+  }
 }
 
 .routes-titl:nth-of-type(3n) {
@@ -48,23 +48,24 @@
   font-size: 26px;
   font-style: normal;
   font-weight: 700;
-    @media (max-width: 992px) {
-        font-size: 20px;
-        font-weight: 500;
-      }
-      @media (max-width: 769px) {
-        display: block;
-        margin-right: 40px;
-      }
+  @media (max-width: 992px) {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  @media (max-width: 769px) {
+    display: block;
+    margin-right: 40px;
+  }
 }
 
 .payment {
   display: flex;
   flex-direction: row;
   gap: 40px;
-  margin: 49px 75px 132px 75px;
+  margin: 52px 0px 132px 75px;
   @media (max-width: 992px) {
     flex-direction: column;
+    gap: 0;
   }
 }
 
@@ -85,6 +86,10 @@
 .payment-info {
   max-width: 264px;
   height: 440px;
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
 
   .payment-info__btn {
     margin-top: 34px;
@@ -115,7 +120,7 @@
 
 .payment-address {
   margin-top: 40px;
-@media (max-width: 769px) {
+  @media (max-width: 769px) {
     margin-top: 20px;
   }
   .payment-address__title {
@@ -143,9 +148,9 @@
     margin-left: 0;
     margin-top: auto;
   }
-     @media (max-width: 769px) {
-       margin-top:-30px;
-     }
+  @media (max-width: 769px) {
+    margin-top: -30px;
+  }
 }
 .payment-type h4 {
   @media (max-width: 769px) {
@@ -197,11 +202,11 @@
   }
 }
 
-    .payment-form-title__icon {
-      display: flex;
-      gap: 11px;
-      margin-top: 18px;
-    }
+.payment-form-title__icon {
+  display: flex;
+  gap: 11px;
+  margin-top: 18px;
+}
 
 .pay-form-title-container {
   display: flex;
@@ -214,12 +219,11 @@
     background: #f4f4f4;
     padding: 28px 31px 42px 18px;
     @media (max-width: 992px) {
-      margin-top: 45px;
+      margin-top: 30px;
       max-width: 720px;
-      margin-left:0;
+      margin-left: 0;
     }
     @media (max-width: 769px) {
-      margin-top: 35px;
       max-width: 360px;
     }
   }
@@ -313,17 +317,17 @@
   text-transform: uppercase;
   width: 455px;
   margin-top: 32px;
-  &:hover{
+  &:hover {
     background-color: #fff;
-      color: #282828;
+    color: #282828;
   }
   @media (max-width: 992px) {
     width: 720px;
     margin-left: 0;
   }
   @media (max-width: 769px) {
-  width: 360px;
-   }
+    width: 360px;
+  }
 }
 
 .payment-summery-line {
@@ -335,4 +339,7 @@
     max-width: 500px;
     margin: 25px 75px;
   }
+}
+.none{
+  display: none;
 }

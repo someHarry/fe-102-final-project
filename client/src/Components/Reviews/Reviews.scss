@@ -5,7 +5,6 @@
   justify-content: space-between;
   background-color: rgb(212 212 212 / 38%);
   margin-top: 100px;
-  margin-bottom: 300px;
   padding: 50px;
 }
 .reviews-img {
@@ -28,6 +27,7 @@
     padding: 10px;
     line-height: 30px;
     font-size: 18px;
+    
   }
 
   &--time-limited {
@@ -42,7 +42,7 @@
 .swiper-button-prev::after,
 .swiper-button-next::after {
   color: #8a8585;
-  margin-bottom: 150px;
+margin-bottom: -100px;
 }
 
 .aboutUs-title {
