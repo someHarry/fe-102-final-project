@@ -12,6 +12,9 @@
     @media screen and (max-width: 992px) {
     height: 120px;
     }
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      padding: 30px;
+    }
 }
 
 // NAVIGATION WITH MAIN LINKS
@@ -48,7 +51,7 @@
 // Burger
 
 .burger-menu {
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 993px) {
     display: none;
   }
   display: flex;
@@ -61,33 +64,23 @@
   width: 2.5em;
   height: 2.5em;
   cursor: pointer;
-  border-radius: 0.5em;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
   transition: all .3s;
-  box-shadow: 6px 6px 12px #c5c5c5,
-             -6px -6px 12px #ffffff;
-  
   &:hover {
     border: 1px solid white;
   }
   &:active {
-    color: #666;
-    box-shadow: inset 4px 4px 12px #c5c5c5,
-               inset -4px -4px 12px #ffffff;
+    color: #e8e8e8;
   }
   & span {
     width: 25px;
     height: 3px;
     background: #131313;
-    border-radius: 100px;
     transition: 0.3s ease;
   }
   position: relative;
   }
   
   .burger-menu.checked{
-    box-shadow: rgb(255 255 255 / 25%) 0px 30px 50px -12px inset, rgb(66 61 61 / 30%) 0px 18px 26px -18px inset;
     & .burger-menu__item1{
       transform: translateY(350%)rotate(45deg);
       width: 25px;
@@ -102,7 +95,6 @@
     & .burger-menu__item3{
       transform: translateY(-200%) rotate(-45deg);
       width: 25px;
-      box-shadow: 0 0 10px #495057;
     }
   }
   // End Burger
@@ -110,33 +102,62 @@
 // Extended Menu for Burger 
 
 .menu-extended {
-  @media screen and (min-width: 320px) and (max-width: 992px){
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  justify-content: space-evenly;
-  gap: 5px;
-  width: 250px;
-  height: 250px;
-  top: 80px;
-  right: -100px;
-  z-index: 100;
-  transition: .5s ease-in-out;
-  border: 1px solid #e8e8e8;
-  border-radius: 10%;
-  background: #ffffff;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
-  cursor: pointer;
-  & > li {
-    padding: 0;
-    width: 100%;
-    font-size: 17px;
-    & > a {
+  @media screen and (min-width: 320px) and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-evenly;
+    gap: 5px;
+    width: 100vw;
+    height: 450px;
+    top: 60px;
+    right: -120px;
+    z-index: 100;
+    transition: .5s ease-in-out;
+    border: 1px solid #e8e8e8;
+    background: #ffffff;
+    cursor: pointer;
+    & > li {
+      padding: 0;
       width: 100%;
-      padding: 10px 20px;
-      box-sizing: border-box;
+      height: 100%;
+      display: contents;
+      font-size: 17px;
+      & > a {
+        width: 100%;
+        padding: 10px 20px;
+        box-sizing: border-box;
+      }
     }
   }
+
+  @media screen and (min-width: 768px) and (max-width: 992px){
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-evenly;
+    gap: 5px;
+    width: 100vw;
+    height: 450px;
+    top: 60px;
+    right: -162px;
+    z-index: 100;
+    transition: .5s ease-in-out;
+    border: 1px solid #e8e8e8;
+    background: #ffffff;
+    cursor: pointer;
+    & > li {
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: contents;
+      font-size: 17px;
+      & > a {
+        width: 100%;
+        padding: 10px 20px;
+        box-sizing: border-box;
+      }
+    }
 }
 }
 
