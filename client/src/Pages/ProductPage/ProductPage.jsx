@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../Components/Button/Button'
 import MayLike from '../../Components/MayLike'
 import './ProductPage.scss'
@@ -18,46 +18,55 @@ function ProductPage({ id }) {
   const [isError, setIsError] = useState(false)
 
   const dispatch = useDispatch()
+  const quant = useSelector((state) => state.cart.cart)
+
+  const cartItem = quant.find((item) => item.itemNo === id) || null
 
   const increment = () => {
-    setCount(count + 1)
-    dispatch(actionIncreaseQuantity({ itemNo: product.itemNo }))
+    dispatch(actionIncreaseQuantity({ itemNo: id }))
   }
 
   const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1)
-      dispatch(actionDecreaseQuantity({ itemNo: product.itemNo }))
-    }
+    dispatch(actionDecreaseQuantity({ itemNo: id }))
   }
 
   const addToCart = () => {
     dispatch(actionAddToCart(product))
   }
+  useEffect(() => {
+    if (cartItem && product.itemNo) {
+      setCount(cartItem.quant || 1)
+    } else {
+      addToCart()
+    }
+  }, [cartItem, product])
 
   useEffect(() => {
-    setIsLoading(true)
-
-    sendRequest(`http://localhost:4000/api/products/${id}`)
-      .then((data) => {
-        if ((product.itemNo && data.itemNo === product.itemNo) || !product.itemNo) {
-          setProduct(data)
-        } else {
-          throw new Error('Invalid product ID')
-        }
-      })
-      .catch((error) => {
-        console.error('Произошла ошибка:', error)
-        setIsError(true)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-  }, [id, product.itemNo])
+    if (!product.itemNo) {
+      setIsLoading(true)
+      sendRequest(`http://localhost:4000/api/products/${id}`)
+        .then((data) => {
+          if ((product.itemNo && data.itemNo === product.itemNo) || !product.itemNo) {
+            setProduct(data)
+          } else {
+            throw new Error('Invalid product ID')
+          }
+        })
+        .catch((error) => {
+          console.error('Произошла ошибка:', error)
+          setIsError(true)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    }
+  }, [])
 
   let isDiscounted = false
-  if (Number(product.discount > 0)) {
-    isDiscounted = true
+  if (product !== null) {
+    if (Number(product.discount > 0)) {
+      isDiscounted = true
+    }
   }
 
   return (

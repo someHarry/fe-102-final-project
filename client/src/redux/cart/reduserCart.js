@@ -23,7 +23,7 @@ const reducerCart = createReducer(initialState, (builder) => {
     })
     .addCase(actionAddToCart, (state, { payload }) => {
       const isInCart = state.cart.some((item) => item.itemNo === payload.itemNo)
-
+      console.log(payload)
       if (!isInCart) {
         const newItem = { ...payload, quant: 1 }
         state.cart = [...state.cart, newItem]
