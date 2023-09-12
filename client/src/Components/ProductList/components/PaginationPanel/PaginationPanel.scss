@@ -1,0 +1,39 @@
+// typography
+// probably should be moved to a higher level:
+$fontColorDefault: #282828;
+$fontSizeDefault: 16px;
+$fontSizeDefaultSmall: 14px;
+$fontFamilyDefault: "Montserrat", sans-serif;
+
+.pagination-panel {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 10px;
+
+  .pagination-panel__arrow > button, .pagination-panel__page-number > button {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .pagination-panel__arrow--active > button {
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .pagination-panel__page-number > button {
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .pagination-panel__page-number--current > button {
+    font-weight: 300;
+    text-decoration: underline;
+  }
+}

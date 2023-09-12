@@ -1,0 +1,16 @@
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -50%;
+  bottom: -50%;
+  width: 20px;
+  height: 20px;
+  background-color: #ec1d1d;
+  border-radius: 25px;
+  //   padding: 0 7.1px;
+  span {
+    color: white;
+  }
+}

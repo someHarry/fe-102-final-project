@@ -9,11 +9,14 @@ import {
   actionReadyCart,
   actionRemoveCart,
   actionRemoveLocalStorage,
+  actionHandleModal,      // Hlib
 } from './actionCart'
 
 const initialState = {
   readyToCart: null,
   cart: JSON.parse(localStorage.getItem('cart')) || [],
+  modal: false, // Hlib
+  subtotal: JSON.parse(localStorage.getItem('subtotal')) || 0,
 }
 
 const reducerCart = createReducer(initialState, (builder) => {
@@ -28,6 +31,16 @@ const reducerCart = createReducer(initialState, (builder) => {
         const newItem = { ...payload, quant: 1 }
         state.cart = [...state.cart, newItem]
         localStorage.setItem('cart', JSON.stringify(state.cart))
+        state.modal = true                                          // Hlib
+
+        const newSubtotal = state.cart.reduce((total, item) => {
+          const itemPrice = item.currentPrice || 0;
+          const itemQuantity = item.quant || 1;
+          return total + (itemPrice * itemQuantity);
+        }, 0);
+    
+        state.subtotal = newSubtotal.toFixed(2);
+        localStorage.setItem('subtotal', JSON.stringify(state.subtotal))      // Hlib
       }
     })
     .addCase(actionRemoveCart, (state, { payload }) => {
@@ -49,6 +62,15 @@ const reducerCart = createReducer(initialState, (builder) => {
       )
       localStorage.setItem('cart', JSON.stringify(updatedCart))
       state.cart = updatedCart
+
+      const newSubtotal = state.cart.reduce((total, item) => {              // Hlib
+        const itemPrice = item.currentPrice || 0;
+        const itemQuantity = item.quant || 1;
+        return total + (itemPrice * itemQuantity);
+      }, 0);
+  
+      state.subtotal = newSubtotal.toFixed(2);
+      localStorage.setItem('subtotal', JSON.stringify(state.subtotal))      // Hlib
     })
     .addCase(actionDecreaseQuantity, (state, { payload }) => {
       const { itemNo } = payload
@@ -57,7 +79,20 @@ const reducerCart = createReducer(initialState, (builder) => {
       )
       localStorage.setItem('cart', JSON.stringify(updatedCart))
       state.cart = updatedCart
+
+      const newSubtotal = state.cart.reduce((total, item) => {              // Hlib
+        const itemPrice = item.currentPrice || 0;
+        const itemQuantity = item.quant || 1;
+        return total + (itemPrice * itemQuantity);
+      }, 0);
+  
+      state.subtotal = newSubtotal.toFixed(2);
+      localStorage.setItem('subtotal', JSON.stringify(state.subtotal))      // Hlib
     })
+    .addCase(actionHandleModal, (state) => {            // Hlib
+      state.modal = false;
+    });
+
 })
 
 export default reducerCart
