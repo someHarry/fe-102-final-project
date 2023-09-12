@@ -1,22 +1,31 @@
-import React,{useState} from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react'
+import { useDispatch ,useSelector} from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import './DeliveryPage.scss'
 import { PatternFormat } from 'react-number-format'
 import { useNavigate } from 'react-router-dom'
-import CartComponent from '../../Components/CartComponent/CartComponent'
 import Input from '../../Components/Input/Input'
 import Button from '../../Components/Button/Button'
 import { actionAddUser } from '../../redux/user/actionUser'
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
-  lastName: Yup.string().required('Last name is required'),
-  city: Yup.string().required('City is required'),
-  email: Yup.string().email('Invalid email').required('Email is required'),
+  name: Yup.string()
+    .required('Name is required')
+    .matches(/^[a-zA-Z]+$/, 'Name should be in English'),
+  lastName: Yup.string()
+    .required('Last name is required') 
+    .matches(/^[a-zA-Z]+$/, 'Last name should be in English'),
+  city: Yup.string()
+    .required('City is required')
+    .matches(/^[a-zA-Z]+$/, 'City should be in English'),
+  email: Yup.string().email('Invalid email')
+    .required('Email is required'),
   phone: Yup.string().required('Phone is required'),
-  street: Yup.string().required('Street is required'),
+  street: Yup.string()
+    .required('Street is required')
+    .matches(/^[a-zA-Z0-9]+$/ , 'Street is required'),
+
 })
 
 export default function DeliveryForm() {
@@ -28,6 +37,7 @@ export default function DeliveryForm() {
     city: '',
     street: '',
   }
+  const subtotal = useSelector((state) => state.cart.subtotal)
 
   const dispatch = useDispatch()
 
@@ -45,15 +55,8 @@ export default function DeliveryForm() {
     onSubmit,
   })
 
-  const [subtotal, setSubtotal] = useState(0);
-
-  const updateSubtotals = (newSubtotal) => {
-    setSubtotal(newSubtotal);
-  };
 
   return (
-    <>
-      <CartComponent updateSubtotals={updateSubtotals} cartStyles="list" />
           <section className="container delivery-page">
             <div className="routes">
               <p className="routes-title">1. MY BAG</p>
@@ -148,7 +151,7 @@ export default function DeliveryForm() {
               <div className="delivery-form-order">
                 <h2 className="delivery-form-order__title">Order summery: </h2>
                 <p className="delivery-form-order__label">
-                  Subtotal: <span className="delivery-form-order__span">${parseFloat(subtotal)}</span>{' '}
+                  Subtotal: <span className="delivery-form-order__span">${subtotal}</span>{' '}
                 </p>
                 <p className="delivery-form-order__label">
                   Delivery: <span className="delivery-form-order__span">$15.00</span>
@@ -166,8 +169,6 @@ export default function DeliveryForm() {
                 />
               </div>
             </form>
-          </section>
-    </>
-    
+          </section>    
   )
 }
