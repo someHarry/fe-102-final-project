@@ -151,7 +151,6 @@ function FilterPanel({queryParams, setQueryParams}) {
                 newQueryParams[name] = valuesArr.join(",");
             }
         })
-        console.log("newQueryParams",newQueryParams)
         setQueryParams(newQueryParams);
 
     }, [filterOptions])
@@ -161,8 +160,9 @@ function FilterPanel({queryParams, setQueryParams}) {
         <ul className="filter-panel">
             {
                 Object.keys(filterOptions).map(
-                    (key) => (
-                        <li className="filter-panel__block" key={key}>
+                    (key, index) => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <li className="filter-panel__block" key={index}>
                             <button className="filter-panel__button closed" onClick={buttonClickHandler}>
                                 <h4 className="filter-panel__title">{key}</h4>
                                 <div className="filter-panel__expand-icon">&nbsp;</div>
@@ -173,13 +173,15 @@ function FilterPanel({queryParams, setQueryParams}) {
                                         return 1
                                     }
                                     return -1
-                                }).map(option => (
-                                        <FilterOption
-                                            name={key}
-                                            value={option.name}
-                                            updateFilterOptions={updateFilterOptions}
-                                        />
-                                    )
+                                }).map((option, subIndex) => (
+                                            <FilterOption
+                                                name={key}
+                                                value={`${option.name}`}
+                                                updateFilterOptions={updateFilterOptions}
+                                                /* eslint-disable-next-line react/no-array-index-key */
+                                                key={subIndex}
+                                            />
+                                        )
                                 )}
                             </ul>
                         </li>
