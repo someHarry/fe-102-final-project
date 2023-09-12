@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable object-shorthand */
 /* eslint-disable import/no-extraneous-dependencies */
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
-
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
@@ -17,7 +16,7 @@ import '../../Components/Form/Form.scss'
 import Input from '../../Components/Input/Input'
 import '../../Components/Input/Input.scss'
 import { actionAddBankCard } from '../../redux/bankCard/actionBankCard'
-import CartComponent from '../../Components/CartComponent/CartComponent'
+import { actionUpdateUserData } from '../../redux/user/actionUser'
 
 function isValidExpirationDate(value) {
   if (!value) return false
@@ -27,6 +26,7 @@ function isValidExpirationDate(value) {
   if (Number.isNaN(parsedMonth) || Number.isNaN(parsedYear)) return false
   return parsedMonth >= 1 && parsedMonth <= 12 && parsedYear > new Date().getFullYear() % 100
 }
+
 const validationSchema = yup.object({
   cardNumber: yup
     .string()
@@ -41,14 +41,39 @@ const validationSchema = yup.object({
     .test('expirationDate', 'Invalid expiration date', isValidExpirationDate),
   cvc: yup
     .string()
-    .required('cvc is required')
+    .required('CVC is required')
     .matches(/^\d{3}$/, 'Invalid CVC format (3 digits)'),
 })
 
 function PaymentPage() {
   const dispatch = useDispatch()
-
   const user = useSelector((state) => state.user.dataUser)
+  const subtotal = useSelector((state) => state.cart.subtotal)
+
+  const [isEditing, setIsEditing] = useState(false)
+  const [editedData, setEditedData] = useState({
+    city: user.city,
+    street: user.street,
+    name: user.name,
+    lastName: user.lastName,
+    email: user.email,
+    phone: user.phone,
+  })
+
+  const handleEditClick = () => {
+    setIsEditing(true)
+    console.log(setIsEditing)
+  }
+
+  const handleSaveClick = () => {
+    setIsEditing(false)
+    dispatch(actionUpdateUserData(editedData)) // Обновите данные в Redux
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setEditedData({ ...editedData, [name]: value })
+  }
 
   const initialValues = {
     cardNumber: '',
@@ -56,11 +81,6 @@ function PaymentPage() {
     cvc: '',
   }
 
-  const [subtotal, setSubtotal] = useState(0);
-
-  const updateSubtotals = (newSubtotal) => {
-    setSubtotal(newSubtotal);
-  };
   const formikForm = useFormik({
     initialValues: { ...initialValues },
     validationSchema: validationSchema,
@@ -69,9 +89,9 @@ function PaymentPage() {
       resetForm()
     },
   })
+
   return (
     <section className="payment-page">
-       <CartComponent updateSubtotals={updateSubtotals} cartStyles="list" />
       <div className="routes">
         <p className="routes-titl">1. MY BAG</p>
         <hr className="routes-line" />
@@ -83,25 +103,83 @@ function PaymentPage() {
         <div className="payment-adaptive">
           <div className="payment-info">
             <h4 className="payment-title">Delivery Details</h4>
-            <div className="payment-address">
-              <h4 className="payment-address__title">Shipping address</h4>
-              <p className="payment-address__text">{`${user.city}, ${user.street}`}</p>
-            </div>
-            <div className="payment-address">
-              <h4 className="payment-address__title">Recipient data</h4>
-              <p className="payment-address__text">{`${user.name} ${user.lastName}`}</p>
-            </div>
-            <div className="payment-address">
-              <h4 className="payment-address__title">Contact information</h4>
-              <p className="payment-address__text"> {user.email}</p>
-              <p className="payment-address__text"> {user.phone}</p>
-            </div>
+            {isEditing ? (
+              <div>
+                <div className="payment-address ">
+                  <h4 className="payment-address__title">Shipping address</h4>
+                  <textarea
+                    name="city"
+                    value={editedData.city}
+                    onChange={handleInputChange}
+                    placeholder="City"
+                    className="payment-address__text  textarea"
+                  />
+                  <textarea
+                    name="street"
+                    value={editedData.street}
+                    onChange={handleInputChange}
+                    placeholder="Street"
+                    className="payment-address__text textarea"
+                  />
+                </div>
+                <div className="payment-address">
+                  <h4 className="payment-address__title">Recipient data</h4>
+                  <textarea
+                    name="name"
+                    value={editedData.name}
+                    onChange={handleInputChange}
+                    placeholder="Name"
+                    className="payment-address__text textarea"
+                  />
+                  <textarea
+                    name="lastName"
+                    value={editedData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="Last Name"
+                    className="payment-address__text textarea"
+                  />
+                </div>
+                <div className="payment-address">
+                  <h4 className="payment-address__title">Contact information</h4>
+                  <textarea
+                    name="email"
+                    value={editedData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email"
+                    className="payment-address__text textarea"
+                  />
+                  <textarea
+                    name="phone"
+                    value={editedData.phone}
+                    onChange={handleInputChange}
+                    placeholder="Phone"
+                    className="payment-address__text textarea"
+                  />
+                </div>
+                <Button btnStyles="payment-info__btn payment-info__btn-save" text="SAVE" btnClick={handleSaveClick} />
+              </div>
+            ) : (
+              <div>
+                <div className="payment-address">
+                  <h4 className="payment-address__title">Shipping address</h4>
+                  <p className="payment-address__text">{`${editedData.city}, ${editedData.street}`}</p>
+                </div>
+                <div className="payment-address">
+                  <h4 className="payment-address__title">Recipient data</h4>
+                  <p className="payment-address__text">{`${editedData.name} ${editedData.lastName}`}</p>
+                </div>
+                <div className="payment-address">
+                  <h4 className="payment-address__title">Contact information</h4>
+                  <p className="payment-address__text"> {editedData.email}</p>
+                  <p className="payment-address__text"> {editedData.phone}</p>
+                </div>
+                <Button btnStyles="payment-info__btn" text="EDIT DETAILS" btnClick={handleEditClick} />
+              </div>
+            )}
           </div>
           <div className="payment-type">
             <h4 className="payment-title">Payment type</h4>
-            <div className="payment-type__btn">
-              <Button btnStyles="payment-type__btn--visa" text="" />
-            </div>
+        
             <div className="form__pay">
               <Form onSubmit={formikForm.handleSubmit}>
                 <fieldset className="form-block">
@@ -153,27 +231,33 @@ function PaymentPage() {
             <h4 className="payment-title">Order summery</h4>
             <div className="payment-summery__order">
               <p className="payment-summery__order-position">Subtotal</p>
-              <span className="payment-summery__order-price">€3.90</span>
+              <span className="payment-summery__order-price">${subtotal}</span>
             </div>
             <div className="payment-summery__order">
               <p className="payment-summery__order-position">Delivery</p>
-              <span className="payment-summery__order-price">${parseFloat(subtotal)}</span>
+              <span className="payment-summery__order-price">$15</span>
             </div>
             <hr className="payment-summery-line" />
             <div className="payment-summery__order">
               <p className="payment-summery__order-total">Total</p>
-              <span className="payment-summery__order-price-total">${(parseFloat(subtotal)+15).toFixed(2)}</span>
+              <span className="payment-summery__order-price-total">${subtotal}</span>
             </div>
             <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
           <Link to="/payment_confirm">
-            <Button text="Pay" btnStyles="payment-summery__order-btn" onClick={formikForm.handleSubmit} type="button" />
+            <Button
+              text="Pay"
+              btnStyles="payment-summery__order-btn"
+              btnClick={formikForm.handleSubmit}
+              type="button"
+            />
           </Link>
         </div>
       </div>
     </section>
   )
 }
+
 PaymentPage.defaultProps = {
   street: 'street',
   city: 'city',
