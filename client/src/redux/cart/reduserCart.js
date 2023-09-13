@@ -9,7 +9,7 @@ import {
   actionReadyCart,
   actionRemoveCart,
   actionRemoveLocalStorage,
-  actionHandleModal, // Hlib
+  actionHandleModal, // Hlib  
 } from './actionCart'
 
 const initialState = {
