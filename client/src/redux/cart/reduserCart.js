@@ -10,6 +10,8 @@ import {
   actionRemoveCart,
   actionRemoveLocalStorage,
   actionHandleModal,      // Hlib
+  actionIncreaseProductCount,
+  actionDecreaseProductCount,
 } from './actionCart'
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
   cart: JSON.parse(localStorage.getItem('cart')) || [],
   modal: false, // Hlib
   subtotal: JSON.parse(localStorage.getItem('subtotal')) || 0,
+  count: 1,
 }
 
 const reducerCart = createReducer(initialState, (builder) => {
@@ -28,7 +31,7 @@ const reducerCart = createReducer(initialState, (builder) => {
       const isInCart = state.cart.some((item) => item.itemNo === payload.itemNo)
 
       if (!isInCart) {
-        const newItem = { ...payload, quant: 1 }
+        const newItem = { ...payload, quant: state.count }
         state.cart = [...state.cart, newItem]
         localStorage.setItem('cart', JSON.stringify(state.cart))
         state.modal = true                                          // Hlib
@@ -91,6 +94,12 @@ const reducerCart = createReducer(initialState, (builder) => {
     })
     .addCase(actionHandleModal, (state) => {            // Hlib
       state.modal = false;
+    })
+    .addCase(actionIncreaseProductCount, (state) => {            // Hlib
+      state.count += 1;
+    })
+    .addCase(actionDecreaseProductCount, (state) => {            // Hlib
+      state.count -= 1;
     });
 
 })

@@ -17,6 +17,10 @@ const actionDecreaseQuantity = createAction('cart/actionDecreaseQuantity')
 
 const actionHandleModal = createAction('cart/actionHandleModal') // Hlib
 
+const actionIncreaseProductCount = createAction('cart/actionIncreaseProductCount')
+
+const actionDecreaseProductCount = createAction('cart/actionDecreaseProductCount')
+
 export {
   actionAddToCart,
   actionReadyCart,
@@ -26,4 +30,6 @@ export {
   actionDecreaseQuantity,
   actionIncreaseQuantity,
   actionHandleModal, // Hlib
+  actionIncreaseProductCount,
+  actionDecreaseProductCount,
 }
