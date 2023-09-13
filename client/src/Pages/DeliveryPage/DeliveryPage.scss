@@ -30,7 +30,6 @@
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
-    // display: none;
 }
 
 .routes-title:nth-of-type(2n) {
@@ -82,10 +81,20 @@
         justify-content: space-between;
         display: flex;
     }
-    width: 380px;
-    height: 314px;
-    background-color: rgb(244, 244, 244);
-    padding: 20px 20px;
+    &__summery{
+        width: 380px;
+        height: 230px;
+        background-color: rgb(244, 244, 244);
+        padding: 20px 20px;
+    }
+
+    &__info{
+        color: rgba(40, 40, 40, 0.7);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+    }
+    
 }
 
 .form-input{
@@ -142,7 +151,6 @@
     }
     .routes-title:nth-of-type(2n){
         font-size: 22px;
-        // display: none;
     }
 
     .delivery-form{
@@ -158,80 +166,14 @@
            font-size: 16px;          
            margin-bottom: 10px;
         }
-        width: 278px;
-        height: 252px;
-    }
-
-    .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
-        font-family: Montserrat;
-        font-size: 16px;
-        font-style: normal;
-        margin-bottom: 12px;
-    }
-
-    .form-input{
-        padding: 7px 0px;
-        text-indent: 7px;
-        width: 200px;
-    }
-    
-    .form-button{
-        background-color: black;
-        color: white;
-        padding: 10px 28px !important;
-    }
-    
-    .line{
-        width: 238px;
-        height: 1px;
-        background-color: #282828;
-    }
-    
-    .form-field {
-        margin-bottom: 14px;
-    }
-    
-    .error-message {
-        color: red;    
-        font-size: 14px;
-    }
-}
-
-@media (min-width: 769px) and (max-width:992px) {
-    .routes{
-        margin-top: 28px;
-        margin-bottom: 38px;
-    }
-    .route-line{
-        width: 115px;
-        height: 1px;
-        margin: auto 20px; 
-    }
-    .routes-title{
-        font-size: 16px;
-        align-self: center;
-        display: block;
-    }
-    .routes-title:nth-of-type(2n){
-        font-size: 18px;
-        // display: none;
-    }
-
-    .delivery-form{
-        gap: 38px;
-        &__button{
+        &__summery{
+            width: 278px;
+        height: 185px;
+        }
+        &__info{
             font-size: 14px;
-            padding: 10px 28px !important;
         }
-    }
-
-    .delivery-form-order{
-        &__label{
-           font-size: 16px;          
-           margin-bottom: 10px;
-        }
-        width: 278px;
-        height: 252px;
+        
     }
 
     .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
@@ -265,7 +207,88 @@
     
     .error-message {
         color: red;
-        font-size: 14px;
+        margin-bottom: 0px;
+        margin-top: 5px;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 769px) and (max-width:992px) {
+    .routes{
+        margin-top: 28px;
+        margin-bottom: 38px;
+    }
+    .route-line{
+        width: 115px;
+        height: 1px;
+        margin: auto 20px; 
+    }
+    .routes-title{
+        font-size: 16px;
+        align-self: center;
+        display: block;
+    }
+    .routes-title:nth-of-type(2n){
+        font-size: 18px;
+    }
+
+    .delivery-form{
+        gap: 38px;
+        &__button{
+            font-size: 14px;
+            padding: 10px 28px !important;
+        }
+    }
+
+    .delivery-form-order{
+        &__label{
+           font-size: 16px;          
+           margin-bottom: 10px;
+        }
+
+        &__summery{
+            width: 278px;
+            height: 185px;
+        }
+        &__info{
+            font-size: 14px;
+        }
+    }
+
+    .delivery-form-address__title, .delivery-form-contact__title, .delivery-form-order__title{
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        margin-bottom: 12px;
+    }
+
+    .form-input{
+        padding: 7px 0px;
+        text-indent: 7px;
+        width: 200px;
+    }
+    
+    .form-button{
+        background-color: black;
+        color: white;
+        padding: 10px 28px !important;
+    }
+    
+    .line{
+        width: 238px;
+        height: 1px;
+        background-color: #282828;
+    }
+    
+    .form-field {
+        margin-bottom: 14px;
+    }
+    
+    .error-message {
+        color: red;
+        margin-bottom: 0px;
+        margin-top: 5px;
+        font-size: 12px;
     }
 }
 
@@ -337,8 +360,13 @@
         margin-bottom: 20px;
     }
     .delivery-form-order{
-        width: 288px;
-        height: 287px;
+        &__summery{
+            width: 100%;
+        height: 100%;
+        }
+        &__info{
+            font-size: 14px;
+        }
     }
 }
 
@@ -417,7 +445,20 @@
         font-size: 14px;
     }
     .delivery-form-order{
-        width: 250px;
-        height: 269px;
+        &__summery{
+            width: 100%;
+        height: 100%;
+        }
+        &__info{
+            font-size: 14px;
+        }
     }
+}
+
+.form-item.has-validation .error-message{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.pay-input .input{
+    margin-bottom: 10px;
 }

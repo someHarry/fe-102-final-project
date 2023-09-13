@@ -12,19 +12,18 @@ import { actionAddUser } from '../../redux/user/actionUser'
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required('Name is required')
-    .matches(/^[a-zA-Z]+$/, 'Name should be in English'),
+    .matches(/^[a-zA-Z]+$/, 'Name must be in English'),
   lastName: Yup.string()
     .required('Last name is required') 
-    .matches(/^[a-zA-Z]+$/, 'Last name should be in English'),
+    .matches(/^[a-zA-Z]+$/, 'Last name must be in English'),
   city: Yup.string()
     .required('City is required')
-    .matches(/^[a-zA-Z]+$/, 'City should be in English'),
-  email: Yup.string().email('Invalid email')
-    .required('Email is required'),
+    .matches(/^[a-zA-Z]+$/, 'City must be in English'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
   phone: Yup.string().required('Phone is required'),
   street: Yup.string()
     .required('Street is required')
-    .matches(/^[a-zA-Z0-9]+$/ , 'Street is required'),
+    .matches(/^(?=.*[a-zA-Z]) || (?=.*[0-9])/, 'Street is required'),
 
 })
 
@@ -149,18 +148,22 @@ export default function DeliveryForm() {
                 />
               </div>
               <div className="delivery-form-order">
-                <h2 className="delivery-form-order__title">Order summery: </h2>
+                <div className="delivery-form-order__summery">
+                  <h2 className="delivery-form-order__title">Order summery: </h2>
                 <p className="delivery-form-order__label">
-                  Subtotal: <span className="delivery-form-order__span">${subtotal}</span>{' '}
+                  Subtotal: <span className="delivery-form-order__span">${parseFloat(subtotal)}</span>{' '}
                 </p>
                 <p className="delivery-form-order__label">
-                  Delivery: <span className="delivery-form-order__span">$15.00</span>
+                  Delivery: <span className="delivery-form-order__span">$15</span>
                 </p>
                 <hr className="line" />
                 <p className="delivery-form-order__label">
                   Total : <span className="section-order__span">${(parseFloat(subtotal)+15).toFixed(2)}</span>
                 </p>
 
+                <p className="delivery-form-order__info">Estimated shipping time: 2 days</p>
+                </div>
+                
                 <Button
                   btnStyles="delivery-form__button"
                   text="GO TO PAYMENT"
