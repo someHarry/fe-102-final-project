@@ -149,19 +149,19 @@ export default function DeliveryForm() {
               </div>
               <div className="delivery-form-order">
                 <div className="delivery-form-order__summery">
-                  <h2 className="delivery-form-order__title">Order summery: </h2>
-                <p className="delivery-form-order__label">
-                  Subtotal: <span className="delivery-form-order__span">${parseFloat(subtotal)}</span>{' '}
-                </p>
-                <p className="delivery-form-order__label">
-                  Delivery: <span className="delivery-form-order__span">$15</span>
-                </p>
-                <hr className="line" />
-                <p className="delivery-form-order__label">
-                  Total : <span className="section-order__span">${(parseFloat(subtotal)+15).toFixed(2)}</span>
-                </p>
+                    <h2 className="delivery-form-order__title">Order summery: </h2>
+                    <p className="delivery-form-order__label">
+                      Subtotal: <span className="delivery-form-order__span">${subtotal}</span>{' '}
+                    </p>
+                    <p className="delivery-form-order__label">
+                      Delivery: <span className="delivery-form-order__span">$15</span>
+                    </p>
+                    <hr className="line" />
+                    <p className="delivery-form-order__label">
+                      Total : <span className="section-order__span">${(parseFloat(subtotal)+15).toFixed(2)}</span>
+                    </p>
 
-                <p className="delivery-form-order__info">Estimated shipping time: 2 days</p>
+                    <p className="delivery-form-order__info">Estimated shipping time: 2 days</p>
                 </div>
                 
                 <Button
