@@ -19,9 +19,15 @@ function ProductPage({ id }) {
   const [product, setProduct] = useState({})
   const [count, setCount] = useState(1)
 
-  const quant = useSelector((state) => state.cart.cart)
+  const basketList = useSelector((state) => state.cart.cart)
 
-  const cartItem = quant.find((item) => item.itemNo === id)
+  useEffect(() => {
+    basketList.forEach((item) => {
+      if (item.itemNo === id) {
+        setCount(item.quant)
+      }
+    })
+  }, [basketList, id])
 
   const dispatch = useDispatch()
 
@@ -38,7 +44,7 @@ function ProductPage({ id }) {
   }
 
   const addToCart = () => {
-    dispatch(actionAddToCart(product))
+    dispatch(actionAddToCart({ ...product, quant: count }))
   }
 
   const request = async () => {
@@ -51,7 +57,6 @@ function ProductPage({ id }) {
   useEffect(() => {
     if (!isError && !isLoading) {
       setProduct(data)
-      setCount(1)
     }
   }, [data, isError, isLoading])
 
