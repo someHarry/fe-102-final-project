@@ -28,7 +28,7 @@ const reducerCart = createReducer(initialState, (builder) => {
       const isInCart = state.cart.some((item) => item.itemNo === payload.itemNo)
       console.log(payload)
       if (!isInCart) {
-        const newItem = { ...payload, quant: 1 }
+        const newItem = { ...payload }
         state.cart = [...state.cart, newItem]
         localStorage.setItem('cart', JSON.stringify(state.cart))
         state.modal = true // Hlib
