@@ -11,7 +11,7 @@ export default function NotFoundPage(props) {
         <section className='section-404page container'>
             <p className='section-404page__title'>Oops!</p>
             <p className='section-404page__desc'>{text}</p>
-            <img className='section-404page__img' src={img} alt='Not found img' />
+            <img className='section-404page__img' src={img} alt='Not found page' />
 
             <Link to='/' className='section-404page__link'>
                 <Button btnStyles="section-404page__btn" text='Back to home'> </Button>
