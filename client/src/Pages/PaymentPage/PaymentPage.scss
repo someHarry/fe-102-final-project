@@ -70,6 +70,10 @@
 }
 
 .payment-adaptive {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
   @media (max-width: 992px) {
     display: flex;
     flex-direction: row;
@@ -85,12 +89,6 @@
 }
 .payment-info {
   max-width: 264px;
-  // height: 440px;
-
-  @media (max-width: 768px) {
-    // height: 300px;
-  }
-
   .payment-info__btn {
     margin-top: 34px;
     font-size: 16px;
@@ -107,11 +105,8 @@
     }
   }
 }
-.payment-info__btn-save {
-  margin-bottom: 100px;
-}
 .payment-title {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
@@ -121,6 +116,16 @@
 .textarea {
   max-width: 250px;
   max-height: 40px;
+  &:hover {
+    border: 2px solid #c3b212;
+  }
+}
+.textarea-email {
+  width: 300px;
+  max-height: 50px;
+  &:hover {
+    border: 2px solid #c3b212;
+  }
 }
 .payment-address--textarea {
   margin-top: 10px;
@@ -145,26 +150,6 @@
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0.5px;
-  }
-}
-
-.payment-type {
-  margin-left: 294px;
-  margin-top: -396px;
-  @media (max-width: 992px) {
-    margin-left: 0;
-    margin-top: 0px;
-  }
-  @media (max-width: 769px) {
-      margin-top: -25px;
-  }
-}
-.textarea:focus + .payment-type {
-  margin-top: -641px;
-}
-.payment-type h4 {
-  @media (max-width: 769px) {
-    margin-left: 48px;
   }
 }
 
@@ -312,7 +297,7 @@
   line-height: 20px;
   letter-spacing: 0.1px;
   text-transform: uppercase;
-  width: 455px;
+  width: 465px;
   margin-top: 32px;
   &:hover {
     background-color: #fff;

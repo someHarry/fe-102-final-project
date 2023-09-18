@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { ReactComponent as Visa } from './icons/visaFormIcon.svg'
 import { ReactComponent as MasterCard } from './icons/mastercardFormIcon.svg'
@@ -32,13 +32,13 @@ const validationSchema = yup.object({
     .string()
     .required('Card number is required')
     .min(16, 'min 16')
-    .max(19, 'max 16')
+    .max(19, 'max 19')
     .matches(/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/, 'Invalid card number format'),
   expirationDate: yup
     .string()
     .required('Expired date is required')
-    .matches(/^\d{2}\/\d{2}$/, 'Invalid expiration date format (MM/YY)')
-    .test('expirationDate', 'Invalid expiration date', isValidExpirationDate),
+    .matches(/^\d{2}\/\d{2}$/, 'Invalid expiration date')
+    .test('expirationDate', 'Invalid expiration date format (MM/YY)', isValidExpirationDate),
   cvc: yup
     .string()
     .required('CVC is required')
@@ -47,6 +47,7 @@ const validationSchema = yup.object({
 
 function PaymentPage() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const user = useSelector((state) => state.user.dataUser)
   const subtotal = useSelector((state) => state.cart.subtotal)
 
@@ -59,15 +60,22 @@ function PaymentPage() {
     email: user.email,
     phone: user.phone,
   })
+  const [cardNumber, setCardNumber] = useState('')
+  const [expiredData, setExpiredData] = useState('')
+  const [isHidden] = useState(false)
 
+  const initialValues = {
+    cardNumber: '',
+    expirationDate: '',
+    cvc: '',
+  }
   const handleEditClick = () => {
     setIsEditing(true)
-    console.log(setIsEditing)
   }
 
   const handleSaveClick = () => {
     setIsEditing(false)
-    dispatch(actionUpdateUserData(editedData)) // Обновите данные в Redux
+    dispatch(actionUpdateUserData(editedData))
   }
 
   const handleInputChange = (e) => {
@@ -75,20 +83,39 @@ function PaymentPage() {
     setEditedData({ ...editedData, [name]: value })
   }
 
-  const initialValues = {
-    cardNumber: '',
-    expirationDate: '',
-    cvc: '',
+  const onSubmit = (values, { resetForm }) => {
+    dispatch(actionAddBankCard(values))
+    navigate('/payment_confirm')
+    resetForm()
   }
 
-  const formikForm = useFormik({
-    initialValues: { ...initialValues },
-    validationSchema: validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      dispatch(actionAddBankCard(values))
-      resetForm()
-    },
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit,
   })
+const handleExpiredData = (e) => {
+  const inputValue = e.target.value.replace(/\s/g, ''); 
+  const formattedValue = inputValue
+    .replace(/\D/g, '') 
+    .replace(/^(\d{2})(\d{0,2})/, '$1/$2')  // Добавляем "/"
+    .trim()
+    .slice(0, 5);  // Ограничиваем до "MM/YY"
+
+  setExpiredData(formattedValue); // Обновляем состояние для срока действия
+  formik.setFieldValue('expirationDate', formattedValue); // Обновляем formik срока действия
+}
+  const handleCardNumber = (e) => {
+    const inputValue = e.target.value.replace(/\s/g, ''); 
+    const formattedValue = inputValue
+      .replace(/\D/g, '') 
+      .replace(/(\d{4})/g, '$1 ')
+      .trim()
+      .slice(0, 19); 
+
+    setCardNumber(formattedValue); 
+    formik.setFieldValue('cardNumber', formattedValue);
+  }
 
   return (
     <section className="payment-page">
@@ -146,7 +173,7 @@ function PaymentPage() {
                     value={editedData.email}
                     onChange={handleInputChange}
                     placeholder="Email"
-                    className="payment-address__text textarea"
+                    className="payment-address__text textarea-email"
                   />
                   <textarea
                     name="phone"
@@ -156,7 +183,7 @@ function PaymentPage() {
                     className="payment-address__text textarea"
                   />
                 </div>
-                <Button btnStyles="payment-info__btn payment-info__btn-save" text="SAVE" btnClick={handleSaveClick} />
+                <Button btnStyles="payment-info__btn " text="SAVE" btnClick={handleSaveClick} />
               </div>
             ) : (
               <div>
@@ -179,9 +206,9 @@ function PaymentPage() {
           </div>
           <div className="payment-type">
             <h4 className="payment-title">Payment type</h4>
-        
+
             <div className="form__pay">
-              <Form onSubmit={formikForm.handleSubmit}>
+              <Form onSubmit={formik.handleSubmit}>
                 <fieldset className="form-block">
                   <div className="pay-form-title-container">
                     <p className="pay-form-title">Credit or Debit card</p>
@@ -191,34 +218,41 @@ function PaymentPage() {
                   </div>
 
                   <Input
-                    {...formikForm.getFieldProps('cardNumber')}
+                    {...formik.getFieldProps('cardNumber')}
                     type="text"
                     className="pay-input pay-input1"
                     name="cardNumber"
-                    placeholder="xxxx       xxxx       xxxx       xxxx"
+                    placeholder="xxxx  xxxx  xxxx  xxxx"
                     label="Card number"
-                    error={formikForm.errors.cardNumber && formikForm.touched.cardNumber}
-                    errorMessage={formikForm.errors.cardNumber}
+                    error={formik.errors.cardNumber && formik.touched.cardNumber}
+                    errorMessage={formik.errors.cardNumber}
+                    value={cardNumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
+                    onKeyUp={handleCardNumber}
                   />
+                  {isHidden && <div>Hidden content for len === 16</div>}
                   <div className="flex">
                     <Input
-                      {...formikForm.getFieldProps('expirationDate')}
+                      {...formik.getFieldProps('expirationDate')}
                       type="text"
                       className="pay-input pay-input2"
                       name="expirationDate"
                       placeholder="xx/xx"
                       label="Expired date"
-                      error={formikForm.errors.expirationDate && formikForm.touched.expirationDate}
-                      errorMessage={formikForm.errors.expirationDate}
+                      error={formik.errors.expirationDate && formik.touched.expirationDate}
+                      errorMessage={formik.errors.expirationDate}
+                      value={expiredData}
+                      onChange={(e) => setExpiredData(e.target.value)}
+                      onKeyUp={handleExpiredData}
                     />
                     <Input
-                      {...formikForm.getFieldProps('cvc')}
+                      {...formik.getFieldProps('cvc')}
                       type="text"
                       className="pay-input pay-input2"
                       name="cvc"
                       label="CVC"
-                      error={formikForm.errors.cvc && formikForm.touched.cvc}
-                      errorMessage={formikForm.errors.cvc}
+                      error={formik.errors.cvc && formik.touched.cvc}
+                      errorMessage={formik.errors.cvc}
                     />
                   </div>
                 </fieldset>
@@ -245,12 +279,7 @@ function PaymentPage() {
             <p className="payment-summery__order-info">Estimated shipping time: 2 days</p>
           </div>
           <Link to="/payment_confirm">
-            <Button
-              text="Pay"
-              btnStyles="payment-summery__order-btn"
-              btnClick={formikForm.handleSubmit}
-              type="button"
-            />
+            <Button text="Pay" btnStyles="payment-summery__order-btn" btnClick={formik.handleSubmit} type="button" />
           </Link>
         </div>
       </div>
