@@ -8,6 +8,7 @@
 .success-page {
   margin: 0 auto;
   max-width: 1280px;
+  padding: 0 21px;
 }
 .success-order-title {
   font-size: 22px;
@@ -16,8 +17,8 @@
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 53px;
-  @media (max-width: 992px) {
-    margin-bottom: 0;
+  &:hover {
+    color: #ec1d1d;
   }
 }
 .success-title {
@@ -36,33 +37,29 @@
   margin-top: 16px;
   margin-bottom: 28px;
 }
+
 .success {
   color: #282828;
-  @media (max-width: 992px) {
-    display: flex;
-  }
-  @media (max-width: 769px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 
   .success-order {
     display: flex;
     gap: 72px;
+    justify-content: center;
+
     @media (max-width: 992px) {
-      flex-direction: column;
-      gap: 30px;
+      display: block;
     }
+
     .success-card {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 28px;
       max-width: 453px;
       margin-right: 72px;
       margin-top: 34px;
       @media (max-width: 992px) {
-        margin-top: 60px;
+        margin: 0 auto;
       }
       .success-card__info {
         display: flex;
@@ -87,20 +84,27 @@
     .success-order__info-container {
       display: flex;
       @media (max-width: 992px) {
-        gap: 61px;
-        margin-top: 60px;
+        gap: 40px;
+        margin-top: 40px;
+        margin-bottom: 100px;
       }
-      @media (max-width: 769px) {
+      @media (max-width: 541px) {
         flex-direction: column;
-        margin-left: 115px;
+        // margin-left: 115px;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
       }
     }
     .success-order__delivery {
       max-width: 264px;
       margin-right: 72px;
-          margin-left: 50px;
+      margin-left: 50px;
       @media (max-width: 992px) {
         margin-bottom: -40px;
+      }
+      @media (max-width: 769px) {
+        margin-right: 0;
       }
     }
     .success-order__title {
@@ -127,25 +131,33 @@
         margin-bottom: 40px;
       }
     }
+    .success-order__payment {
+      width: 196px;
+    }
+    
   }
   .success-summery {
     display: flex;
     gap: 218px;
     margin-top: 57px;
+    justify-content: center;
     @media (max-width: 992px) {
       flex-direction: column;
       gap: 30px;
     }
     .success-summery_recipe {
-      margin-bottom: 139px;
+      margin-bottom: 100px;
       @media (max-width: 992px) {
-        margin-bottom: 40px;
+        margin: 0 auto;
       }
       .success-summery__order {
         display: flex;
         gap: 329px;
         @media (max-width: 992px) {
-          gap: 160px;
+          gap: 400px;
+        }
+        @media (max-width: 769px) {
+          gap: 300px;
         }
 
         .success-summery__order-position {
@@ -167,10 +179,9 @@
           }
         }
         .success-summery__order-total {
-          font-size: 16px;
+          font-size: 22px;
           font-weight: 500;
-          line-height: 24px;
-          line-height: 24px;
+          line-height: 28px;
           letter-spacing: 0.15px;
         }
       }
@@ -178,6 +189,14 @@
         max-width: 416.019px;
         margin-bottom: 22px;
         margin-right: 14px;
+        @media (max-width: 992px) {
+          max-width: 450.019px;
+          margin-right: 189px;
+        }
+        @media (max-width: 769px) {
+          max-width: 400px;
+          margin-right: 28px;
+        }
       }
     }
   }
@@ -190,30 +209,43 @@
     line-height: 20px;
     letter-spacing: 0.1px;
     text-transform: uppercase;
-    width: 264px;
-
+    padding: 21px 70px;
+    @media (max-width: 992px) {
+      margin: 20px 170px 40px;
+    }
+        @media (max-width: 541px) {
+    margin: 0 0 0 115px;
+        }
     &:hover {
       background-color: #fff;
       color: #282828;
     }
+    
   }
 }
 .cart-list__item {
-display: flex;
-gap: 26px;
+  display: flex;
+  gap: 26px;
 }
-.cart-list__item-quantity{
+.cart-list__item-quantity {
   font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0.15px;
-    text-transform: uppercase;
-    display: flex;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-transform: uppercase;
+  display: flex;
 }
-.img{
+.img {
   width: 71px;
   height: 71px;
 }
-.cartList-text{
-    width: 400px;
-}
+.cartList-text {
+  width: 400px;
+  
+  @media (max-width: 541px) {
+      width: 250px;
+      margin-right: 40px;
+    }
+   
+  }
+

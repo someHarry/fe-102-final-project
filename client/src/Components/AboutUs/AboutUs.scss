@@ -66,6 +66,7 @@
     border: 1px solid #edefef;
     padding: 20px 90px;
     position: relative;
+    cursor: pointer;
     @media (max-width: 1011px) {
       padding: 20px 60px;
     }
@@ -80,7 +81,7 @@
     }
 
     &:hover {
-      border: 1.5px solid #ec1d1d;
+      border: 2px solid #ec1d1d;
     }
   }
 }
@@ -88,6 +89,7 @@
 .aboutUs-list__items.active {
   background: #ec1d1d !important;
   color: #ffffff;
+  
 }
 
 .aboutUs-content {

@@ -1,20 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useSelector} from 'react-redux'
 import { ReactComponent as MasterCard } from '../PaymentPage/icons/mastercardFormIcon.svg'
 import './PaymentCorfimPage.scss'
-import CartComponent from '../../Components/CartComponent/CartComponent'
 import Button from '../../Components/Button/Button'
 
 function PaymentCorfimPage() {
   const [isLoaderVisible, setLoaderVisible] = useState(true)
   const [isSuccessVisible, setSuccessVisible] = useState(false)
- const [subtotal, setSubtotal] = useState(0);
+  const subtotal = useSelector((state) => state.cart.subtotal)
 
-  const updateSubtotals = (newSubtotal) => {
-    setSubtotal(newSubtotal);
-  };
-  
   const handleConfirmPayClick = () => {
     setLoaderVisible(false)
     setSuccessVisible(true)
@@ -39,12 +35,12 @@ function PaymentCorfimPage() {
           <p className="confirm_bank-check">Id Check</p>
         </div>
         {isLoaderVisible && (
-          <div className="loader">
+          <div className="loader" data-testid="loader">
             <div className="center loading" />
           </div>
         )}
         {isSuccessVisible && (
-          <div className="swal-icon swal-icon--success">
+          <div className="swal-icon swal-icon--success" data-testid="success-icon">
             <span className="swal-icon--success__line swal-icon--success__line--long" />
             <span className="swal-icon--success__line swal-icon--success__line--tip" />
             <div className="swal-icon--success__ring" />
@@ -58,9 +54,8 @@ function PaymentCorfimPage() {
             <p>payment amount</p>
           </div>
           <div className="confirm_info-payment">
-                <div className='none'><CartComponent updateSubtotals={updateSubtotals} cartStyles="none" /></div>
             <h4 className="confirm_info-payment_text">Good Wine</h4>
-            <h4 className="confirm_info-payment_text">${parseFloat(subtotal)+15}</h4>
+            <h4 className="confirm_info-payment_text">${subtotal}</h4>
           </div>
         </div>
         <Button text="Confirm pay" btnClick={handleConfirmPayClick} btnStyles="confirm-btn__pay" />

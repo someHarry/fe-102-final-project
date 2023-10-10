@@ -98,12 +98,11 @@ const handleExpiredData = (e) => {
   const inputValue = e.target.value.replace(/\s/g, ''); 
   const formattedValue = inputValue
     .replace(/\D/g, '') 
-    .replace(/^(\d{2})(\d{0,2})/, '$1/$2')  // Добавляем "/"
+    .replace(/^(\d{2})(\d{0,2})/, '$1/$2') 
     .trim()
-    .slice(0, 5);  // Ограничиваем до "MM/YY"
-
-  setExpiredData(formattedValue); // Обновляем состояние для срока действия
-  formik.setFieldValue('expirationDate', formattedValue); // Обновляем formik срока действия
+    .slice(0, 5);  
+  setExpiredData(formattedValue); 
+  formik.setFieldValue('expirationDate', formattedValue); 
 }
   const handleCardNumber = (e) => {
     const inputValue = e.target.value.replace(/\s/g, ''); 
@@ -200,7 +199,7 @@ const handleExpiredData = (e) => {
                   <p className="payment-address__text"> {editedData.email}</p>
                   <p className="payment-address__text"> {editedData.phone}</p>
                 </div>
-                <Button btnStyles="payment-info__btn" text="EDIT DETAILS" btnClick={handleEditClick} />
+                <Button btnStyles="payment-info__btn" text="EDIT DETAILS" btnClick={handleEditClick}/>
               </div>
             )}
           </div>
@@ -229,6 +228,7 @@ const handleExpiredData = (e) => {
                     value={cardNumber}
                     onChange={(e) => setCardNumber(e.target.value)}
                     onKeyUp={handleCardNumber}
+                    data-testid='cardNumber'
                   />
                   {isHidden && <div>Hidden content for len === 16</div>}
                   <div className="flex">
@@ -244,6 +244,7 @@ const handleExpiredData = (e) => {
                       value={expiredData}
                       onChange={(e) => setExpiredData(e.target.value)}
                       onKeyUp={handleExpiredData}
+                      data-testid='expirationDate'
                     />
                     <Input
                       {...formik.getFieldProps('cvc')}
@@ -253,6 +254,7 @@ const handleExpiredData = (e) => {
                       label="CVC"
                       error={formik.errors.cvc && formik.touched.cvc}
                       errorMessage={formik.errors.cvc}
+                      data-testid='cvc'
                     />
                   </div>
                 </fieldset>
