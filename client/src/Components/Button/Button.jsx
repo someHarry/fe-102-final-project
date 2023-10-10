@@ -4,13 +4,14 @@ import './Button.scss'
 function Button(props) {
   const { btnStyles, btnClick, text } = props
   return (
-    <button className={`button + ${btnStyles}`} type="button" onClick={btnClick}>
+    <button data-testid="btn" className={`button + ${btnStyles}`} type="button" onClick={btnClick}>
       {text}
     </button>
   )
 }
 
 Button.defaultProps = {
+  // type: "button",
   btnClick: () => {},
   btnStyles: '',
   
@@ -18,6 +19,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   btnStyles: PropTypes.string,
+  // type: PropTypes.string,
   btnClick: PropTypes.func,
   text: PropTypes.string.isRequired,
 }
