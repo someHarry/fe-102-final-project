@@ -16,7 +16,7 @@ import '../../Components/Form/Form.scss'
 import Input from '../../Components/Input/Input'
 import '../../Components/Input/Input.scss'
 import { actionAddBankCard } from '../../redux/bankCard/actionBankCard'
-import { actionUpdateUserData } from '../../redux/user/actionUser'
+import { actionUptadeUserData } from '../../redux/user/actionUser'
 
 function isValidExpirationDate(value) {
   if (!value) return false
@@ -75,7 +75,7 @@ function PaymentPage() {
 
   const handleSaveClick = () => {
     setIsEditing(false)
-    dispatch(actionUpdateUserData(editedData))
+    dispatch(actionUptadeUserData(editedData))
   }
 
   const handleInputChange = (e) => {
