@@ -56,21 +56,21 @@ function Footer({ catalogTitle, clientTitle }) {
           <h3 className="contacts__title footer-title">Contacts info</h3>
           <ul className="contacts__list footer-list">
             <li className="contacts__item contacts__item--adress">
-              <a className="contacts__item-text contacts__text" href="tel:+1234567890">
+              <Link className="contacts__item-text contacts__text" to="tel:+1234567890">
                 3 Falahi, Falahi St, Pasdaran Ave, Shiraz, Fars Provieence Iran
-              </a>
+              </Link>
             </li>
 
             <li className="contacts__item contacts__item--email">
-              <a className="contacts__item-text contacts__text" href="mailto:wine@gmail.com">
+              <Link className="contacts__item-text contacts__text" to="mailto:wine@gmail.com">
                 wine@gmail.com
-              </a>
+              </Link>
             </li>
 
             <li className="contacts__item contacts__item--tel">
-              <a className="contacts__item-text contacts__text" href="tel:+1234567890">
+              <Link className="contacts__item-text contacts__text" to="tel:+1234567890">
                 +1 (234) 567-890
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

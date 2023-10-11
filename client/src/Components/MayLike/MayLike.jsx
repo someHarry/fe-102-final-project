@@ -1,86 +1,108 @@
+/* eslint-disable no-nested-ternary */
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import sendRequest from '../../helpers/request'
+import axios from 'axios'
+import { useQuery } from 'react-query'
+import { Route, Routes } from 'react-router-dom'
+import ProductCard from '../ProductCard'
+import Loader from '../Loader'
+import NotFoundPage from '../../Pages/404Page/404Page'
 import './MayLike.scss'
-import { actionAddToCart } from '../../redux/cart/actionCart'
 
 function MayLike() {
-  const [productOne, setProductOne] = useState({})
-  const [productTwo, setProductTwo] = useState({})
-  const [productThree, setProductThree] = useState({})
+  const [productOne, setProductOne] = useState(null)
+  const [productTwo, setProductTwo] = useState(null)
+  const [productThree, setProductThree] = useState(null)
 
-  const dispatch = useDispatch()
+  const request = async () => {
+    const { data } = await axios.get('http://localhost:4000/api/products/filter?perPage=3')
+    return data
+  }
 
-  const addToCartProductOne = () => {
-    dispatch(actionAddToCart(productOne))
-  }
-  const addToCartProductTwo = () => {
-    dispatch(actionAddToCart(productTwo))
-  }
-  const addToCartProductThree = () => {
-    dispatch(actionAddToCart(productThree))
-  }
+  const { data, isError, isLoading } = useQuery('Get_Three_Products', request)
 
   useEffect(() => {
-    sendRequest(`http://localhost:4000/api/products/filter?perPage=3`).then((data) => {
-      setProductOne(data.products[0])
-      setProductTwo(data.products[1])
-      setProductThree(data.products[2])
-    })
-  })
+    if (!isError && !isLoading && data) {
+      if (data.products.length >= 1) {
+        setProductOne(data.products[0])
+        setProductTwo(data.products[1])
+        setProductThree(data.products[2])
+      }
+    }
+  }, [data, isError, isLoading])
+
+  if (isLoading) {
+    return (
+      <div className="container product-loader">
+        <Loader />
+      </div>
+    )
+  }
+
+  if (isError) {
+    return (
+      <Routes>
+        <Route path={'*' || '404'} element={<NotFoundPage />} />
+      </Routes>
+    )
+  }
+
   return (
     <div className="container like">
       <h2 className="like__title">You may also like</h2>
       <div className="like__wrapper">
-        <ul className="like__list">
-          <li className="like__item like-product">
-            <img className="like-product__img" src={productOne.imageUrls} alt="" width="264" height="264" />
-            <p className="like-product__title">{productOne.name}</p>
-            <p className="like-product__price price">
-              <span className="price__active">{productOne.currentPrice} $</span>/ {productOne.volume}ml
-            </p>
-            <div className="like-product__hover-content">
-              <a className="like-product__link" href={`/shop/${productOne.itemNo}`}>
-                Read more
-              </a>
-              <button className="like-product__btn" onClick={addToCartProductOne}>
-                Add to cart
-              </button>
-            </div>
-          </li>
-
-          <li className="like__item like-product">
-            <img className="like-product__img" src={productTwo.imageUrls} alt="" width="264" height="264" />
-            <p className="like-product__title">{productTwo.name}</p>
-            <p className="like-product__price price">
-              <span className="price__active">{productTwo.currentPrice} $</span>/ {productTwo.volume}ml
-            </p>
-            <div className="like-product__hover-content">
-              <a className="like-product__link" href={`/shop/${productTwo.itemNo}`}>
-                Read more
-              </a>
-              <button className="like-product__btn" onClick={addToCartProductTwo}>
-                Add to cart
-              </button>
-            </div>
-          </li>
-
-          <li className="like__item like-product">
-            <img className="like-product__img" src={productThree.imageUrls} alt="" width="264" height="264" />
-            <p className="like-product__title">{productThree.name}</p>
-            <p className="like-product__price price">
-              <span className="price__active">{productThree.currentPrice} $</span>/ {productThree.volume}ml
-            </p>
-            <div className="like-product__hover-content">
-              <a className="like-product__link" href={`/shop/${productThree.itemNo}`}>
-                Read more
-              </a>
-              <button className="like-product__btn" onClick={addToCartProductThree}>
-                Add to cart
-              </button>
-            </div>
-          </li>
-        </ul>
+        {isLoading ? (
+          <Loader />
+        ) : data ? (
+          <ul className="like__list">
+            {productOne ? (
+              <ProductCard
+                itemNo={productOne?.itemNo}
+                name={productOne?.name}
+                variety={productOne?.variety}
+                region={productOne?.region}
+                country={productOne?.country}
+                imageUrls={productOne?.imageUrls}
+                currentPrice={productOne?.currentPrice}
+                previousPrice={productOne?.previousPrice}
+                discount={productOne?.discount}
+              />
+            ) : (
+              <Loader />
+            )}
+            {productTwo ? (
+              <ProductCard
+                itemNo={productTwo.itemNo}
+                name={productTwo.name}
+                variety={productTwo.variety}
+                region={productTwo.region}
+                country={productTwo.country}
+                imageUrls={productTwo.imageUrls}
+                currentPrice={productTwo.currentPrice}
+                previousPrice={productTwo.previousPrice}
+                discount={productTwo.discount}
+              />
+            ) : (
+              <Loader />
+            )}
+            {productThree ? (
+              <ProductCard
+                itemNo={productThree.itemNo}
+                name={productThree.name}
+                variety={productThree.variety}
+                region={productThree.region}
+                country={productThree.country}
+                imageUrls={productThree.imageUrls}
+                currentPrice={productThree.currentPrice}
+                previousPrice={productThree.previousPrice}
+                discount={productThree.discount}
+              />
+            ) : (
+              <Loader />
+            )}
+          </ul>
+        ) : (
+          <Loader />
+        )}
       </div>
     </div>
   )
