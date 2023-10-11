@@ -70,6 +70,10 @@
 }
 
 .payment-adaptive {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
   @media (max-width: 992px) {
     display: flex;
     flex-direction: row;
@@ -85,12 +89,6 @@
 }
 .payment-info {
   max-width: 264px;
-  height: 440px;
-
-  @media (max-width: 768px) {
-    height: 300px;
-  }
-
   .payment-info__btn {
     margin-top: 34px;
     font-size: 16px;
@@ -102,22 +100,36 @@
     background-color: white;
     padding: 0;
     cursor: pointer;
-
     &:hover {
       font-size: 18px;
     }
   }
 }
-
 .payment-title {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
   margin-bottom: 12px;
   margin-top: 0;
 }
-
+.textarea {
+  max-width: 250px;
+  max-height: 40px;
+  &:hover {
+    border: 2px solid #c3b212;
+  }
+}
+.textarea-email {
+  width: 300px;
+  max-height: 50px;
+  &:hover {
+    border: 2px solid #c3b212;
+  }
+}
+.payment-address--textarea {
+  margin-top: 10px;
+}
 .payment-address {
   margin-top: 40px;
   @media (max-width: 769px) {
@@ -141,23 +153,6 @@
   }
 }
 
-.payment-type {
-  margin-left: 294px;
-  margin-top: -441px;
-  @media (max-width: 992px) {
-    margin-left: 0;
-    margin-top: auto;
-  }
-  @media (max-width: 769px) {
-    margin-top: -30px;
-  }
-}
-.payment-type h4 {
-  @media (max-width: 769px) {
-    margin-left: 48px;
-  }
-}
-
 .payment-type__btn {
   position: relative;
   height: 56px;
@@ -172,19 +167,6 @@
   }
   @media (max-width: 769px) {
     margin-top: 30px;
-  }
-  .payment-type__btn--visa {
-    content: '';
-    position: absolute;
-    top: 11px;
-    left: 154px;
-    background: url('./icons/visaButtonIcon.svg') no-repeat;
-    border: none;
-    cursor: pointer;
-  }
-
-  &:hover {
-    border: 2px solid#c3b212;
   }
 }
 
@@ -315,7 +297,7 @@
   line-height: 20px;
   letter-spacing: 0.1px;
   text-transform: uppercase;
-  width: 455px;
+  width: 465px;
   margin-top: 32px;
   &:hover {
     background-color: #fff;
@@ -340,6 +322,10 @@
     margin: 25px 75px;
   }
 }
-.none{
+.none {
   display: none;
+}
+.form__pay {
+  width: 360px;
+  margin-top: 40px;
 }
