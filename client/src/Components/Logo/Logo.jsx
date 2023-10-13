@@ -8,6 +8,7 @@ function Logo({ classNames }) {
     <Link className={`logo ${classNames}`} to="/">
       <svg
         className="logo__pic"
+        data-testid="logo__pic"
         width="64.000000pt"
         height="64.000000pt"
         viewBox="16 0 64.000000 64.000000"
