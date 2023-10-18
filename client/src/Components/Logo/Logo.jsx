@@ -29,7 +29,7 @@ function Logo({ classNames }) {
           />
         </g>
       </svg>
-      <h1 className="logo__title">Good Wine</h1>
+      <h1 className="logo__title">Nice Wine</h1>
     </Link>
   )
 }
