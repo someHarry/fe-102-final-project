@@ -6,7 +6,7 @@ import { act } from 'react-dom/test-utils'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
 import { render, fireEvent } from '@testing-library/react'
-import PaymentPage from './PaymentPage'
+import PaymentPage from '../Pages/PaymentPage/PaymentPage'
 
 const mockStore = configureStore()
 

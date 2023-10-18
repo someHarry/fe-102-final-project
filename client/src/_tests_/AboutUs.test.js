@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import renderer from 'react-test-renderer';
-import AboutUs from './AboutUs'
+import AboutUs from '../Components/AboutUs/AboutUs'
 
 test('AboutUs component snapshot', () => {
   const component = renderer.create(<AboutUs />);

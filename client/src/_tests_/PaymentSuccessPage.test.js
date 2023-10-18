@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
 import { render, fireEvent } from '@testing-library/react'
-import PaymentSuccessPage from './PaymentSuccessPage'
+import PaymentSuccessPage from '../Pages/PaymentSuccessPage/PaymentSuccessPage'
 
 const mockStore = configureStore()
 

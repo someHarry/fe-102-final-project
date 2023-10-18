@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import renderer from 'react-test-renderer';
-import Form from './Form'
+import Form from '../Components/Form/Form'
 
 test('Form component snapshot', () => {
   const component = renderer.create(<Form />);
