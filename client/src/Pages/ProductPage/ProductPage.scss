@@ -87,15 +87,18 @@
   font-size: 36px;
   line-height: 122%;
   margin-bottom: 21px;
-  margin-right: 25px;
 
   &--old-price {
     text-decoration: line-through;
+    color: silver;
+    font-size: 24px;
+    margin-right: 8px;
   }
 
   &--discount {
-    color: red;
+    color: #ec1d1d;
     font-size: 18px;
+    margin-right: 25px;
   }
 
   &--new-price {
@@ -142,6 +145,14 @@
 .buy__text {
   font-size: 22px;
   line-height: 127%;
+}
+
+.buy__add-cart {
+  color: #ec1d1d;
+  margin-top: 20px;
+  @media (max-width: 578px) {
+    text-align: center;
+  }
 }
 
 .product-info {
