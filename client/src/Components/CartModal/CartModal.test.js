@@ -10,7 +10,7 @@ test('renders CartModal with no items', () => {
   const store = mockStore({
     cart: {
       subtotal: 0,
-      modal: false, // Set modal to false for no items
+      modal: false,
       cart: [],
     },
   });
@@ -21,11 +21,9 @@ test('renders CartModal with no items', () => {
     </Provider>
   );
 
-  // Verify that "There are no products in the basket!" is displayed
   const noItemsText = screen.getByText('There are no products in the basket!');
   expect(noItemsText).toBeInTheDocument();
 
-  // Verify the "Back to Collection" link is displayed
   const backToCollectionLink = screen.getByText('Back to Collection');
   expect(backToCollectionLink).toBeInTheDocument();
 });
@@ -33,8 +31,8 @@ test('renders CartModal with no items', () => {
 test('renders CartModal with items and handles modal open/close', () => {
     const store = mockStore({
       cart: {
-        subtotal: 100, // Adjust the subtotal as needed
-        modal: true, // Set modal to true for items
+        subtotal: 100, 
+        modal: true,
         cart: [
           {
             itemNo: 1,
@@ -60,26 +58,20 @@ test('renders CartModal with items and handles modal open/close', () => {
       </Provider>
     );
   
-    // Verify that the item names are displayed
     const item1Name = screen.getByText('Item 1');
     const item2Name = screen.getByText('Item 2');
     expect(item1Name).toBeInTheDocument();
     expect(item2Name).toBeInTheDocument();
   
-    // Verify that the "Subtotal" is displayed
     const subtotalText = screen.getByText('Subtotal');
     expect(subtotalText).toBeInTheDocument();
   
-    // Verify the "Purchase" link is displayed
     const purchaseLink = screen.getByText('Purchase');
     expect(purchaseLink).toBeInTheDocument();
   
-    // Simulate closing the modal by clicking the overlay
     fireEvent.click(screen.getByTestId('modal-overlay'));
   
-    // Verify that the modal is closed
     const modal = screen.queryByTestId('cart-modal');
     expect(modal).not.toBeInTheDocument();
 
-  // You can add more tests for interactions with the modal as needed
 });
