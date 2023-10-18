@@ -18,13 +18,16 @@ import Button from '../../Components/Button'
 function ProductPage({ id }) {
   const [product, setProduct] = useState({})
   const [count, setCount] = useState(1)
+  const [cart, setCart] = useState(false)
 
   const basketList = useSelector((state) => state.cart.cart)
+  console.log(basketList)
 
   useEffect(() => {
     basketList.forEach((item) => {
       if (item.itemNo === id) {
         setCount(item.quant)
+        setCart(true)
       }
     })
   }, [basketList, id])
@@ -99,7 +102,7 @@ function ProductPage({ id }) {
                 <span className="product__price product__price--old-price">{`${product.previousPrice}$`}</span>
                 <span className="product__price product__price--discount">
                   {' '}
-                  {`${Number(Math.round(product.discount * 100))}%`}
+                  {`(${Number(Math.round(product.discount * 100))}%)`}
                 </span>
                 <span className="product__price product__price--new-price">{`${product.currentPrice}$`}</span>
               </p>
@@ -134,6 +137,7 @@ function ProductPage({ id }) {
             </div>
             <Button text="ADD TO CART" btnStyles="buttonDark" btnClick={addToCart} />
           </div>
+          {cart && <p className="buy__add-cart">Товар добавлен в корзину</p>}
         </div>
       </div>
       <section className="product-info">
