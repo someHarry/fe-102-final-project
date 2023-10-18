@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import Logo from './Logo'
+import Logo from '../Components/Logo/Logo'
 
 describe('Logo', () => {
   test('We have Log?', () => {
@@ -20,7 +20,7 @@ describe('Logo', () => {
         <Logo classNames={className} />
       </MemoryRouter>
     )
-    expect(screen.getByText('Good Wine')).toBeInTheDocument()
+    expect(screen.getByText('Nice Wine')).toBeInTheDocument()
   })
   test('We have SVG?', () => {
     const className = 'className'

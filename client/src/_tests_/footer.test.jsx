@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import Footer from './index'
+import Footer from '../Components/Footer/index'
 
 describe('Footer', () => {
   test('We have Footer?', () => {
