@@ -12,15 +12,15 @@ function ProductCard({itemNo, name, variety, region, country, imageUrls, current
         productCardPriceClassName += " discounted";
     }
 
-    // const addToCart = () => {
-    //     const existingCartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    //     const productInCart = existingCartItems.find(item => item.itemNo === itemNo);
-    //     if (!productInCart) {
-    //         const newCartItem = { itemNo, name, variety, region, country, imageUrls, currentPrice };
-    //         existingCartItems.push(newCartItem);
-    //         localStorage.setItem('cart', JSON.stringify(existingCartItems));
-    //     }
-    // };
+    const addToCart = () => {
+        const existingCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const productInCart = existingCartItems.find(item => item.itemNo === itemNo);
+        if (!productInCart) {
+            const newCartItem = { itemNo, name, variety, region, country, imageUrls, currentPrice };
+            existingCartItems.push(newCartItem);
+            localStorage.setItem('cart', JSON.stringify(existingCartItems));
+        }
+    };
 
 
     return (
