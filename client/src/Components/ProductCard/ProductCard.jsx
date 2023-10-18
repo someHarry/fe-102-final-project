@@ -20,7 +20,6 @@ function ProductCard({ itemNo, name, variety, region, country, imageUrls, curren
   const addToCart = async () => {
     const { data } = await axios.get(`http://localhost:4000/api/products/${itemNo}`);
 
-    // Дії, що виконуються після отримання даних товару
     dispatch(actionAddToCart({ ...data, quant: 1 }));
 };
   
