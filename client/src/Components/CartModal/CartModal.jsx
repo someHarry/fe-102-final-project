@@ -62,6 +62,7 @@ export default function CartModal() {
     <div
       className={handleModal(modal)}
       onClick={() => handleModalClick()}
+      data-testid="modal-overlay" // Додати цей атрибут
       onKeyDown={(e) => {
         if (e.key === 'Escape') {
           handleModalClick()
