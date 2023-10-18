@@ -5,5 +5,6 @@ const actionAddUser = createAction('user/actionAddUser')
 
 const actionClearUser = createAction('user/actionClearUser')
 
-const actionUpdateUserData = createAction('user/actionUpdateUserData');
-export { actionAddUser, actionClearUser,actionUpdateUserData }
+const actionUptadeUserData = createAction('user/actionUptadeUserData')
+
+export { actionAddUser, actionClearUser, actionUptadeUserData }

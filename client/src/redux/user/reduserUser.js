@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createReducer } from '@reduxjs/toolkit'
-import { actionAddUser, actionClearUser, actionUpdateUserData } from './actionUser'
+import { actionAddUser, actionClearUser, actionUptadeUserData } from './actionUser'
 
 const initialState = {
   dataUser: null || JSON.parse(localStorage.getItem('user')),
@@ -16,7 +16,7 @@ const reducerUser = createReducer(initialState, (builder) => {
     .addCase(actionClearUser, (state) => {
       state.dataUser = null
     })
-    .addCase(actionUpdateUserData, (state, { payload }) => {
+    .addCase(actionUptadeUserData, (state, { payload }) => {
       state.dataUser = {
         ...state.dataUser,
         ...payload,
