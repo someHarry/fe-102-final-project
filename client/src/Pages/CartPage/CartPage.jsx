@@ -8,7 +8,6 @@ import MayLike from '../../Components/MayLike'
 import RadioButton from '../../Components/RadioButton'
 
 export default function CartPage() {
-
   const subtotal = useSelector((state) => state.cart.subtotal)
 
   return (
@@ -46,7 +45,7 @@ export default function CartPage() {
             />
             <div className="cart-subtotal">
               <span>Total</span>
-              <span>${subtotal}</span>
+              <span>${parseFloat(subtotal) + 15}</span>
             </div>
             <p>Estimated shipping time: 2 days</p>
             <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'rgba(40, 40, 40, 1)' }}>
