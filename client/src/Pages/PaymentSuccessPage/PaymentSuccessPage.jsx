@@ -6,13 +6,19 @@ import './PaymentSuccessPage.scss'
 import Button from '../../Components/Button/Button'
 import MayLike from '../../Components/MayLike'
 
+export function formatCardNumber(cardNumber) {
+  const hiddenDigits = 'XXXX XXXX XXXX ';
+  const visibleDigits = cardNumber.slice(-4);
+  return hiddenDigits + visibleDigits;
+}
 
 function PaymentSuccessPage() {
   const [cartItems, setCartItems] = useState([])
   const [paymentDate, setPaymentDate] = useState(null);
   const user = useSelector((state) => state.user.dataUser)
-  // const card = useSelector((state) => state.card.bankCard)
-  
+  const card = useSelector((state) => state.card.bankCard)
+  const subtotal = useSelector((state) => state.cart.subtotal)
+
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
     if (cartItemsFromStorage) {
@@ -40,13 +46,7 @@ function PaymentSuccessPage() {
       </span>
     </div>
   ))
- const subtotal = cartItems.reduce(
-    (total, item) =>
-      total +
-      (item.currentPrice || 0) * (item.quantity || 1),
-   
-    0
-  )
+
   const randomOrderNumber = Math.floor(Math.random() * 100000000)
   return (
     <section className="success-page">
@@ -83,10 +83,10 @@ function PaymentSuccessPage() {
             </div>
             
           <div className="success-order__payment">
-            {/* <h4 className="success-order__title">Payment method</h4> */}
+            <h4 className="success-order__title">Payment method</h4>
             <div className="success-address">
-              {/* <h4 className="success-order__info-title">Master card</h4> */}
-              {/* <p className="success-order__info-text"> {card.cardNumber} </p> */}
+              <h4 className="success-order__info-title">Master card</h4>
+              <p className="success-order__info-text"> {formatCardNumber(card.cardNumber)} </p>
               <h4 className="success-order__info-title">Estimated shipping</h4>
               <p className="success-order__inf-text"> {paymentDate}</p>
             </div>
@@ -107,7 +107,7 @@ function PaymentSuccessPage() {
             <hr className="success-summery-line" />
             <div className="success-summery__order">
               <p className="success-summery__order-total">Total</p>
-              <span className="success-summery__order-price-total">${parseFloat(subtotal)+15}</span>
+              <span className="success-summery__order-price-total">${subtotal}</span>
             </div>
           </div>
           <Link to="/">

@@ -19,7 +19,7 @@ const reducerUser = createReducer(initialState, (builder) => {
     .addCase(actionUptadeUserData, (state, { payload }) => {
       state.dataUser = {
         ...state.dataUser,
-        ...payload
+        ...payload,
       }
       localStorage.setItem('user', JSON.stringify(state.dataUser))
     })
