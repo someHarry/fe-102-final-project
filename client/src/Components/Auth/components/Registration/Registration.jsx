@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
 })
 
 function Registration({setIsRegisterWindowOpen}) {
-    const [errorMessage, setErrorMessage] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const initialValues = {
         firstName: '',
@@ -36,11 +36,12 @@ function Registration({setIsRegisterWindowOpen}) {
     }
     const onSubmit = async (values, {resetForm}) => {
         const response = await AuthRequest.register(values.firstName, values.lastName, values.login, values.email, values.password)
-        setTimeout(()=>{console.log(response)}, 1500)
-        if (!response?.message) {
+        // eslint-disable-next-line no-prototype-builtins
+        if (response.hasOwnProperty("enabled")) {
             throwMySetter()
         } else {
-            setErrorMessage(`Error: ${JSON.stringify(response.message)}`)
+            setErrorMessage(`Error: ${JSON.stringify(response)}`)
+            console.log("test")
         }
         resetForm();
     }

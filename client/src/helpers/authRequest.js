@@ -36,11 +36,8 @@ export default class AuthRequest {
             redirect: 'follow'
         }
 
-        fetch("http://localhost:4000/api/customers", requestOptions)
+        return fetch("http://localhost:4000/api/customers", requestOptions)
             .then(res => res.json())
-            .then((result) => {
-                console.log(result);
-                return result
-            })
+            .then((result) => result)
     }
 }
