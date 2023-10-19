@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react'
-import { useSelector} from 'react-redux'
+import { useSelector, useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom'
 import './PaymentSuccessPage.scss'
+import { actionClearCart, actionRemoveLocalStorage } from '../../redux/cart/actionCart';
 import Button from '../../Components/Button/Button'
 import MayLike from '../../Components/MayLike'
 
@@ -18,6 +19,12 @@ function PaymentSuccessPage() {
   const user = useSelector((state) => state.user.dataUser)
   const card = useSelector((state) => state.card.bankCard)
   const subtotal = useSelector((state) => state.cart.subtotal)
+ const dispatch = useDispatch();
+
+  const handleContinueShopping = () => {
+    dispatch(actionClearCart()); 
+    dispatch(actionRemoveLocalStorage([])); 
+  };
 
   useEffect(() => {
     const cartItemsFromStorage = localStorage.getItem('cart')
@@ -110,7 +117,7 @@ function PaymentSuccessPage() {
               <span className="success-summery__order-price-total">${subtotal}</span>
             </div>
           </div>
-          <Link to="/">
+          <Link to="/" onClick={handleContinueShopping}>
             <Button text="keep shopping" btnStyles="success-btn" />
           </Link>
         </div>
