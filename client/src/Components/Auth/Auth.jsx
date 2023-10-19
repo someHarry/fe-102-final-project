@@ -8,10 +8,11 @@ function Auth() {
     const [isAuthWindowVisible, setIsAuthWindowVisible] = useState(false)
     const [isRegisterWindowOpen, setIsRegisterWindowOpen] = useState(false)
     const [succesMessage, setSuccesMessage] = useState(null)
+    const [isLogin, setIsLogin] = useState(false);
 
     return (
         <>
-            <button className="auth-button" onClick={() => {
+            {isLogin && <button className="auth-button" onClick={() => {
                 setIsAuthWindowVisible(true)
             }}>
                 <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -20,6 +21,8 @@ function Auth() {
                     <path fill="none" d="M0 0h24v24H0z"/>
                 </svg>
             </button>
+            }
+
             <div className={`auth-modal__overlay auth-modal__overlay--${isAuthWindowVisible ? "visible" : "hidden"}`}>
                 <div className="auth-modal__content">
                     <Button
@@ -34,6 +37,7 @@ function Auth() {
                     {!isRegisterWindowOpen && <Login
                         setIsAuthWindowVisible={setIsAuthWindowVisible}
                         setIsRegisterWindowOpen={setIsRegisterWindowOpen}
+                        setIsLogin={setIsLogin}
                     />}
                     {isRegisterWindowOpen && <Registration
                         setIsRegisterWindowOpen={setIsRegisterWindowOpen}
@@ -44,11 +48,6 @@ function Auth() {
         </>
     )
 }
-
-
-// Auth.propTypes = {
-//
-// }
 
 
 export default Auth;
