@@ -1,0 +1,71 @@
+.auth-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  & > svg {
+    width: 25px;
+    height: 25px;
+
+    &:hover path:first-child {
+      fill: #ec1d1d;
+      filter: sepia(40%);
+    }
+  }
+}
+
+.auth-modal__overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background-color: rgba(40, 40, 40, 0.2);
+
+  &--hidden {
+    display: none;
+  }
+
+  &--visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.auth-modal__content {
+  background-color: #fefefe;
+  padding: 50px 25px;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  button.auth--close{
+    padding: 2px 6px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.auth--form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth--error-message{
+  color: #ec1d1d;
+}
+
+.auth--switcher{
+  margin-top: 20px;
+  .switcher--button{
+    margin-left: 10px;
+    padding: 3px 6px;
+  }
+}
