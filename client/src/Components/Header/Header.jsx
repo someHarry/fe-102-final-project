@@ -5,6 +5,7 @@ import { useEffect, useCallback } from 'react'
 import './Header.scss'
 import Logo from '../Logo'
 import CartCounter from '../CartCounter'
+import Auth from "../Auth";
 
 
 function Header() {
@@ -77,7 +78,7 @@ function Header() {
         </ul> 
       </nav>
       {/* END of NAVIGATION WITH MAIN LINKS */}
-
+      <Auth />
       <Link className=" icons__link" to="/cart">
         <CartCounter/>
         <img className="icons__link--cart" src="https://raw.githubusercontent.com/someHarry/fe-102-final-project/main/client/public/pics/shopping_cart.png" alt="shopping cart icon" />
