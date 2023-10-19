@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Auth.scss";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
@@ -10,9 +10,16 @@ function Auth() {
     const [succesMessage, setSuccesMessage] = useState(null)
     const [isLogin, setIsLogin] = useState(false);
 
+    useEffect(()=>{
+        const checkLogin = localStorage.getItem("isLogin");
+        if(checkLogin) {
+            setIsLogin(true)
+        }
+    }, [])
+
     return (
         <>
-            {isLogin && <button className="auth-button" onClick={() => {
+            {!isLogin && <button className="auth-button" onClick={() => {
                 setIsAuthWindowVisible(true)
             }}>
                 <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

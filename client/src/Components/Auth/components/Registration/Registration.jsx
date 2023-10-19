@@ -41,7 +41,6 @@ function Registration({setIsRegisterWindowOpen}) {
             throwMySetter()
         } else {
             setErrorMessage(`Error: ${JSON.stringify(response)}`)
-            console.log("test")
         }
         resetForm();
     }
@@ -104,7 +103,6 @@ function Registration({setIsRegisterWindowOpen}) {
                     type="password"
                     placeholder="Password"
                     className="form-input"
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.password}
                     error={formik.touched.password && formik.errors.password}

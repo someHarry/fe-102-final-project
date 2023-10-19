@@ -1,13 +1,10 @@
 import React, {useState} from "react";
 import {useFormik} from 'formik';
-import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import Input from "../../../Input/Input";
 import Button from "../../../Button";
 import AuthRequest from "../../../../helpers/authRequest"
-import {actionLogin} from "../../../../redux/auth/actionAuth";
-
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -16,9 +13,7 @@ const validationSchema = Yup.object().shape({
         .required('Password is required'),
 })
 
-function Login({setIsAuthWindowVisible, setIsRegisterWindowOpen}) {
-    const dispatch = useDispatch();
-
+function Login({setIsAuthWindowVisible, setIsRegisterWindowOpen, setIsLogin}) {
     const [errorMessage, setErrorMessage] = useState(false);
 
     const initialValues = {
@@ -28,11 +23,12 @@ function Login({setIsAuthWindowVisible, setIsRegisterWindowOpen}) {
 
     const throwMySetter = () => {
         setIsAuthWindowVisible(false);
+        setIsLogin(true);
+        localStorage.setItem("isLogin", "true")
     }
     const onSubmit = async (values, {resetForm}) => {
         const response = await AuthRequest.login(values.email, values.password)
         if (response.success) {
-            dispatch(actionLogin(response.token))
             throwMySetter()
         } else {
             setErrorMessage(JSON.stringify(response))
@@ -65,7 +61,6 @@ function Login({setIsAuthWindowVisible, setIsRegisterWindowOpen}) {
                     type="password"
                     placeholder="Password"
                     className="form-input"
-                    // onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.password}
                     error={formik.touched.password && formik.errors.password}
@@ -97,6 +92,7 @@ function Login({setIsAuthWindowVisible, setIsRegisterWindowOpen}) {
 Login.propTypes = {
     setIsAuthWindowVisible: PropTypes.func.isRequired,
     setIsRegisterWindowOpen: PropTypes.func.isRequired,
+    setIsLogin: PropTypes.func.isRequired,
 }
 
 
