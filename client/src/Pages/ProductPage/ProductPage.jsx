@@ -137,7 +137,7 @@ function ProductPage({ id }) {
             </div>
             <Button text="ADD TO CART" btnStyles="buttonDark" btnClick={addToCart} />
           </div>
-          {cart && <p className="buy__add-cart">Товар добавлен в корзину</p>}
+          {cart && <p className="buy__add-cart">Item added to cart</p>}
         </div>
       </div>
       <section className="product-info">
