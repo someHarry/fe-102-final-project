@@ -78,7 +78,7 @@ function Header() {
         </ul> 
       </nav>
       {/* END of NAVIGATION WITH MAIN LINKS */}
-      <Auth />
+      <Auth className="icons__auth" />
       <Link className=" icons__link" to="/cart">
         <CartCounter/>
         <img className="icons__link--cart" src="https://raw.githubusercontent.com/someHarry/fe-102-final-project/main/client/public/pics/shopping_cart.png" alt="shopping cart icon" />
