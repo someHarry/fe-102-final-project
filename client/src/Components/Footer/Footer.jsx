@@ -57,19 +57,19 @@ function Footer({ catalogTitle, clientTitle }) {
           <ul className="contacts__list footer-list">
             <li className="contacts__item contacts__item--adress">
               <Link className="contacts__item-text contacts__text" to="tel:+1234567890">
-                3 Falahi, Falahi St, Pasdaran Ave, Shiraz, Fars Provieence Iran
+                Pavla Tychyna Avenue, 1B, Kyiv
               </Link>
             </li>
 
             <li className="contacts__item contacts__item--email">
               <Link className="contacts__item-text contacts__text" to="mailto:wine@gmail.com">
-                wine@gmail.com
+                goodwine.kyiv@gmail.com
               </Link>
             </li>
 
             <li className="contacts__item contacts__item--tel">
               <Link className="contacts__item-text contacts__text" to="tel:+1234567890">
-                +1 (234) 567-890
+                +38 (063) 278-45-55
               </Link>
             </li>
           </ul>
